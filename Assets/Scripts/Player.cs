@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform heldObjectPoint;
 
     public int currencyCount = 0;
+    [SerializeField] HUDController hudController;
 
     private void Awake()
     {
@@ -55,7 +56,7 @@ public class Player : MonoBehaviour
     private void PickupCurrency(GameObject coin)
     {
         currencyCount++;
-
+        hudController.UpdateCash(currencyCount);
         Destroy(coin);
     }
 
