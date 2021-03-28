@@ -165,6 +165,7 @@ public class Player : MonoBehaviour
             selectedObject.transform.SetParent(heldObjectPoint);
 
             currencyCount -= cost;
+            hudController.UpdateCash(currencyCount);
         }
     }
 }
