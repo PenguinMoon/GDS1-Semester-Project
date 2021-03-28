@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] bool randomizeParameters = false;
 
     [SerializeField] GameObject enemyPrefab;
 
@@ -14,11 +15,17 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
+    private void Start()
+    {
+        if (randomizeParameters)
+        {
+            spawnDelay = Random.Range(1, 10);
+            maxNumInLane = Random.Range(1, 10);
+        }
+    }
+
     private void Update()
     {
-        foreach (GameObject enemy in spawnedEnemies)
-            if (enemy == null)
-                spawnedEnemies.Remove(enemy);
 
         if (timeRemaining <= 0f)
             SpawnEnemy();
@@ -31,7 +38,12 @@ public class EnemySpawner : MonoBehaviour
     {
         timeRemaining = spawnDelay;
 
-        if (spawnedEnemies.Count < maxNumInLane)
+        int enemyCount = 0;
+        foreach (GameObject enemy in spawnedEnemies)
+            if (enemy != null)
+                enemyCount++;
+
+        if (enemyCount < maxNumInLane)
             spawnedEnemies.Add(Instantiate(enemyPrefab, transform.position, Quaternion.identity));
     }
 

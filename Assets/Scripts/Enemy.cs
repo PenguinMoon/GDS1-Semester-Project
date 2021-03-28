@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] int health = 2;
 
     Vector3 currentDirection = Vector3.back;
     Rigidbody rb;
@@ -17,5 +18,28 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         rb.velocity = currentDirection * moveSpeed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.gameObject);
+
+        switch (collision.collider.gameObject.tag)
+        {
+            case "Bullet":
+                TakeDamage(1);
+                break;
+            default:
+                Debug.Log(collision.collider.gameObject.tag);
+                break;
+        }
+    }
+
+    private void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+            Destroy(gameObject);
     }
 }
