@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         for (int i = 0; i < amountOfCurrencyToDrop; i++)
-            Instantiate(currencyPrefab, transform.position + Random.onUnitSphere, Quaternion.identity);
+            Instantiate(currencyPrefab, transform.position + (Random.onUnitSphere * 2f), Quaternion.identity);
 
         Destroy(gameObject);
     }

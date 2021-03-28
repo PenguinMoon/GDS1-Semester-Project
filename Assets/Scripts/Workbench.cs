@@ -27,13 +27,23 @@ public class Workbench : MonoBehaviour
         workbenchUI.SetActive(false);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Player playerRef = other.gameObject.GetComponent<Player>();
+        if (playerRef)
+            Interact(playerRef);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        StopInteract();
+    }
+
     public void OnTurretMakeButtonPressed()
     {
-        Debug.Log("Pressed");
-
         if (playerRef && turretPrefab)
         {
-            if (playerRef.currencyCount > turretCost)
+            if (playerRef.currencyCount >= turretCost)
             {
                 playerRef.ReceiveTurret(turretPrefab, turretCost);
             }

@@ -83,9 +83,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (interactObject && interactObject.tag == "Workbench")
-            interactObject.GetComponent<Workbench>().StopInteract();
-
         interactObject = null;
     }
 
@@ -113,9 +110,6 @@ public class Player : MonoBehaviour
                     break;
                 case "Object":
                     PickupObject();
-                    break;
-                case "Workbench":
-                    InteractWithWorkbench();
                     break;
 
             }
@@ -164,10 +158,10 @@ public class Player : MonoBehaviour
 
     public void ReceiveTurret(GameObject turret, int cost)
     {
-        if (!selectedTurret)
+        if (!selectedObject)
         {
-            selectedTurret = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
-            selectedTurret.transform.SetParent(heldObjectPoint);
+            selectedObject = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
+            selectedObject.transform.SetParent(heldObjectPoint);
 
             currencyCount -= cost;
         }
