@@ -9,6 +9,7 @@ TagManager:
   - Turret
   - TurretPlate
   - Currency
+  - Workbench
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public GameObject selectedTurret;
     [SerializeField] Transform heldObjectPoint;
 
-    int currencyCount = 0;
+    public int currencyCount = 0;
 
     private void Awake()
     {
@@ -60,6 +60,10 @@ public class Player : MonoBehaviour
             case "TurretPlate":
                 interactObject = other.gameObject;
                 break;
+            case "Workbench":
+                interactObject = other.gameObject;
+                InteractWithWorkbench();
+                break;
             case "Currency":
                 PickupCurrency(other.gameObject);
                 break;
@@ -68,6 +72,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (interactObject && interactObject.tag == "Workbench")
+            interactObject.GetComponent<Workbench>().StopInteract();
+
         interactObject = null;
     }
 
@@ -82,7 +89,16 @@ public class Player : MonoBehaviour
                 case "Turret":
                     PickupTurret();
                     break;
+                case "Workbench":
+                    InteractWithWorkbench();
+                    break;
+
             }
+    }
+
+    private void InteractWithWorkbench()
+    {
+        interactObject.GetComponent<Workbench>().Interact(this);
     }
 
     private void PickupCurrency(GameObject coin)
@@ -121,6 +137,17 @@ public class Player : MonoBehaviour
 
             if (selectedTurret.GetComponent<Turret>().plate)
                 selectedTurret.GetComponent<Turret>().plate.GetComponent<TurretPlate>().placedTurret = null;
+        }
+    }
+
+    public void ReceiveTurret(GameObject turret, int cost)
+    {
+        if (!selectedTurret)
+        {
+            selectedTurret = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
+            selectedTurret.transform.SetParent(heldObjectPoint);
+
+            currencyCount -= cost;
         }
     }
 }
