@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    [SerializeField] bool infiniteAmmo = false;
+
     [SerializeField] float delayBetweenFiring = 0.5f;
     float currentFireDelay = 0f;
     [SerializeField] float range = 10f;
@@ -13,6 +15,8 @@ public class Turret : MonoBehaviour
     [SerializeField]Transform firePoint;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] GameObject bulletPrefab;
+
+    public GameObject plate = null;
 
     private void Start()
     {
@@ -44,7 +48,9 @@ public class Turret : MonoBehaviour
         {
             Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             currentFireDelay = delayBetweenFiring;
-            currentAmmo--;
+
+            if (!infiniteAmmo)
+                currentAmmo--;
         }
     }
 }

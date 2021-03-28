@@ -22,15 +22,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.gameObject);
-
         switch (collision.collider.gameObject.tag)
         {
             case "Bullet":
                 TakeDamage(1);
-                break;
-            default:
-                Debug.Log(collision.collider.gameObject.tag);
                 break;
         }
     }
