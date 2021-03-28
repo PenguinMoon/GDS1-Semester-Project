@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     Transform armsObject;
 
-    public GameObject selectedTurret;
+    public GameObject selectedObject;
     [SerializeField] Transform heldObjectPoint;
 
     public int currencyCount = 0;
@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             Interact();
 
-
-        if (selectedTurret == null)
+        // Animate arms
+        if (selectedObject == null)
         {
             armsObject.localPosition = new Vector3(0.5f, 0, 0.125f);
         }
@@ -52,17 +52,28 @@ public class Player : MonoBehaviour
         rb.velocity = input * movementSpeed;
     }
 
+    private void PickupCurrency(GameObject coin)
+    {
+        currencyCount++;
+
+        Destroy(coin);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         switch (other.gameObject.tag)
         {
             case "Turret":
+                interactObject = other.gameObject;
+                break;
+            case "Object":
+                interactObject = other.gameObject;
+                break;
             case "TurretPlate":
                 interactObject = other.gameObject;
                 break;
-            case "Workbench":
+            case "ObjectPlate":
                 interactObject = other.gameObject;
-                InteractWithWorkbench();
                 break;
             case "Currency":
                 PickupCurrency(other.gameObject);
@@ -84,10 +95,24 @@ public class Player : MonoBehaviour
             switch (interactObject.tag)
             {
                 case "TurretPlate":
-                    PlaceSelectedTurret();
+                    if(selectedObject != null && selectedObject.tag == "Turret")
+                        PlaceSelectedObject();
+                    break;
+                case "ObjectPlate":
+                    if ((selectedObject != null && selectedObject.tag == "Object") || (selectedObject != null && selectedObject.tag == "Turret"))
+                        PlaceSelectedObject();
                     break;
                 case "Turret":
-                    PickupTurret();
+                    if (selectedObject == null)
+                        PickupObject();
+                    else if (selectedObject != null && selectedObject.GetComponent<Ammo>() != null)
+                    {
+                        Debug.Log("reloading");
+                        ReloadTurret();
+                    }
+                    break;
+                case "Object":
+                    PickupObject();
                     break;
                 case "Workbench":
                     InteractWithWorkbench();
@@ -96,47 +121,44 @@ public class Player : MonoBehaviour
             }
     }
 
-    private void InteractWithWorkbench()
+    private void PlaceSelectedObject()
     {
-        interactObject.GetComponent<Workbench>().Interact(this);
-    }
+        Debug.Log(selectedObject);
 
-    private void PickupCurrency(GameObject coin)
-    {
-        currencyCount++;
-
-        Destroy(coin);
-    }
-
-    private void PlaceSelectedTurret()
-    {
-        Debug.Log(selectedTurret);
-
-        if (selectedTurret)
+        if (selectedObject)
         {
-            selectedTurret.transform.position = interactObject.transform.position;
-            selectedTurret.transform.rotation = interactObject.transform.rotation;
-            selectedTurret.transform.SetParent(interactObject.transform);
+            selectedObject.transform.position = interactObject.transform.position;
+            selectedObject.transform.rotation = interactObject.transform.rotation;
+            selectedObject.transform.SetParent(interactObject.transform);
 
+            interactObject.GetComponent<ObjectPlate>().placedObject = selectedObject;
+            selectedObject.GetComponent<Object>().plate = interactObject;
 
-
-            interactObject.GetComponent<TurretPlate>().placedTurret = selectedTurret;
-            selectedTurret.GetComponent<Turret>().plate = interactObject;
-
-            selectedTurret = null;
+            selectedObject = null;
         }
     }
 
-    private void PickupTurret()
+    private void PickupObject()
     {
-        if (!selectedTurret)
+        if (!selectedObject)
         {
             interactObject.transform.position = heldObjectPoint.position;
+            interactObject.transform.rotation = heldObjectPoint.transform.rotation;
             interactObject.transform.SetParent(heldObjectPoint);
-            selectedTurret = interactObject;
+            selectedObject = interactObject;
 
-            if (selectedTurret.GetComponent<Turret>().plate)
-                selectedTurret.GetComponent<Turret>().plate.GetComponent<TurretPlate>().placedTurret = null;
+            if (selectedObject.GetComponent<Object>().plate)
+                selectedObject.GetComponent<Object>().plate.GetComponent<ObjectPlate>().placedObject = null;
+        }
+    }
+
+    private void ReloadTurret()
+    {
+        if (interactObject.tag == "Turret")
+        {
+            interactObject.GetComponent<Turret>().ReloadAmmo(selectedObject.GetComponent<Ammo>().reloadObject());
+            selectedObject.GetComponent<Ammo>().deleteObject();
+            selectedObject = null;
         }
     }
 

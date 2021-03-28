@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : Object
 {
     [SerializeField] bool infiniteAmmo = false;
 
@@ -15,8 +15,6 @@ public class Turret : MonoBehaviour
     [SerializeField]Transform firePoint;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] GameObject bulletPrefab;
-
-    public GameObject plate = null;
 
     private void Start()
     {
@@ -51,6 +49,15 @@ public class Turret : MonoBehaviour
 
             if (!infiniteAmmo)
                 currentAmmo--;
+        }
+    }
+
+    public void ReloadAmmo(int ammo)
+    {
+        currentAmmo += ammo;
+        if (currentAmmo > maxAmmo)
+        {
+            currentAmmo = maxAmmo;
         }
     }
 }
