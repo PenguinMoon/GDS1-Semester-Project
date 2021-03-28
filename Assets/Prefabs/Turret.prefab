@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41486f699b0560f4b90c4da207e99f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plate: {fileID: 0}
   infiniteAmmo: 1
   delayBetweenFiring: 0.5
   range: 5
@@ -166,7 +167,6 @@ MonoBehaviour:
     m_Bits: 256
   bulletPrefab: {fileID: 6209267294437973967, guid: 52cae6db6fca31944b0df7c549ce291b,
     type: 3}
-  plate: {fileID: 0}
 --- !u!65 &3349467926925815834
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.3, z: -1}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &7128025926567802528
 GameObject:
   m_ObjectHideFlags: 0
