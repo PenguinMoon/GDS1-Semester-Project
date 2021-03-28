@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public GameObject selectedTurret;
     [SerializeField] Transform heldObjectPoint;
 
+    int currencyCount = 0;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -58,6 +60,9 @@ public class Player : MonoBehaviour
             case "TurretPlate":
                 interactObject = other.gameObject;
                 break;
+            case "Currency":
+                PickupCurrency(other.gameObject);
+                break;
         }
     }
 
@@ -78,6 +83,13 @@ public class Player : MonoBehaviour
                     PickupTurret();
                     break;
             }
+    }
+
+    private void PickupCurrency(GameObject coin)
+    {
+        currencyCount++;
+
+        Destroy(coin);
     }
 
     private void PlaceSelectedTurret()

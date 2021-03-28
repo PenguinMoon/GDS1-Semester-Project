@@ -35,7 +35,7 @@ public class Turret : MonoBehaviour
     {
         RaycastHit hit;
 
-        Debug.DrawRay(firePoint.position, Vector3.forward * range);
+        Debug.DrawRay(firePoint.position, firePoint.forward * range);
 
         if (Physics.Raycast(firePoint.position, Vector3.forward, out hit, range, detectionMask))
         {

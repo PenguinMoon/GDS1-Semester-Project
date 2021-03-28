@@ -7,12 +7,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] int health = 2;
 
+    [SerializeField] GameObject currencyPrefab;
+    [SerializeField, Range(0, 10)] int amountOfCurrencyToDrop = 2;
+
     Vector3 currentDirection = Vector3.back;
     Rigidbody rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();    
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -35,6 +38,14 @@ public class Enemy : MonoBehaviour
         health -= amount;
 
         if (health <= 0)
-            Destroy(gameObject);
+            Die();
+    }
+
+    private void Die()
+    {
+        for (int i = 0; i < amountOfCurrencyToDrop; i++)
+            Instantiate(currencyPrefab, transform.position + Random.onUnitSphere, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 }
