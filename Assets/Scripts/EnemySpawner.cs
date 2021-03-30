@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -8,44 +9,57 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject enemyPrefab;
 
-    [SerializeField, Range(1, 10)] int spawnDelay;
-    [SerializeField, Range(1, 10)] int maxNumInLane;
+    [SerializeField, Range(1, 10)] int _spawnDelay;
+    [SerializeField, Range(1, 10)] int _maxNumInLane;
 
-    private float timeRemaining = 0f;
+    private List<Transform> _enemies = new List<Transform>();
 
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private float _timeTilNextWave = 10f;
+    private int _waveIndex = 0;
 
     private void Start()
     {
-        if (randomizeParameters)
+        StartCoroutine(RunSpawner());
+    }
+
+    IEnumerator RunSpawner()
+    {
+        yield return new WaitForSeconds(_timeTilNextWave);
+        while (true)
         {
-            spawnDelay = Random.Range(1, 10);
-            maxNumInLane = Random.Range(1, 10);
+            yield return SpawnWave();
+
+            yield return new WaitWhile(EnemyAlive);
+
+            yield return new WaitForSeconds(5);
         }
     }
 
-    private void Update()
+    private IEnumerator SpawnWave()
     {
-
-        if (timeRemaining <= 0f)
+        _waveIndex++;
+        for (int i = 0; i < _waveIndex; i++)
+        {
+            yield return new WaitWhile(LaneFull);
             SpawnEnemy();
-
-        else
-            timeRemaining -= Time.deltaTime;
+            yield return new WaitForSeconds(_spawnDelay);
+        }
     }
 
     private void SpawnEnemy()
     {
-        timeRemaining = spawnDelay;
-
-        int enemyCount = 0;
-        foreach (GameObject enemy in spawnedEnemies)
-            if (enemy != null)
-                enemyCount++;
-
-        if (enemyCount < maxNumInLane)
-            spawnedEnemies.Add(Instantiate(enemyPrefab, transform.position, Quaternion.identity));
+        _enemies.Add(Instantiate(enemyPrefab, transform.position, transform.rotation).transform);
     }
+
+    private int EnemiesAlive()
+    {
+        _enemies = _enemies.Where(enemy => enemy != null).ToList();
+        return _enemies.Count;
+    }
+
+    private bool LaneFull() => EnemiesAlive() >= _maxNumInLane;
+
+    private bool EnemyAlive() => EnemiesAlive() > 0;
 
     private void OnDrawGizmos()
     {
