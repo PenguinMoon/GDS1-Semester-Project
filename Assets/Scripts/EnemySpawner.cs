@@ -25,13 +25,14 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator RunSpawner()
     {
         yield return new WaitForSeconds(_timeTilNextWave);
-        while (true)
+        while (_waveIndex < 10)
         {
             yield return SpawnWave();
 
             yield return new WaitWhile(EnemyAlive);
 
             yield return new WaitForSeconds(5);
+            Debug.Log(_waveIndex);
         }
     }
 
