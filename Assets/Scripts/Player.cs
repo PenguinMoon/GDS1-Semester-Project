@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            armsObject.localPosition = new Vector3(0.5f, 0.9f, 0.125f);
+            armsObject.localPosition = new Vector3(0.5f, -0.1f, 0.875f);
         }
 
         rb.velocity = input * movementSpeed;
@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         Destroy(coin);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         switch (other.gameObject.tag)
         {
@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
             interactObject.transform.position = heldObjectPoint.position;
             interactObject.transform.rotation = heldObjectPoint.transform.rotation;
             interactObject.transform.SetParent(heldObjectPoint);
+
             selectedObject = interactObject;
 
             if (selectedObject.GetComponent<Object>().plate)

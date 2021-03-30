@@ -38,7 +38,7 @@ public class Turret : Object
 
         Debug.DrawRay(firePoint.position, firePoint.forward * range);
 
-        if (Physics.Raycast(firePoint.position, Vector3.forward, out hit, range, detectionMask))
+        if (Physics.Raycast(firePoint.position, firePoint.forward, out hit, range, detectionMask))
         {
             Fire();
         }
@@ -47,7 +47,7 @@ public class Turret : Object
     {
         if (currentAmmo > 0 && currentFireDelay <= 0f)
         {
-            Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             currentFireDelay = delayBetweenFiring;
 
             if (!infiniteAmmo)
