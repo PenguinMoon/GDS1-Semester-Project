@@ -126,7 +126,6 @@ public class Player : MonoBehaviour
 
             }
     }
-
     private void PlaceSelectedObject()
     {
         Debug.Log(selectedObject);

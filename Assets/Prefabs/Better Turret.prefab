@@ -84,13 +84,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: aea749445e990a3418198f1ae06cba54, type: 2}
     - target: {fileID: 7751293742398564965, guid: 428e987bc837ff24cb95737399cf8796,
         type: 3}
+      propertyPath: range
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7751293742398564965, guid: 428e987bc837ff24cb95737399cf8796,
+        type: 3}
       propertyPath: maxAmmo
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7751293742398564965, guid: 428e987bc837ff24cb95737399cf8796,
         type: 3}
       propertyPath: delayBetweenFiring
-      value: 0.1
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428e987bc837ff24cb95737399cf8796, type: 3}
