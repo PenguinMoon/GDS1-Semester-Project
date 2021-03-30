@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Workshop : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class Workshop : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (health <= 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         hud.UpdateHP(health);
     }
 }

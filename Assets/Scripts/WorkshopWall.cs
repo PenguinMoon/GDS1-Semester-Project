@@ -21,6 +21,6 @@ public class WorkshopWall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Enemy")
-            parent.TakeDamage(2);
+            parent.TakeDamage(1);
     }
 }

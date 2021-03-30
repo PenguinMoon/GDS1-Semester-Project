@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 7751293742398564965, guid: 428e987bc837ff24cb95737399cf8796,
         type: 3}
       propertyPath: maxAmmo
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7751293742398564965, guid: 428e987bc837ff24cb95737399cf8796,
         type: 3}

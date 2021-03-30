@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-    float movementSpeed = 5f;
+    float movementSpeed = 7f;
 
     float rotationSpeed = 20f;
 
@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
         hudController.UpdateCash(inventory);
 
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        input = Vector3.ClampMagnitude(input, 1f);
 
         // Check if there is movement input before rotating
         if (input != Vector3.zero)
