@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        hudController.UpdateCash(inventory["Bits"]);
+        hudController.UpdateCash(inventory);
 
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 

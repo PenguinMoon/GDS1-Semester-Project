@@ -130,5 +130,5 @@ MonoBehaviour:
     type: 3}
   circuitsPrefab: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
     type: 3}
-  amountOfCurrencyToDrop: 2
+  amountOfCurrencyToDrop: 1
   circuitDropMaterial: {fileID: 2100000, guid: a1ca7b1763f2eaf46a14380cd1de0927, type: 2}

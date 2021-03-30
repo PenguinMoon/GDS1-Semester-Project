@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rend = GetComponent<MeshRenderer>();
 
-        willDropCircuits = Random.Range(0, 100) < 50;
+        willDropCircuits = Random.Range(0, 100) < 30;
 
         if (willDropCircuits)
             rend.material = circuitDropMaterial;
