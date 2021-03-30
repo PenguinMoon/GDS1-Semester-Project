@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         Destroy(coin);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         switch (other.gameObject.tag)
         {
