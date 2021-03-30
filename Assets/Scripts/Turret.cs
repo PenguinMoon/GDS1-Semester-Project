@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Turret : Object
 {
@@ -11,6 +12,7 @@ public class Turret : Object
     [SerializeField] float range = 10f;
     [SerializeField]int maxAmmo = 20;
     int currentAmmo;
+    [SerializeField] TextMeshProUGUI ammoText;
 
     [SerializeField]Transform firePoint;
     [SerializeField] LayerMask detectionMask;
@@ -19,6 +21,7 @@ public class Turret : Object
     private void Start()
     {
         currentAmmo = maxAmmo;
+        ammoText.text = currentAmmo.ToString();
     }
 
     private void Update()
@@ -48,16 +51,21 @@ public class Turret : Object
             currentFireDelay = delayBetweenFiring;
 
             if (!infiniteAmmo)
+            {
                 currentAmmo--;
+                ammoText.text = currentAmmo.ToString();
+            }
         }
     }
 
     public void ReloadAmmo(int ammo)
     {
         currentAmmo += ammo;
+        ammoText.text = currentAmmo.ToString();
         if (currentAmmo > maxAmmo)
         {
             currentAmmo = maxAmmo;
+            ammoText.text = currentAmmo.ToString();
         }
     }
 }
