@@ -159,7 +159,7 @@ MonoBehaviour:
   plate: {fileID: 0}
   infiniteAmmo: 1
   delayBetweenFiring: 0.5
-  range: 5
+  range: 10
   maxAmmo: 20
   firePoint: {fileID: 8730042105602091537}
   detectionMask:

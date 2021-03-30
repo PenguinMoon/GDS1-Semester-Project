@@ -39,13 +39,44 @@ public class Workbench : MonoBehaviour
         StopInteract();
     }
 
-    public void OnTurretMakeButtonPressed()
+    private bool canAffordItem(string itemName)
     {
-        if (playerRef && turretPrefab)
+        switch (itemName)
         {
-            if (playerRef.currencyCount >= turretCost)
+            case "Ammo":
+            case "Turret":
+                return playerRef.inventory["Bits"] >= 1;
+            case "Better Turret":
+                return playerRef.inventory["Bits"] >= 2 && playerRef.inventory["Circuits"] >= 1;
+        }
+
+        return false;
+    }
+
+    private void takeCurrencyFromPlayer(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Ammo":
+            case "Turret":
+                playerRef.inventory["Bits"]--;
+                break;
+            case "Better Turret":
+                playerRef.inventory["Bits"] -= 2;
+                playerRef.inventory["Circuits"]--;
+                break;
+        }
+    }
+
+    public void OnTurretMakeButtonPressed(GameObject item)
+    {
+        if (playerRef && item)
+        {
+            if (canAffordItem(item.name))
             {
-                playerRef.ReceiveTurret(turretPrefab, turretCost);
+                playerRef.ReceiveTurret(item);
+
+                takeCurrencyFromPlayer(item.name);
             }
         }
     }

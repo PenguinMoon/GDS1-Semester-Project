@@ -7,8 +7,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] int health = 2;
 
-    [SerializeField] GameObject currencyPrefab;
+    [SerializeField] GameObject bitsPrefab;
+    [SerializeField] GameObject circuitsPrefab;
     [SerializeField, Range(0, 10)] int amountOfCurrencyToDrop = 2;
+
+    bool willDropCircuits = false;
+    [SerializeField] Material circuitDropMaterial;
+    MeshRenderer rend;
 
     Vector3 currentDirection = Vector3.back;
     Rigidbody rb;
@@ -16,6 +21,12 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        rend = GetComponent<MeshRenderer>();
+
+        willDropCircuits = Random.Range(0, 100) < 50;
+
+        if (willDropCircuits)
+            rend.material = circuitDropMaterial;
     }
 
     private void Update()
@@ -46,8 +57,11 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        for (int i = 0; i < amountOfCurrencyToDrop; i++)
-            Instantiate(currencyPrefab, transform.position + (Random.onUnitSphere * 2f), Quaternion.identity);
+        if (willDropCircuits)
+            Instantiate(circuitsPrefab, transform.position + (Random.onUnitSphere / 2), Quaternion.identity);
+        else
+            for (int i = 0; i < amountOfCurrencyToDrop; i++)
+                Instantiate(bitsPrefab, transform.position + (Random.onUnitSphere / 2), Quaternion.identity);
 
         Destroy(gameObject);
     }

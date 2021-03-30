@@ -126,6 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   health: 2
-  currencyPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
+  bitsPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
+    type: 3}
+  circuitsPrefab: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
     type: 3}
   amountOfCurrencyToDrop: 2
+  circuitDropMaterial: {fileID: 2100000, guid: a1ca7b1763f2eaf46a14380cd1de0927, type: 2}
