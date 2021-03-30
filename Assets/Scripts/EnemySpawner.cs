@@ -15,7 +15,8 @@ public class EnemySpawner : MonoBehaviour
     private List<Transform> _enemies = new List<Transform>();
 
     private float _timeTilNextWave = 10f;
-    private int _waveIndex = 0;
+    public int _waveIndex = 0;
+    public bool isFinished = false;
 
     private void Start()
     {
@@ -31,9 +32,10 @@ public class EnemySpawner : MonoBehaviour
 
             yield return new WaitWhile(EnemyAlive);
 
-            yield return new WaitForSeconds(5);
-            Debug.Log(_waveIndex);
+            yield return new WaitForSeconds(_timeTilNextWave);
         }
+
+        isFinished = true;
     }
 
     private IEnumerator SpawnWave()

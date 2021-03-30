@@ -118,7 +118,6 @@ public class Player : MonoBehaviour
                         PickupObject();
                     else if (selectedObject != null && selectedObject.GetComponent<Ammo>() != null)
                     {
-                        Debug.Log("reloading");
                         ReloadTurret();
                     }
                     break;

@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7229233d92e0304ebc4d2b4671523b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoValue: 10
+  ammoValue: 20
