@@ -407,7 +407,7 @@ MonoBehaviour:
   delayBetweenFiring: 0.5
   range: 5
   maxAmmo: 20
-  ammoText: {fileID: 0}
+  ammoText: {fileID: 8394086431339988204}
   firePoint: {fileID: 8730042105602091537}
   detectionMask:
     serializedVersion: 2
