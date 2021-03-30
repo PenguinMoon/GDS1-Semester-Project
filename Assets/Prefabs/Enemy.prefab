@@ -104,7 +104,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6541951608883238876}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10000
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -124,8 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992929277256dd14fa8780d04481e6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.8
   health: 2
-  currencyPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
+  bitsPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
     type: 3}
-  amountOfCurrencyToDrop: 2
+  circuitsPrefab: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
+    type: 3}
+  amountOfCurrencyToDrop: 1
+  circuitDropMaterial: {fileID: 2100000, guid: a1ca7b1763f2eaf46a14380cd1de0927, type: 2}

@@ -7,6 +7,7 @@ using TMPro;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI cashText;
+    [SerializeField] TextMeshProUGUI circuitText;
     [SerializeField] Slider hpBar;
     [SerializeField] Gradient hpGradient;
     [SerializeField] Image hpImg;
@@ -23,9 +24,10 @@ public class HUDController : MonoBehaviour
         
     }
 
-    public void UpdateCash(int cash)
+    public void UpdateCash(Dictionary<string, int> inventory)
     {
-        cashText.text = "$" + cash.ToString();
+        cashText.text = inventory["Bits"].ToString();
+        circuitText.text = inventory["Circuits"].ToString();
     }
 
     public void SetMaxHP(int hp)

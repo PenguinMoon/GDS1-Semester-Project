@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-    float movementSpeed = 5f;
+    float movementSpeed = 7f;
 
     float rotationSpeed = 20f;
 
@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
     [SerializeField] Transform heldObjectPoint;
 
     public int currencyCount = 0;
+    public Dictionary<string, int> inventory = new Dictionary<string, int>()
+    {
+        {"Bits", 0 },
+        {"Circuits", 0 }
+    };
+
     [SerializeField] HUDController hudController;
 
     private void Awake()
@@ -28,7 +34,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        hudController.UpdateCash(inventory);
+
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        input = Vector3.ClampMagnitude(input, 1f);
 
         // Check if there is movement input before rotating
         if (input != Vector3.zero)
@@ -55,8 +65,11 @@ public class Player : MonoBehaviour
 
     private void PickupCurrency(GameObject coin)
     {
-        currencyCount++;
-        hudController.UpdateCash(currencyCount);
+        if (coin.name.Contains("Circuit"))
+            inventory["Circuits"]++;
+        else if (coin.name.Contains("Bit"))
+            inventory["Bits"]++;
+        
         Destroy(coin);
     }
 
@@ -115,7 +128,6 @@ public class Player : MonoBehaviour
 
             }
     }
-
     private void PlaceSelectedObject()
     {
         Debug.Log(selectedObject);
@@ -157,15 +169,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ReceiveTurret(GameObject turret, int cost)
+    public void ReceiveTurret(GameObject turret)
     {
         if (!selectedObject)
         {
             selectedObject = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
             selectedObject.transform.SetParent(heldObjectPoint);
-
-            currencyCount -= cost;
-            hudController.UpdateCash(currencyCount);
         }
     }
 }

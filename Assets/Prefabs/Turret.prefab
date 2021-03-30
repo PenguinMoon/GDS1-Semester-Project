@@ -405,7 +405,7 @@ MonoBehaviour:
   plate: {fileID: 0}
   infiniteAmmo: 0
   delayBetweenFiring: 0.5
-  range: 5
+  range: 10
   maxAmmo: 20
   ammoText: {fileID: 8394086431339988204}
   firePoint: {fileID: 8730042105602091537}

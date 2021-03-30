@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody rb;
 
+    float maxLifeTime = 15f;
+    float lifeTime = 0f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -14,6 +17,11 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         rb.velocity = transform.forward * 15f;
+
+        if (lifeTime > maxLifeTime)
+            Destroy(gameObject);
+        else
+            lifeTime += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
