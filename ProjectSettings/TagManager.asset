@@ -11,6 +11,8 @@ TagManager:
   - Currency
   - Object
   - ObjectPlate
+  - Workbench
+  - WorkshopWall
   layers:
   - Default
   - TransparentFX

@@ -30,6 +30,9 @@ public class Enemy : MonoBehaviour
             case "Bullet":
                 TakeDamage(1);
                 break;
+            case "WorkshopWall":
+                Destroy(this.gameObject);
+                break;
         }
     }
 
