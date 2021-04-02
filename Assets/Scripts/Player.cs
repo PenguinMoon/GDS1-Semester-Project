@@ -61,6 +61,9 @@ public class Player : MonoBehaviour
         }
 
         rb.velocity = input * movementSpeed;
+
+        if(interactObject)
+        EnableOutlineObject();
     }
 
     private void PickupCurrency(GameObject coin)
@@ -73,8 +76,10 @@ public class Player : MonoBehaviour
         Destroy(coin);
     }
 
+
     private void OnTriggerStay(Collider other)
     {
+        DisableOutlineObject();
         switch (other.gameObject.tag)
         {
             case "Turret":
@@ -97,6 +102,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        DisableOutlineObject();
         interactObject = null;
     }
 
@@ -176,5 +182,24 @@ public class Player : MonoBehaviour
             selectedObject = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
             selectedObject.transform.SetParent(heldObjectPoint);
         }
+    }
+
+    private void EnableOutlineObject()
+    {
+        if (interactObject)
+        {
+            if (interactObject.TryGetComponent(out Outline outline))
+                outline.enabled = true;
+        }
+    }
+
+    private void DisableOutlineObject()
+    {
+        if (interactObject)
+        {
+            if (interactObject.TryGetComponent(out Outline outline))
+                outline.enabled = false;
+        }
+
     }
 }
