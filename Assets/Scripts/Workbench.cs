@@ -53,6 +53,14 @@ public class Workbench : MonoBehaviour
         return false;
     }
 
+    private bool canHoldItem()
+    {
+        if (playerRef.selectedObject == null)
+            return true;
+        else
+            return false;
+    }
+
     private void takeCurrencyFromPlayer(string itemName)
     {
         switch (itemName)
@@ -72,7 +80,7 @@ public class Workbench : MonoBehaviour
     {
         if (playerRef && item)
         {
-            if (canAffordItem(item.name))
+            if (canAffordItem(item.name) && canHoldItem())
             {
                 playerRef.ReceiveTurret(item);
 
