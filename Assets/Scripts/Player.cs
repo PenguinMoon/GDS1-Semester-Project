@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
     float movementSpeed = 7f;
-
     float rotationSpeed = 20f;
+
+    private Vector3 movementInput = Vector3.zero;
+
+    [SerializeField]
+    private PlayerInput playerInput = null;
 
     [SerializeField]
     GameObject interactObject;
@@ -36,19 +42,21 @@ public class Player : MonoBehaviour
     {
         hudController.UpdateCash(inventory);
 
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        //OLD INPUT//
+        //Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        //input = Vector3.ClampMagnitude(input, 1f);
 
-        input = Vector3.ClampMagnitude(input, 1f);
+        // Check if player is pressing input button
+        //if (Input.GetKeyDown(KeyCode.E))
+        //    Interact();
 
         // Check if there is movement input before rotating
-        if (input != Vector3.zero)
+        if (movementInput != Vector3.zero)
         {
-            Quaternion lookDirection = Quaternion.LookRotation(input);
+            Quaternion lookDirection = Quaternion.LookRotation(movementInput);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
-            Interact();
 
         // Animate arms
         if (selectedObject == null)
@@ -60,10 +68,25 @@ public class Player : MonoBehaviour
             armsObject.localPosition = new Vector3(0.5f, -0.1f, 0.875f);
         }
 
-        rb.velocity = input * movementSpeed;
+        rb.velocity = movementInput * movementSpeed;
 
+        // Highlight selected object
         if(interactObject)
         EnableOutlineObject();
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        movementInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        Interact();
     }
 
     private void PickupCurrency(GameObject coin)

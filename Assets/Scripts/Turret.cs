@@ -14,7 +14,8 @@ public class Turret : Object
     int currentAmmo;
     [SerializeField] TextMeshProUGUI ammoText;
 
-    [SerializeField]Transform firePoint;
+    [SerializeField] Transform firePoint;
+    [SerializeField] ParticleSystem fireParticle;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] GameObject bulletPrefab;
 
@@ -48,6 +49,7 @@ public class Turret : Object
         if (currentAmmo > 0 && currentFireDelay <= 0f)
         {
             Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            fireParticle.Play();
             currentFireDelay = delayBetweenFiring;
 
             if (!infiniteAmmo)
