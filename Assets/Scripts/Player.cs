@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     float movementSpeed = 7f;
     float rotationSpeed = 20f;
+
     bool isSprinting;
 
     private Vector3 movementInput = Vector3.zero;
@@ -91,25 +92,39 @@ public class Player : MonoBehaviour
         Interact();
     }
 
-    public void Sprint(InputAction.CallbackContext context)
+    public void OnSprint(InputAction.CallbackContext context)
     {
         if (!context.performed)
         {
             return;
         }
+        Sprint();
+    }
 
+    void Sprint()
+    {
         if (!isSprinting)
         {
-            movementSpeed = 12f;
-            isSprinting = true;
-            Debug.Log("Sprinting");
+            StartCoroutine(Sprinting());
         }
         else
         {
+            StopCoroutine(Sprinting());
             movementSpeed = 7f;
             isSprinting = false;
             Debug.Log("Stop Sprinting");
-        }
+        } 
+    }
+
+    IEnumerator Sprinting()
+    {
+        movementSpeed = 12f;
+        isSprinting = true;
+        Debug.Log("Sprinting");
+        yield return new WaitForSeconds(5f);
+        movementSpeed = 7f;
+        isSprinting = false;
+        Debug.Log("Stop Sprinting");
     }
 
     private void PickupCurrency(GameObject coin)

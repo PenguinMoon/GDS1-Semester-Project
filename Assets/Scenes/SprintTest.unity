@@ -3264,7 +3264,7 @@ PrefabInstance:
     - target: {fileID: 6942440810104222228, guid: ca34e91fa5d4f4a4a8239046923579ea,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Sprint
+      value: OnSprint
       objectReference: {fileID: 0}
     - target: {fileID: 6942440810104222228, guid: ca34e91fa5d4f4a4a8239046923579ea,
         type: 3}
