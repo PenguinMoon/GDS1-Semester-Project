@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Rigidbody rb;
     float movementSpeed = 7f;
     float rotationSpeed = 20f;
+    bool isSprinting;
 
     private Vector3 movementInput = Vector3.zero;
 
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         armsObject = gameObject.transform.Find("Arms");
+        isSprinting = false;
     }
 
     void Update()
@@ -87,6 +89,27 @@ public class Player : MonoBehaviour
             return;
         }
         Interact();
+    }
+
+    public void Sprint(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        if (!isSprinting)
+        {
+            movementSpeed = 12f;
+            isSprinting = true;
+            Debug.Log("Sprinting");
+        }
+        else
+        {
+            movementSpeed = 7f;
+            isSprinting = false;
+            Debug.Log("Stop Sprinting");
+        }
     }
 
     private void PickupCurrency(GameObject coin)
