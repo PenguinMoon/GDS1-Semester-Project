@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     float movementSpeed = 7f;
     float rotationSpeed = 20f;
 
-    bool isSprinting;
+    bool isSprinting;   //Checks if the player is already sprinting
+    float sprintTime, maxSprintTime;    // The amount of stamina the player has and the maximum amount of stamina
+    Coroutine sprintRoutine;    // The current coroutine for sprinting that is active
 
     private Vector3 movementInput = Vector3.zero;
 
@@ -38,7 +40,12 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         armsObject = gameObject.transform.Find("Arms");
+
         isSprinting = false;
+        sprintTime = 5f;
+        maxSprintTime = sprintTime;
+        hudController.SetSprintDuration(sprintTime);
+        sprintRoutine = null;
     }
 
     void Update()
@@ -101,30 +108,67 @@ public class Player : MonoBehaviour
         Sprint();
     }
 
+    // Activates sprinting only if the player has enough stamina remaining
     void Sprint()
     {
-        if (!isSprinting)
+        if (sprintTime > 0f)
         {
-            StartCoroutine(Sprinting());
+            // If the player is not already sprinting, set them to start sprinting
+            // If the player is already sprinting, stop the sprint
+            if (!isSprinting)
+            {
+                if (sprintRoutine != null)
+                    StopCoroutine(sprintRoutine);
+                sprintRoutine = StartCoroutine(Sprinting());
+            }
+            else
+            {
+                if (sprintRoutine != null)
+                    StopCoroutine(sprintRoutine);
+                hudController.isDraining = false;
+                sprintRoutine = StartCoroutine(RecoverSprint());
+                movementSpeed = 7f;
+                isSprinting = false;
+                Debug.Log("Stop Sprinting");
+            }
         }
-        else
-        {
-            StopCoroutine(Sprinting());
-            movementSpeed = 7f;
-            isSprinting = false;
-            Debug.Log("Stop Sprinting");
-        } 
     }
 
+    // Increase movement speed according to the amount of sprint time/stamina remaining
+    // After all sprint time/stamina is gone, reset to default movement speed
     IEnumerator Sprinting()
     {
         movementSpeed = 12f;
         isSprinting = true;
         Debug.Log("Sprinting");
-        yield return new WaitForSeconds(5f);
+        hudController.isDraining = true;
+        while (sprintTime > 0f)
+        {
+            sprintTime -= Time.deltaTime * maxSprintTime;
+            if (sprintTime < 0f)
+                sprintTime = 0f;
+            yield return new WaitForSeconds(Time.deltaTime * maxSprintTime);
+        }
         movementSpeed = 7f;
         isSprinting = false;
+        sprintRoutine = StartCoroutine(RecoverSprint());
         Debug.Log("Stop Sprinting");
+    }
+
+    // Recovers sprint time/stamina over time after a 2 second delay
+    IEnumerator RecoverSprint()
+    {
+        yield return new WaitForSeconds(2f);
+        hudController.isDraining = false;
+        hudController.isRecovering = true;
+        while (sprintTime < maxSprintTime)
+        {
+            sprintTime += Time.deltaTime * maxSprintTime;
+            if (sprintTime > maxSprintTime)
+                sprintTime = maxSprintTime;
+            yield return new WaitForSeconds(Time.deltaTime * maxSprintTime);
+        }
+        Debug.Log("Sprint Full");
     }
 
     private void PickupCurrency(GameObject coin)
