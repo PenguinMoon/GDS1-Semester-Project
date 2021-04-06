@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Turret : Object
 {
@@ -20,6 +21,9 @@ public class Turret : Object
     [SerializeField] ParticleSystem hitParticle;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] GameObject bulletPrefab;
+
+    // UI
+    [SerializeField] Image ammoFill;
 
     bool isActive;
     [SerializeField] float delayBetweenReloading = 1.5f;
@@ -42,6 +46,7 @@ public class Turret : Object
 
             if (currentAmmo == 0)
             {
+                ammoFill.color = Color.grey;
                 sleepParticle.Play();
                 isActive = false;
             }
@@ -61,6 +66,7 @@ public class Turret : Object
 
             if (currentAmmo == maxAmmo)
             {
+                ammoFill.color = Color.green;
                 sleepParticle.Stop();
                 isActive = true;
             }
@@ -91,7 +97,7 @@ public class Turret : Object
             if (!infiniteAmmo)
             {
                 currentAmmo--;
-                ammoText.text = currentAmmo.ToString();
+                UpdateAmmoUI();
             }
         }
     }
@@ -99,11 +105,13 @@ public class Turret : Object
     public void ReloadAmmo(int ammo)
     {
         currentAmmo += ammo;
-        ammoText.text = currentAmmo.ToString();
+
+        UpdateAmmoUI();
+
         if (currentAmmo > maxAmmo)
         {
             currentAmmo = maxAmmo;
-            ammoText.text = currentAmmo.ToString();
+            UpdateAmmoUI();
         }
     }
 
@@ -112,4 +120,11 @@ public class Turret : Object
         ReloadAmmo(Mathf.FloorToInt(maxAmmo/10));
         hitParticle.Play();
     }
+
+    private void UpdateAmmoUI()
+    {
+        ammoText.text = currentAmmo.ToString();
+        ammoFill.fillAmount = ((float)currentAmmo / maxAmmo);
+    }
+
 }

@@ -185,7 +185,7 @@
                 {
                     "name": "",
                     "id": "f6a3041d-954b-4323-95f5-8a1ede631a1f",
-                    "path": "<VirtualKeyboardDevice>/ctrl",
+                    "path": "<VirtualKeyboardDevice>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "VirtualKeyboard",
