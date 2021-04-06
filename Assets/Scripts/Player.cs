@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 
 public class Player : MonoBehaviour
@@ -22,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject interactObject;
 
     Transform armsObject;
+
+    [SerializeField] ParticleSystem sprintParticle;
 
     Animator playerAnim;
     float currentWhackDelay = 0f;
@@ -158,6 +159,7 @@ public class Player : MonoBehaviour
                 sprintRoutine = StartCoroutine(RecoverSprint());
                 movementSpeed = 7f;
                 isSprinting = false;
+                sprintParticle.Stop();
                 Debug.Log("Stop Sprinting");
             }
         }
@@ -169,6 +171,7 @@ public class Player : MonoBehaviour
     {
         movementSpeed = 12f;
         isSprinting = true;
+        sprintParticle.Play();
         Debug.Log("Sprinting");
         hudController.isDraining = true;
         while (sprintTime > 0f)
@@ -180,6 +183,7 @@ public class Player : MonoBehaviour
         }
         movementSpeed = 7f;
         isSprinting = false;
+        sprintParticle.Stop();
         sprintRoutine = StartCoroutine(RecoverSprint());
         Debug.Log("Stop Sprinting");
     }
