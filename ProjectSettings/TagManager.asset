@@ -13,6 +13,7 @@ TagManager:
   - ObjectPlate
   - Workbench
   - WorkshopWall
+  - IgnoreOutline
   layers:
   - Default
   - TransparentFX

@@ -16,8 +16,13 @@ public class Turret : Object
 
     [SerializeField] Transform firePoint;
     [SerializeField] ParticleSystem fireParticle;
+    [SerializeField] ParticleSystem sleepParticle;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] GameObject bulletPrefab;
+
+    bool isActive;
+    [SerializeField] float delayBetweenReloading = 1.5f;
+    float currentReloadDelay = 0f;
 
     private void Start()
     {
@@ -27,10 +32,40 @@ public class Turret : Object
 
     private void Update()
     {
-        if (currentFireDelay > 0)
-            currentFireDelay -= Time.deltaTime;
+        if (isActive)
+        {
+            if (currentFireDelay > 0)
+                currentFireDelay -= Time.deltaTime;
 
-        SearchLane();
+            SearchLane();
+
+            if (currentAmmo == 0)
+            {
+                sleepParticle.Play();
+                isActive = false;
+            }
+
+        }
+        else
+        {
+            if (currentReloadDelay > 0)
+                currentReloadDelay -= Time.deltaTime;
+
+            if (currentReloadDelay <= 0f)
+            {
+                ReloadAmmo(1);
+                currentReloadDelay = delayBetweenReloading;
+            }
+            
+
+            if (currentAmmo == maxAmmo)
+            {
+                sleepParticle.Stop();
+                isActive = true;
+            }
+
+        }
+
     }
 
     private void SearchLane()
