@@ -17,6 +17,7 @@ public class Turret : Object
     [SerializeField] Transform firePoint;
     [SerializeField] ParticleSystem fireParticle;
     [SerializeField] ParticleSystem sleepParticle;
+    [SerializeField] ParticleSystem hitParticle;
     [SerializeField] LayerMask detectionMask;
     [SerializeField] GameObject bulletPrefab;
 
@@ -104,5 +105,11 @@ public class Turret : Object
             currentAmmo = maxAmmo;
             ammoText.text = currentAmmo.ToString();
         }
+    }
+
+    public void HitByPlayer()
+    {
+        ReloadAmmo(Mathf.FloorToInt(maxAmmo/10));
+        hitParticle.Play();
     }
 }

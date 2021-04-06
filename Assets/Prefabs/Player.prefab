@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1814753027}
   - component: {fileID: 1814753026}
   - component: {fileID: 1814753025}
+  - component: {fileID: 3098560157497219351}
   m_Layer: 0
   m_Name: Arm2
   m_TagString: Untagged
@@ -187,6 +188,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &3098560157497219351
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814753023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22f3d21aa925af74897123250ba28fbd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1607404295427614756
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,8 +290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dac3e300f1e9a1488b2843d7f4c58fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 6942440810104222228}
   interactObject: {fileID: 0}
+  startingWhackDelay: 0.7
   selectedObject: {fileID: 2971033580819780322}
   heldObjectPoint: {fileID: 7850940677822612997}
   currencyCount: 0
@@ -288,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: c30c7e6f52d94d44088687dfd435a418,
+  m_Actions: {fileID: -944628639613478452, guid: 58ddb7cd7825ce240968785f62456086,
     type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
@@ -332,6 +353,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b5f55bc3-0657-4694-af6c-d443400d0f94
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1739327157164521402}
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f3bf278a-39c6-4c7c-85af-ba0ec155d568
+    m_ActionName: Player/Sprint[/Keyboard/shift,/Keyboard/shift,/Keyboard/shift,/Keyboard/shift,/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1739327157164521402}
+        m_MethodName: OnWhack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 67304501-8db4-4699-8009-8dcffa08a8f9
+    m_ActionName: Player/Whack[/Keyboard/f,/Keyboard/f,/Keyboard/f,/Keyboard/f,/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -485,6 +536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128025926260794609, guid: 428e987bc837ff24cb95737399cf8796,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7128025926260794610, guid: 428e987bc837ff24cb95737399cf8796,
         type: 3}

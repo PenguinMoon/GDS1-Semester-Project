@@ -16,13 +16,16 @@ public class Player : MonoBehaviour
 
     private Vector3 movementInput = Vector3.zero;
 
-    [SerializeField]
-    private PlayerInput playerInput = null;
+    [SerializeField] private PlayerInput playerInput = null;
 
-    [SerializeField]
-    GameObject interactObject;
+    [SerializeField] GameObject interactObject;
 
     Transform armsObject;
+
+    Animator playerAnim;
+    float currentWhackDelay = 0f;
+    [SerializeField] float startingWhackDelay = 0.5f;
+
 
     public GameObject selectedObject;
     [SerializeField] Transform heldObjectPoint;
@@ -40,12 +43,22 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         armsObject = gameObject.transform.Find("Arms");
+        playerAnim = gameObject.GetComponentInChildren<Animator>();
 
         isSprinting = false;
         sprintTime = 5f;
         maxSprintTime = sprintTime;
         hudController.SetSprintDuration(sprintTime);
         sprintRoutine = null;
+
+
+        if (InputSystem.GetDevice<VirtualKeyboardDevice>() == null)
+        {
+            InputSystem.AddDevice<VirtualKeyboardDevice>();
+        }
+
+        var dvc = InputSystem.GetDevice<VirtualKeyboardDevice>();
+        InputSystem.EnableDevice(dvc);
     }
 
     void Update()
@@ -83,6 +96,11 @@ public class Player : MonoBehaviour
         // Highlight selected object
         if(interactObject)
         EnableOutlineObject();
+
+
+        // Reduce hit time so player can whack again
+        if (currentWhackDelay > 0)
+            currentWhackDelay -= Time.deltaTime;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -106,6 +124,16 @@ public class Player : MonoBehaviour
             return;
         }
         Sprint();
+    }
+
+    public void OnWhack(InputAction.CallbackContext context)
+    {
+        if (!context.performed || selectedObject != null || currentWhackDelay > 0f)
+        {
+            return;
+        }
+        Whack();
+        currentWhackDelay = startingWhackDelay;
     }
 
     // Activates sprinting only if the player has enough stamina remaining
@@ -171,6 +199,19 @@ public class Player : MonoBehaviour
         Debug.Log("Sprint Full");
     }
 
+    private void Whack()
+    {
+        playerAnim.SetTrigger("PlayWhack");
+       
+        if (interactObject)
+            switch (interactObject.tag)
+            {
+                case "Turret":
+                        WhackTurret();
+                    break;
+            }
+    }
+
     private void PickupCurrency(GameObject coin)
     {
         if (coin.name.Contains("Circuit"))
@@ -221,7 +262,7 @@ public class Player : MonoBehaviour
                         PlaceSelectedObject();
                     break;
                 case "ObjectPlate":
-                    if ((selectedObject != null && selectedObject.tag == "Object") || (selectedObject != null && selectedObject.tag == "Turret"))
+                    if ((selectedObject != null && selectedObject.tag == "Object") || (selectedObject != null && selectedObject.tag == "Turret")) // Reload turret if player is holding ammo
                         PlaceSelectedObject();
                     break;
                 case "Turret":
@@ -277,6 +318,14 @@ public class Player : MonoBehaviour
             interactObject.GetComponent<Turret>().ReloadAmmo(selectedObject.GetComponent<Ammo>().reloadObject());
             selectedObject.GetComponent<Ammo>().deleteObject();
             selectedObject = null;
+        }
+    }
+
+    private void WhackTurret()
+    {
+        if (interactObject.tag == "Turret")
+        {
+            interactObject.GetComponent<Turret>().HitByPlayer();
         }
     }
 

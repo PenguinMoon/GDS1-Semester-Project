@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Whack",
+                    "type": "Button",
+                    "id": "67304501-8db4-4699-8009-8dcffa08a8f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -48,7 +56,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -59,7 +67,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -70,7 +78,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -81,14 +89,14 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "ArrowKeys",
-                    "id": "600ba35d-e766-45a0-94d9-7e3807b0b570",
+                    "id": "a0caf8c8-024d-4751-8bff-0d03bf1f4f5c",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -99,44 +107,44 @@
                 },
                 {
                     "name": "up",
-                    "id": "babfc8e0-d57c-4422-bc18-bbc3d825f85d",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "2fa9f461-2766-4f56-82bb-3674cab0a7ef",
+                    "path": "<VirtualKeyboardDevice>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "VirtualKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "84fef9fc-789d-4efb-9f4c-1bc1e95a1829",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "99a56d18-fb3c-44df-893c-3c3296b80c60",
+                    "path": "<VirtualKeyboardDevice>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "VirtualKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "cf08e1c3-2cd4-4099-ad1d-36d77422eafe",
-                    "path": "<Keyboard>/leftArrow",
+                    "id": "13a470b1-b98f-4c72-acf0-6af61e3ec00f",
+                    "path": "<VirtualKeyboardDevice>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "VirtualKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "871ce49e-6fc1-44e2-b881-efd483ab74fa",
-                    "path": "<Keyboard>/rightArrow",
+                    "id": "c99d8d15-b860-43ea-b82a-487f892c8b39",
+                    "path": "<VirtualKeyboardDevice>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "VirtualKeyboard",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -154,11 +162,11 @@
                 },
                 {
                     "name": "",
-                    "id": "f997fc21-d95b-41ec-bea6-ef9184f95f65",
-                    "path": "",
+                    "id": "1b0796c2-e4bf-4011-8c60-2e7f5467d71e",
+                    "path": "<VirtualKeyboardDevice>/rightShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad",
+                    "groups": "VirtualKeyboard",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -171,6 +179,39 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6a3041d-954b-4323-95f5-8a1ede631a1f",
+                    "path": "<VirtualKeyboardDevice>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "VirtualKeyboard",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cff14856-3514-4fe5-8134-173b1bbf7434",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Whack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e56539af-a40b-42f1-b5c1-d60484301255",
+                    "path": "<VirtualKeyboardDevice>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "VirtualKeyboard",
+                    "action": "Whack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -196,6 +237,17 @@
                 {
                     "devicePath": "<Gamepad>",
                     "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "VirtualKeyboard",
+            "bindingGroup": "VirtualKeyboard",
+            "devices": [
+                {
+                    "devicePath": "<VirtualKeyboardDevice>",
+                    "isOptional": false,
                     "isOR": false
                 }
             ]
