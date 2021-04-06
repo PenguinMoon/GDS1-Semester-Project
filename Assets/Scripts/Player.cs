@@ -53,14 +53,6 @@ public class Player : MonoBehaviour
         hudController.SetSprintDuration(sprintTime);
         sprintRoutine = null;
 
-
-        if (InputSystem.GetDevice<VirtualKeyboardDevice>() == null)
-        {
-            InputSystem.AddDevice<VirtualKeyboardDevice>();
-        }
-
-        var dvc = InputSystem.GetDevice<VirtualKeyboardDevice>();
-        InputSystem.EnableDevice(dvc);
     }
 
     void Update()
