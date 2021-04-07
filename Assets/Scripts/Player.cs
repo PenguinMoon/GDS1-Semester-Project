@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     };
 
     [SerializeField] HUDController hudController;
+    [SerializeField] PlayerUI playerUI;
 
     private void Awake()
     {
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
         isSprinting = false;
         sprintTime = 5f;
         maxSprintTime = sprintTime;
-        hudController.SetSprintDuration(sprintTime);
+        playerUI.SetSprintDuration(sprintTime);
         sprintRoutine = null;
 
 
@@ -155,7 +156,7 @@ public class Player : MonoBehaviour
             {
                 if (sprintRoutine != null)
                     StopCoroutine(sprintRoutine);
-                hudController.isDraining = false;
+                playerUI.isDraining = false;
                 sprintRoutine = StartCoroutine(RecoverSprint());
                 movementSpeed = 7f;
                 isSprinting = false;
@@ -173,7 +174,7 @@ public class Player : MonoBehaviour
         isSprinting = true;
         sprintParticle.Play();
         Debug.Log("Sprinting");
-        hudController.isDraining = true;
+        playerUI.isDraining = true;
         while (sprintTime > 0f)
         {
             sprintTime -= Time.deltaTime * maxSprintTime;
@@ -192,8 +193,8 @@ public class Player : MonoBehaviour
     IEnumerator RecoverSprint()
     {
         yield return new WaitForSeconds(2f);
-        hudController.isDraining = false;
-        hudController.isRecovering = true;
+        playerUI.isDraining = false;
+        playerUI.isRecovering = true;
         while (sprintTime < maxSprintTime)
         {
             sprintTime += Time.deltaTime * maxSprintTime;
