@@ -54,6 +54,13 @@ public class Player : MonoBehaviour
         playerUI.SetSprintDuration(sprintTime);
         sprintRoutine = null;
 
+        if (InputSystem.GetDevice<VirtualKeyboardDevice>() == null)
+        {
+            InputSystem.AddDevice<VirtualKeyboardDevice>();
+        }
+
+        var dvc = InputSystem.GetDevice<VirtualKeyboardDevice>();
+        InputSystem.EnableDevice(dvc);
     }
 
     void Update()
