@@ -22,20 +22,33 @@ public class VoronoiSplitScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int index = 0;
         for(int i = 0; i < _playerCount - 1; i++)
         {
             for(int j = i + 1; j < _playerCount; j++)
             {
-
+                _playerDistances[index] = new DistancePair();
+                _playerDistances[index]._indexA = i;
+                _playerDistances[index]._indexB = j;
+                _playerDistances[index]._distance = Vector3.Distance(_players[i].position, _players[j].position);
+                _playerDistances[index]._midPoint = Vector3.Lerp(_players[i].position, _players[j].position, 0.5f);
+                _playerDistances[index]._normal = (_players[j].position - _players[i].position).normalized;
             }
         }
+    }
+
+    private int TriangleNumberSequence(int n)
+    {
+        return n * (n + 1) / 2;
     }
 }
 
 struct DistancePair
 {
-    int indexA;
-    int indexB;
+    public int _indexA;
+    public int _indexB;
 
-    float _distance;
+    public float _distance;
+    public Vector3 _midPoint;
+    public Vector3 _normal;
 }
