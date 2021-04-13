@@ -30,9 +30,13 @@ public class VoronoiSplitScreen : MonoBehaviour
                 _playerDistances[index] = new DistancePair();
                 _playerDistances[index]._indexA = i;
                 _playerDistances[index]._indexB = j;
-                _playerDistances[index]._distance = Vector3.Distance(_players[i].position, _players[j].position);
-                _playerDistances[index]._midPoint = Vector3.Lerp(_players[i].position, _players[j].position, 0.5f);
-                _playerDistances[index]._normal = (_players[j].position - _players[i].position).normalized;
+                Vector2 _pointA = new Vector2(_players[i].position.x, _players[i].position.z);
+                Vector2 _pointB = new Vector2(_players[j].position.x, _players[j].position.z);
+
+                _playerDistances[index]._distance = Vector2.Distance(_pointA, _pointB);
+                _playerDistances[index]._midPoint = Vector2.Lerp(_pointA, _pointB, 0.5f);
+                _playerDistances[index]._normal = (_pointB - _pointA).normalized;
+                
             }
         }
     }
@@ -49,6 +53,6 @@ struct DistancePair
     public int _indexB;
 
     public float _distance;
-    public Vector3 _midPoint;
-    public Vector3 _normal;
+    public Vector2 _midPoint;
+    public Vector2 _normal;
 }
