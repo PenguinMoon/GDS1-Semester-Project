@@ -7,8 +7,11 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
+    float startingSpeed = 7f;
     float movementSpeed = 7f;
     float rotationSpeed = 20f;
+
+    bool canInput; // Check if the player is accessing a menu and disable movement input
 
     bool isSprinting;   //Checks if the player is already sprinting
     float sprintTime, maxSprintTime;    // The amount of stamina the player has and the maximum amount of stamina
@@ -48,6 +51,7 @@ public class Player : MonoBehaviour
         armsObject = gameObject.transform.Find("Arms");
         playerAnim = gameObject.GetComponentInChildren<Animator>();
 
+        canInput = true;
         isSprinting = false;
         sprintTime = 5f;
         maxSprintTime = sprintTime;
@@ -107,6 +111,7 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if(canInput)
         movementInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
     }
 
@@ -130,7 +135,7 @@ public class Player : MonoBehaviour
 
     public void OnWhack(InputAction.CallbackContext context)
     {
-        if (!context.performed || selectedObject != null || currentWhackDelay > 0f)
+        if (!context.performed || selectedObject != null || currentWhackDelay > 0f || !canInput)
         {
             return;
         }
@@ -214,6 +219,9 @@ public class Player : MonoBehaviour
                 case "Turret":
                         WhackTurret();
                     break;
+                case "Workbench":
+                        WhackWorkbench();
+                    break;
             }
     }
 
@@ -243,6 +251,9 @@ public class Player : MonoBehaviour
                 interactObject = other.gameObject;
                 break;
             case "ObjectPlate":
+                interactObject = other.gameObject;
+                break;
+            case "Workbench":
                 interactObject = other.gameObject;
                 break;
             case "Currency":
@@ -281,7 +292,6 @@ public class Player : MonoBehaviour
                 case "Object":
                     PickupObject();
                     break;
-
             }
     }
     private void PlaceSelectedObject()
@@ -332,6 +342,26 @@ public class Player : MonoBehaviour
         {
             interactObject.GetComponent<Turret>().HitByPlayer();
         }
+    }
+
+    private void WhackWorkbench()
+    {
+        if (interactObject.tag == "Workbench")
+        {
+            interactObject.GetComponent<Workbench>().Interact(this);
+        }
+    }
+
+    public void EnterMenu()
+    {
+        movementSpeed = 0f;
+        canInput = false;
+    }
+
+    public void ExitMenu()
+    {
+        movementSpeed = startingSpeed;
+        canInput = true;
     }
 
     public void ReceiveTurret(GameObject turret)

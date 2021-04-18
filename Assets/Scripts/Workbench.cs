@@ -6,6 +6,7 @@ using UnityEngine;
 public class Workbench : MonoBehaviour
 {
     [SerializeField] GameObject workbenchUI;
+    [SerializeField] Button defaultSelectedButton;
     [SerializeField] GameObject turretPrefab;
     [SerializeField] int turretCost = 1;
 
@@ -19,25 +20,35 @@ public class Workbench : MonoBehaviour
     public void Interact(Player player)
     {
         playerRef = player;
+
+        defaultSelectedButton.Select();
+        playerRef.EnterMenu();
+        StartCoroutine("ActivateWorkshop");
+    }
+
+    IEnumerator ActivateWorkshop()
+    {
+        yield return new WaitForSeconds(0.01f);
         workbenchUI.SetActive(true);
     }
 
     public void StopInteract()
     {
         workbenchUI.SetActive(false);
+        playerRef.ExitMenu();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Player playerRef = other.gameObject.GetComponent<Player>();
-        if (playerRef)
-            Interact(playerRef);
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //Player playerRef = other.gameObject.GetComponent<Player>();
+    //   if (playerRef)
+    //Interact(playerRef);
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        StopInteract();
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    StopInteract();
+    //}
 
     private bool canAffordItem(string itemName)
     {
