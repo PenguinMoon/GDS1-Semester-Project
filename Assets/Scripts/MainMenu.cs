@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void OnPlayButtonClicked()
+    [SerializeField] GameObject mainCanvas;
+    [SerializeField] GameObject lvlSelectCanvas;
+
+    public void OpenLevelSelect()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        lvlSelectCanvas.SetActive(true);
+        mainCanvas.SetActive(false);
     }
 
     public void OnExitButtonClicked()
@@ -17,7 +22,8 @@ public class MainMenu : MonoBehaviour
 
     public void OpenMainMenu()
     {
-
+        lvlSelectCanvas.SetActive(false);
+        mainCanvas.SetActive(true);
     }
 
 }
