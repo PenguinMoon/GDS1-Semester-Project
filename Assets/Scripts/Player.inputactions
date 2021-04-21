@@ -106,67 +106,12 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "2fa9f461-2766-4f56-82bb-3674cab0a7ef",
-                    "path": "<VirtualKeyboardDevice>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "99a56d18-fb3c-44df-893c-3c3296b80c60",
-                    "path": "<VirtualKeyboardDevice>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "13a470b1-b98f-4c72-acf0-6af61e3ec00f",
-                    "path": "<VirtualKeyboardDevice>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "c99d8d15-b860-43ea-b82a-487f892c8b39",
-                    "path": "<VirtualKeyboardDevice>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "2c51770d-ad19-4d60-a0c3-f11420cfa25e",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1b0796c2-e4bf-4011-8c60-2e7f5467d71e",
-                    "path": "<VirtualKeyboardDevice>/rightShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -184,33 +129,11 @@
                 },
                 {
                     "name": "",
-                    "id": "f6a3041d-954b-4323-95f5-8a1ede631a1f",
-                    "path": "<VirtualKeyboardDevice>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cff14856-3514-4fe5-8134-173b1bbf7434",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Whack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e56539af-a40b-42f1-b5c1-d60484301255",
-                    "path": "<VirtualKeyboardDevice>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "VirtualKeyboard",
                     "action": "Whack",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -237,17 +160,6 @@
                 {
                     "devicePath": "<Gamepad>",
                     "isOptional": true,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "VirtualKeyboard",
-            "bindingGroup": "VirtualKeyboard",
-            "devices": [
-                {
-                    "devicePath": "<VirtualKeyboardDevice>",
-                    "isOptional": false,
                     "isOR": false
                 }
             ]
