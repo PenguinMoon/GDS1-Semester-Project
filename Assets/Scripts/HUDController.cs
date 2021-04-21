@@ -14,6 +14,13 @@ public class HUDController : MonoBehaviour
     [SerializeField] Gradient hpGradient;
     [SerializeField] Image hpImg;
 
+    // Pause Screen Elements
+    bool isPaused = false;
+    bool onAltScreen = false; // If a second screen is opened on the pause menu e.g. settings screen.
+    [SerializeField] Canvas mainPauseCanvas;    // The main canvas of the pause screen
+    [SerializeField] Canvas pauseCanvas;   // The initial screen of the pause screen
+    [SerializeField] Canvas confirmCanvas;   // The confirmation screen for quitting the level
+
     int maxWave = 10;
     List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
 
@@ -72,5 +79,47 @@ public class HUDController : MonoBehaviour
     {
         hpBar.value = hp;
         hpImg.color = hpGradient.Evaluate(hpBar.normalizedValue);
+    }
+
+    // Pauses the game and enables pause screen
+    public void PauseGame()
+    {
+        if (!isPaused)
+        {
+            Time.timeScale = 0;
+            mainPauseCanvas.enabled = true;
+            isPaused = !isPaused;
+        }
+        else
+        {
+            if (onAltScreen)
+            {
+                OpenMainPauseScreen();
+                onAltScreen = false;
+            }
+            else
+            {
+                Time.timeScale = 1;
+                mainPauseCanvas.enabled = false;
+                isPaused = !isPaused;
+            }
+        }
+    }
+
+    // Opens the main pause menu
+    // I.e. the one with a resume btn, main menu btn, etc.
+    public void OpenMainPauseScreen()
+    {
+        
+        confirmCanvas.enabled = false;
+        pauseCanvas.enabled = true;
+    }
+
+    // Opens a confirmation screen to make sure player actually wants to quit
+    public void OpenConfirmScreen()
+    {
+        pauseCanvas.enabled = false;
+        confirmCanvas.enabled = true;
+        onAltScreen = true;
     }
 }

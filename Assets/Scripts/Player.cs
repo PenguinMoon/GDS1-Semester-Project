@@ -143,6 +143,15 @@ public class Player : MonoBehaviour
         currentWhackDelay = startingWhackDelay;
     }
 
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        hudController.PauseGame();
+    }
+
     // Activates sprinting only if the player has enough stamina remaining
     void Sprint()
     {
