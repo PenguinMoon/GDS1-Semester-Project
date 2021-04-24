@@ -6,16 +6,17 @@ public class Object : MonoBehaviour
 {
 
     public GameObject plate = null;
+    protected bool isBeingHeld = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
