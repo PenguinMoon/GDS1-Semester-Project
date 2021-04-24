@@ -15300,6 +15300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
+  isBeingHeld: 0
   gunTransform: {fileID: 9064424375889875366}
   baseTransform: {fileID: 9064424375913804581}
   enemyMask:
@@ -15308,7 +15309,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6209267294437973967, guid: 52cae6db6fca31944b0df7c549ce291b,
     type: 3}
   firePoint: {fileID: 7352072701068594454}
-  FOVAngle: 360
+  FOVAngle: 90
   rotSpeed: 2
   range: 10
   fireDelay: 0.5

@@ -100,8 +100,8 @@ public class Player : MonoBehaviour
         rb.velocity = movementInput * movementSpeed;
 
         // Highlight selected object
-        if(interactObject)
-        EnableOutlineObject();
+        if (interactObject)
+            EnableOutlineObject();
 
 
         // Reduce hit time so player can whack again
@@ -111,8 +111,8 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if(canInput)
-        movementInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        if (canInput)
+            movementInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -221,15 +221,15 @@ public class Player : MonoBehaviour
     private void Whack()
     {
         playerAnim.SetTrigger("PlayWhack");
-       
+
         if (interactObject)
             switch (interactObject.tag)
             {
                 case "Turret":
-                        WhackTurret();
+                    WhackTurret();
                     break;
                 case "Workbench":
-                        WhackWorkbench();
+                    WhackWorkbench();
                     break;
             }
     }
@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
             inventory["Circuits"]++;
         else if (coin.name.Contains("Bit"))
             inventory["Bits"]++;
-        
+
         Destroy(coin);
     }
 
@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
             switch (interactObject.tag)
             {
                 case "TurretPlate":
-                    if(selectedObject != null && selectedObject.tag == "Turret")
+                    if (selectedObject != null && selectedObject.tag == "Turret")
                         PlaceSelectedObject();
                     break;
                 case "ObjectPlate":
@@ -315,6 +315,7 @@ public class Player : MonoBehaviour
 
             interactObject.GetComponent<ObjectPlate>().placedObject = selectedObject;
             selectedObject.GetComponent<Object>().plate = interactObject;
+            selectedObject.GetComponent<Object>().isBeingHeld = false;
 
             selectedObject = null;
         }
@@ -330,8 +331,12 @@ public class Player : MonoBehaviour
 
             selectedObject = interactObject;
 
-            if (selectedObject.GetComponent<Object>().plate)
+            if (selectedObject.GetComponent<Object>())
+            {
                 selectedObject.GetComponent<Object>().plate.GetComponent<ObjectPlate>().placedObject = null;
+                selectedObject.GetComponent<Object>().isBeingHeld = true;
+            }
+
         }
     }
 
@@ -339,7 +344,7 @@ public class Player : MonoBehaviour
     {
         if (interactObject.tag == "Turret")
         {
-            interactObject.GetComponent<Turret>().ReloadAmmo(selectedObject.GetComponent<Ammo>().reloadObject());
+            interactObject.GetComponent<SmartTurret>().ReloadAmmo(selectedObject.GetComponent<Ammo>().reloadObject());
             selectedObject.GetComponent<Ammo>().deleteObject();
             selectedObject = null;
         }
@@ -349,7 +354,7 @@ public class Player : MonoBehaviour
     {
         if (interactObject.tag == "Turret")
         {
-            interactObject.GetComponent<Turret>().HitByPlayer();
+            interactObject.GetComponent<SmartTurret>().HitByPlayer();
         }
     }
 
