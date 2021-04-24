@@ -9,14 +9,23 @@ public class Bullet : MonoBehaviour
     float maxLifeTime = 15f;
     float lifeTime = 0f;
 
+    protected int damageAmount = 1;
+    protected float speed = 15f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        Initialize();
+    }
+
+    protected virtual void Initialize()
+    {
+
     }
 
     private void Update()
     {
-        rb.velocity = transform.forward * 15f;
+        rb.velocity = transform.forward * speed;
 
         if (lifeTime > maxLifeTime)
             Destroy(gameObject);
@@ -27,8 +36,19 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.tag == "Enemy")
-            Destroy(gameObject);
+            OnEnemyHit(collision.gameObject);
         if (collision.collider.gameObject.tag == "Player")
             Destroy(gameObject);
+    }
+
+    protected virtual void OnEnemyHit(GameObject enemy)
+    {
+        DealDamageTo(enemy.GetComponent<Enemy>());
+        Destroy(gameObject);
+    }
+
+    protected void DealDamageTo(Enemy enemy)
+    {
+        enemy.TakeDamage(damageAmount);
     }
 }

@@ -38,16 +38,13 @@ public class Enemy : MonoBehaviour
     {
         switch (collision.collider.gameObject.tag)
         {
-            case "Bullet":
-                TakeDamage(1);
-                break;
             case "WorkshopWall":
                 Destroy(this.gameObject);
                 break;
         }
     }
 
-    private void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         health -= amount;
 
