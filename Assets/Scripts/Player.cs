@@ -333,8 +333,8 @@ public class Player : MonoBehaviour
 
             if (selectedObject.GetComponent<Object>())
             {
-                selectedObject.GetComponent<Object>().plate.GetComponent<ObjectPlate>().placedObject = null;
                 selectedObject.GetComponent<Object>().isBeingHeld = true;
+                selectedObject.GetComponent<Object>().plate.GetComponent<ObjectPlate>().placedObject = null;
             }
 
         }
