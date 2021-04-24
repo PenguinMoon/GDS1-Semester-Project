@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] int health = 2;
+    [SerializeField] float health = 2;
 
     [SerializeField] GameObject bitsPrefab;
     [SerializeField] GameObject circuitsPrefab;
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
 

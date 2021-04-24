@@ -8,12 +8,6 @@ public class Cannonball : Bullet
 
     [SerializeField] GameObject explosionPrefab;
 
-    protected override void Initialize()
-    {
-        damageAmount = 3;
-        speed = 10f;
-    }
-
     protected override void OnEnemyHit(GameObject enemy)
     {
         //Explode and deal damage to all enemies within radius

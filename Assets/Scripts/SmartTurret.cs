@@ -22,7 +22,7 @@ public class SmartTurret : Object
     float currentReloadDelay = 0f;
 
     [SerializeField] Image ammoImage;
-    bool isActive;
+    protected bool isActive;
     [SerializeField] Image FOVIndicator;
     float indicatorTimer = 0f;
     float maxIndicatorTime = 5f;
@@ -37,7 +37,7 @@ public class SmartTurret : Object
 
     float currentFireDelay = 0f;
 
-    bool isFiring = false;
+    protected bool isFiring = false;
 
     Vector3 debugTargetPos = Vector3.zero;
 
@@ -52,7 +52,7 @@ public class SmartTurret : Object
         UpdateAmmoUI();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (currentFireDelay > 0)
             currentFireDelay -= Time.deltaTime;
@@ -96,7 +96,15 @@ public class SmartTurret : Object
         List<Transform> foundEnemies = new List<Transform>();
 
         foreach (RaycastHit hit in hits)
-            foundEnemies.Add(hit.transform);
+        {
+            Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo);
+
+            if (rayInfo.collider.gameObject.tag == "Enemy")
+            {
+                foundEnemies.Add(hit.transform);
+            }
+        }
+
 
         Transform closestEnemy = GetClosestTransform(foundEnemies);
 

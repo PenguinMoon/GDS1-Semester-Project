@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89c0d0f2f35db54883bdf91c516c7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLifeTime: 15
+  damageAmount: 2
+  speed: 10
   explosionPrefab: {fileID: 2944334649673310768, guid: 16ed60184e7a09147927e86b56d82d59,
     type: 3}
 --- !u!54 &148112973148609464

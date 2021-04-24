@@ -6,21 +6,15 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody rb;
 
-    float maxLifeTime = 15f;
+    [SerializeField] protected float maxLifeTime = 15f;
     float lifeTime = 0f;
 
-    protected int damageAmount = 1;
-    protected float speed = 15f;
+    [SerializeField] protected float damageAmount = 1;
+    [SerializeField] protected float speed = 15f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Initialize();
-    }
-
-    protected virtual void Initialize()
-    {
-
     }
 
     private void Update()
