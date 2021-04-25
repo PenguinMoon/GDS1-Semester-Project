@@ -6,6 +6,7 @@ using UnityEngine;
 public class Workbench : MonoBehaviour
 {
     [SerializeField] GameObject workbenchUI;
+    [SerializeField] ListPositionCtrl workbenchMenu;
     [SerializeField] Button defaultSelectedButton;
     [SerializeField] GameObject turretPrefab;
     [SerializeField] int turretCost = 1;
@@ -21,14 +22,15 @@ public class Workbench : MonoBehaviour
     {
         playerRef = player;
 
-        defaultSelectedButton.Select();
-        playerRef.EnterMenu();
+
         StartCoroutine("ActivateWorkshop");
     }
 
     IEnumerator ActivateWorkshop()
     {
         yield return new WaitForSeconds(0.01f);
+        playerRef.EnterMenu();
+        StartCoroutine("StartSelectButton", 0f);
         workbenchUI.SetActive(true);
     }
 
@@ -36,6 +38,36 @@ public class Workbench : MonoBehaviour
     {
         workbenchUI.SetActive(false);
         playerRef.ExitMenu();
+    }
+
+    public void SelectButton()
+    {
+        StartCoroutine("StartSelectButton", 0.3f);
+    }
+
+    IEnumerator StartSelectButton(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Debug.Log(workbenchMenu.GetCenteredContentID());
+        defaultSelectedButton = workbenchMenu.listBoxes[workbenchMenu.GetCenteredContentID()].GetComponent<Button>();
+        defaultSelectedButton.Select();
+    }
+
+    public void SubmitButton()
+    {
+        Debug.Log(workbenchMenu.GetCenteredContentID());
+        defaultSelectedButton = workbenchMenu.listBoxes[workbenchMenu.GetCenteredContentID()].GetComponent<Button>();
+        defaultSelectedButton.Select();
+    }
+
+    public void MoveMenuUp()
+    {
+        workbenchMenu.MoveOneUnitUp();
+    }
+
+    public void MoveMenuDown()
+    {
+        workbenchMenu.MoveOneUnitDown();
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -55,10 +87,14 @@ public class Workbench : MonoBehaviour
         switch (itemName)
         {
             case "Ammo":
-            case "Turret":
+            case "Turret_Revised":
                 return playerRef.inventory["Bits"] >= 1;
-            case "Better Turret":
+            case "MachineTurret_Revised":
                 return playerRef.inventory["Bits"] >= 2 && playerRef.inventory["Circuits"] >= 1;
+            case "CannonTurret":
+                return playerRef.inventory["Bits"] >= 3 && playerRef.inventory["Circuits"] >= 2;
+            case "Flamethrower":
+                return playerRef.inventory["Bits"] >= 1 && playerRef.inventory["Circuits"] >= 2;
         }
 
         return false;
@@ -77,12 +113,20 @@ public class Workbench : MonoBehaviour
         switch (itemName)
         {
             case "Ammo":
-            case "Turret":
+            case "Turret_Revised":
                 playerRef.inventory["Bits"]--;
                 break;
-            case "Better Turret":
+            case "MachineTurret_Revised":
                 playerRef.inventory["Bits"] -= 2;
                 playerRef.inventory["Circuits"]--;
+                break;
+            case "CannonTurret":
+                playerRef.inventory["Bits"] -= 3;
+                playerRef.inventory["Circuits"] -= 2;
+                break;
+            case "Flamethrower":
+                playerRef.inventory["Bits"] -= 1;
+                playerRef.inventory["Circuits"] -=2;
                 break;
         }
     }
