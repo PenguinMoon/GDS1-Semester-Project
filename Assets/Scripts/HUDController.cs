@@ -95,7 +95,6 @@ public class HUDController : MonoBehaviour
             if (onAltScreen)
             {
                 OpenMainPauseScreen();
-                onAltScreen = false;
             }
             else
             {
@@ -110,9 +109,9 @@ public class HUDController : MonoBehaviour
     // I.e. the one with a resume btn, main menu btn, etc.
     public void OpenMainPauseScreen()
     {
-        
         confirmCanvas.SetActive(false);
         pauseCanvas.SetActive(true);
+        onAltScreen = false;
     }
 
     // Opens a confirmation screen to make sure player actually wants to quit
