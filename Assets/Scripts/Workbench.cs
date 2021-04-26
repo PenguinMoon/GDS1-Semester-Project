@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Workbench : MonoBehaviour
 {
-    [SerializeField] GameObject workbenchUI;
+    [SerializeField] Canvas workbenchUI;
     [SerializeField] ListPositionCtrl workbenchMenu;
     [SerializeField] Button defaultSelectedButton;
     [SerializeField] GameObject turretPrefab;
@@ -15,28 +15,40 @@ public class Workbench : MonoBehaviour
 
     private void Awake()
     {
-        workbenchUI.SetActive(false);
+        StartCoroutine("ResetWorkbenchUI");
+        workbenchUI.enabled = false;
+    }
+
+    private void Start()
+    {
+
+    }
+
+    IEnumerator ResetWorkbenchUI()
+    {
+        for(int i = 0; i < workbenchMenu.listBank.GetListLength(); i++)
+        yield return new WaitForSeconds(0.01f);
+        MoveMenuUp();
     }
 
     public void Interact(Player player)
     {
         playerRef = player;
 
-
-        StartCoroutine("ActivateWorkshop");
+        StartCoroutine("ActivateWorkbench");
     }
 
-    IEnumerator ActivateWorkshop()
+    IEnumerator ActivateWorkbench()
     {
         yield return new WaitForSeconds(0.01f);
         playerRef.EnterMenu();
         StartCoroutine("StartSelectButton", 0f);
-        workbenchUI.SetActive(true);
+        workbenchUI.enabled = true;
     }
 
     public void StopInteract()
     {
-        workbenchUI.SetActive(false);
+        workbenchUI.enabled = false;
         playerRef.ExitMenu();
     }
 
