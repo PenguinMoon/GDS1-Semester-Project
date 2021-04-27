@@ -9,7 +9,9 @@ public class Start : State
     public override IEnumerator Begin()
     {
         Debug.Log("Enemy: " + _enemyAI.ToString() + " has started moving.");
-        _enemyAI.GoToGoal();
+
+        _enemyAI.SetState(new Move(_enemyAI));
+
         yield break;
     }
 }

@@ -6,19 +6,32 @@ using UnityEngine.AI;
 public class EnemyAI : StateMachine
 {
     [SerializeField]
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     [SerializeField]
-    private Transform goal;
+    public List<Transform> goal;
 
     // Start is called before the first frame update
-    void Start()
+    public void Begin()
     {
+        agent = GetComponent<NavMeshAgent>();
         SetState(new Start(this));
     }
 
     public void GoToGoal()
     {
-        agent.destination = goal.position;
+        
+        
     }
+    private void Update()
+    {
+        Debug.Log(agent.remainingDistance);
+    }
+
+    public void SetGoal(List<Transform> _newGoal)
+    {
+        goal = _newGoal;
+    }
+
+    public bool GoalNotReach() =>agent.remainingDistance > 0.25f;
 }

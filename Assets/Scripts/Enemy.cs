@@ -20,18 +20,12 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         rend = GetComponent<MeshRenderer>();
 
         willDropCircuits = Random.Range(0, 100) < 10;
 
         if (willDropCircuits)
             rend.material = circuitDropMaterial;
-    }
-
-    private void Update()
-    {
-        rb.velocity = currentDirection * moveSpeed;
     }
 
     private void OnCollisionEnter(Collision collision)
