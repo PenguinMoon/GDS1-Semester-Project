@@ -28,6 +28,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8835084445145466522, guid: 0f51be5976f00cd44891f5e5785c8412,
         type: 3}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: circuitsPrice
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9064424375599687995, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

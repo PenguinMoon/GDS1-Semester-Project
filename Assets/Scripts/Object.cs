@@ -8,6 +8,11 @@ public class Object : MonoBehaviour
     public GameObject plate = null;
     public bool isBeingHeld = false;
 
+
+    // Object Prices
+    [SerializeField] public int bitsPrice;
+    [SerializeField] public int circuitsPrice;
+
     // Start is called before the first frame update
     void Start()
     {
