@@ -26,7 +26,7 @@ public class Workbench : MonoBehaviour
 
     IEnumerator ResetWorkbenchUI()
     {
-        for (int i = 0; i < workbenchMenu.listBank.GetListLength(); i++)
+        for (int i = 0; i < workbenchMenu.listBank.GetListLength() - 1; i++)
         {
             yield return new WaitForSeconds(0.01f);
             MoveMenuUp();
@@ -101,7 +101,7 @@ public class Workbench : MonoBehaviour
     private bool canAffordItem(Object item)
     {
 
-        if (item.bitsPrice <= playerRef.inventory["Bits"] && item.bitsPrice <= playerRef.inventory["Circuits"])
+        if (item.bitsPrice <= playerRef.inventory["Bits"] && item.circuitsPrice <= playerRef.inventory["Circuits"])
             return true;
         else
             return false;
