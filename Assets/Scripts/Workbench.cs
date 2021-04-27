@@ -169,8 +169,8 @@ public class Workbench : MonoBehaviour
             if (canAffordItem(item) && canHoldItem())
             {
                 playerRef.ReceiveTurret(item.gameObject);
-
                 takeCurrencyFromPlayer(item);
+                StopInteract();
             }
             else
             {

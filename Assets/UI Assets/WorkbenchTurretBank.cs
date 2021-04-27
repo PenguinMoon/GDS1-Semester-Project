@@ -7,7 +7,7 @@ public class WorkbenchTurretBank : BaseListBank
 {
 
     [SerializeField] public ListPositionCtrl listController;
-    private int[] _contents = {0,1,2};
+    private int[] _contents = {0,1,2,3};
     //private string[] _contents = { "Turret1", "Turret2", "Turret3", "Turret4", "Turret5" };
 
     public override string GetListContent(int index)
