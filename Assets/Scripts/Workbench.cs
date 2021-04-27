@@ -10,18 +10,15 @@ public class Workbench : MonoBehaviour
     [SerializeField] Button defaultSelectedButton;
     [SerializeField] GameObject turretPrefab;
     [SerializeField] int turretCost = 1;
+    public AnimationCurve curve;
 
     private Player playerRef;
 
     private void Awake()
     {
         StartCoroutine("ResetWorkbenchUI");
+        workbench.GetComponent<Canvas>().transform.localScale = new Vector3(0,0,1);
         workbench.GetComponent<Canvas>().enabled = false;
-    }
-
-    private void Start()
-    {
-
     }
 
     IEnumerator ResetWorkbenchUI()
@@ -37,9 +34,11 @@ public class Workbench : MonoBehaviour
 
     public void Interact(Player player)
     {
-        playerRef = player;
-
-        StartCoroutine("ActivateWorkbench");
+        if (!workbench.activeSelf)
+        {
+            playerRef = player;
+            StartCoroutine("ActivateWorkbench");
+        }
     }
 
     IEnumerator ActivateWorkbench()
@@ -48,12 +47,29 @@ public class Workbench : MonoBehaviour
         playerRef.EnterMenu();
         StartCoroutine("StartSelectButton", 0f);
         workbench.SetActive(true);
+        workbench.GetComponent<Canvas>().enabled = true;
+        workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.06f, 0.06f, 1), 0.5f).setEase(curve);
     }
 
     public void StopInteract()
     {
-        workbench.SetActive(false);
-        playerRef.ExitMenu();
+            workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.0f, 0.0f, 1), 0.3f).setEaseOutExpo().setOnComplete(DeactivateWorkbench);
+            playerRef.ExitMenu();
+    }
+
+    public void DeactivateWorkbench()
+    {
+        workbench.GetComponent<Canvas>().enabled = false;
+        if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
+        {
+            workbench.SetActive(false);
+        }
+    }
+
+    public void DenyAnimation()
+    {
+        if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
+        workbench.GetComponent<Canvas>().transform.LeanMoveLocalZ(0.5f, 0.1f).setLoopPingPong(2);
     }
 
     public void SelectButton()
@@ -173,6 +189,7 @@ public class Workbench : MonoBehaviour
             }
             else
             {
+                DenyAnimation();
                 Debug.Log("PLAYER CANNOT AFFORD ITEM");
             }
         }

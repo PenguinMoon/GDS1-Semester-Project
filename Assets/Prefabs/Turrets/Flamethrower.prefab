@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 7091567436907347776}
   m_Layer: 0
   m_Name: FlameThrowerParticle
-  m_TagString: Untagged
+  m_TagString: IgnoreOutline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
