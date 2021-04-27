@@ -16,6 +16,6 @@ public class PauseMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 }

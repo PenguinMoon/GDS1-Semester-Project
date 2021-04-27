@@ -13,6 +13,11 @@ public class MainMenu : MonoBehaviour
     [Header("First Highlighted Button on Each Screen")]
     [SerializeField] GameObject[] btn;
 
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     public void OpenLevelSelect()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
