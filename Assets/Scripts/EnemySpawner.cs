@@ -14,6 +14,10 @@ public class EnemySpawner : MonoBehaviour
 
     private List<Transform> _enemies = new List<Transform>();
 
+    [SerializeField]
+    private List<Transform> _enemyGoal;
+    
+
     private float _timeTilNextWave = 10f;
     public int _waveIndex = 0;
     public bool isFinished = false;
@@ -52,6 +56,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         _enemies.Add(Instantiate(enemyPrefab, transform.position, transform.rotation).transform);
+        _enemies.Last().GetComponent<EnemyAI>().SetGoal(_enemyGoal.ToList());
+        _enemies.Last().GetComponent<EnemyAI>().Begin();
     }
 
     private int EnemiesAlive()
