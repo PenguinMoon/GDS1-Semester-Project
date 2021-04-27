@@ -15301,7 +15301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
   isBeingHeld: 0
-  bitsPrice: 1
+  bitsPrice: 3
   circuitsPrice: 0
   gunTransform: {fileID: 9064424375889875366}
   baseTransform: {fileID: 9064424375913804581}
@@ -15312,7 +15312,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 7352072701068594454}
   FOVAngle: 90
-  rotSpeed: 2
+  rotSpeed: 3
   range: 10
   fireDelay: 0.5
   maxAmmo: 30

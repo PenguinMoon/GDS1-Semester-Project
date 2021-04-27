@@ -14,8 +14,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
+      propertyPath: FOVAngle
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
       propertyPath: rotSpeed
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
@@ -31,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: circuitsPrice
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9064424375599687995, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}

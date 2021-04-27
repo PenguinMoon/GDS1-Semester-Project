@@ -101,12 +101,16 @@ public class SmartTurret : Object
 
         foreach (RaycastHit hit in hits)
         {
-            Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo);
+            //Commented this out as it was causing issues with the new enemy navigation ??????
 
-            if (rayInfo.collider.gameObject && rayInfo.collider.gameObject.tag == "Enemy")
-            {
+            //Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo);
+
+            //Debug.Log(rayInfo.collider);
+
+            //if (rayInfo.collider && rayInfo.collider.gameObject.tag == "Enemy")
+            //{
                 foundEnemies.Add(hit.transform);
-            }
+            //}
         }
 
 
@@ -117,9 +121,16 @@ public class SmartTurret : Object
         //Restrict view angle by half when turret is being held
         viewAngle = isBeingHeld ? FOVAngle * 0.5f : FOVAngle;
 
+        if (viewAngle < 40f)
+            viewAngle = 40f;
+
         if (closestEnemy && GetAngleToPos(closestEnemy.position) <= viewAngle)
         {
-            Vector3 target = closestEnemy.position - closestEnemy.forward;
+            Vector3 target = closestEnemy.position;
+
+            if (Vector3.Distance(baseTransform.position, target) > 10f)
+                target += closestEnemy.forward;
+
             debugTargetPos = target;
 
             TurnToFace(target);
@@ -146,7 +157,7 @@ public class SmartTurret : Object
     private void TurnToFace(Vector3 position)
     {
         Quaternion targetRotation = Quaternion.LookRotation(position - gunTransform.position);
-        gunTransform.rotation = Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 1.5f : rotSpeed));
+        gunTransform.rotation = Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
     }
 
     private float GetAngleToPos(Vector3 position)

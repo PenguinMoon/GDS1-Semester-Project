@@ -46,13 +46,20 @@ public class Enemy : MonoBehaviour
             Die();
     }
 
+    private Vector3 GetDropPosition()
+    {
+        Vector3 pos = transform.position + (Random.onUnitSphere / 2);
+        pos.y = 1f;
+        return pos;
+    }
+
     private void Die()
     {
         if (willDropCircuits)
-            Instantiate(circuitsPrefab, transform.position + (Random.onUnitSphere / 2), Quaternion.identity);
+            Instantiate(circuitsPrefab, GetDropPosition(), Quaternion.identity);
         else
             for (int i = 0; i < amountOfCurrencyToDrop; i++)
-                Instantiate(bitsPrefab, transform.position + (Random.onUnitSphere / 2), Quaternion.identity);
+                Instantiate(bitsPrefab, GetDropPosition(), Quaternion.identity);
 
         Destroy(gameObject);
     }

@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] GameObject enemyPrefab;
 
-    [SerializeField, Range(1, 10)] int _spawnDelay;
-    [SerializeField, Range(1, 10)] int _maxNumInLane;
+    [SerializeField, Range(1, 5)] int _spawnDelay;
+    [SerializeField, Range(1, 20)] int _maxNumInLane;
 
     private List<Transform> _enemies = new List<Transform>();
 
@@ -42,10 +42,16 @@ public class EnemySpawner : MonoBehaviour
         isFinished = true;
     }
 
+    //Returns how many enemies should spawn on given wave
+    private int GetWaveEnemyNum(int wave)
+    {
+        return wave * 3;
+    }
+
     private IEnumerator SpawnWave()
     {
         _waveIndex++;
-        for (int i = 0; i < _waveIndex; i++)
+        for (int i = 0; i < GetWaveEnemyNum(_waveIndex); i++)
         {
             yield return new WaitWhile(LaneFull);
             SpawnEnemy();

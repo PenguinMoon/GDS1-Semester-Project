@@ -10,17 +10,17 @@ PrefabInstance:
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: range
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: maxAmmo
-      value: 45
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: FOVAngle
-      value: 120
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: bitsPrice
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
@@ -40,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: circuitsPrice
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9064424375599687995, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}

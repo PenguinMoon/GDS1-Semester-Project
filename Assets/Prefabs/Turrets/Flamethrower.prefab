@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
   isBeingHeld: 0
-  bitsPrice: 1
+  bitsPrice: 2
   circuitsPrice: 1
   gunTransform: {fileID: 870292457618660835}
   baseTransform: {fileID: 870292457617293152}
@@ -24,12 +24,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3448226261084719010, guid: fadb80080b955e141a2593ac5dd3ef23,
     type: 3}
   firePoint: {fileID: 1720204341149385043}
-  FOVAngle: 90
+  FOVAngle: 60
   rotSpeed: 4
-  range: 8
-  fireDelay: 0.1
-  maxAmmo: 90
-  delayBetweenReloading: 1.5
+  range: 6
+  fireDelay: 0.2
+  maxAmmo: 40
+  delayBetweenReloading: 0.5
   ammoImage: {fileID: 5435503981814399934}
   FOVIndicator: {fileID: 5989670045532005585}
   particles:

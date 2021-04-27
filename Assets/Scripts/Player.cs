@@ -424,6 +424,7 @@ public class Player : MonoBehaviour
         {
             selectedObject = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
             selectedObject.transform.SetParent(heldObjectPoint);
+            selectedObject.GetComponent<Object>().isBeingHeld = true;
         }
     }
 

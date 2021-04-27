@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Multiplayer Test Level.unity
     guid: bc84fa01fdc6fb54fade725a54c5a7e5
+  - enabled: 0
+    path: Assets/Scenes/Main Level.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d9f4b6633abbfa24597efeb650177e1c
   - enabled: 1
-    path: Assets/Scenes/Main Level.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/TestMapScene1.unity
+    guid: ce00bb13dc438ee4fbefaa9024a60a1a
   - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 64866826a3908494fbd5c7d8f57fc2e1
   - enabled: 1
     path: Assets/Scenes/Game Win.unity
     guid: 2d1b67bbac0f9744f80d6c6dda61ca0f
-  - enabled: 1
-    path: Assets/Scenes/TestMapScene1.unity
-    guid: ce00bb13dc438ee4fbefaa9024a60a1a
   m_configObjects: {}

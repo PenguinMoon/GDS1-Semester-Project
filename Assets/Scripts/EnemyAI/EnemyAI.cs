@@ -25,7 +25,7 @@ public class EnemyAI : StateMachine
     }
     private void Update()
     {
-        Debug.Log(agent.remainingDistance);
+        //Debug.Log(agent.remainingDistance);
     }
 
     public void SetGoal(List<Transform> _newGoal)
