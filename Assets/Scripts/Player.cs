@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     float movementSpeed = 7f;
     float rotationSpeed = 20f;
 
-    bool canInput; // Check if the player is accessing a menu and disable movement input
+    public bool canInput; // Check if the player is accessing a menu and disable movement input
 
     bool isSprinting;   //Checks if the player is already sprinting
     float sprintTime, maxSprintTime;    // The amount of stamina the player has and the maximum amount of stamina
@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] HUDController hudController;
     [SerializeField] PlayerUI playerUI;
+    Workbench workBench;
 
     private void Awake()
     {
@@ -111,8 +112,35 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+        {
+            return;
+        }
+        // Handle player movement
         if (canInput)
             movementInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        
+        // Handle UI input
+        if (!canInput)
+        {
+            // Reset player movementInput vector so that player doesn't move when exiting menu
+            movementInput = new Vector3(0, 0);
+            if (!context.performed)
+            {
+                return;
+            }
+            if (context.ReadValue<Vector2>().x < 0)
+            {
+                workBench.MoveMenuUp();
+                workBench.SelectButton();
+            }
+            else if (context.ReadValue<Vector2>().x > 0)
+            {
+                workBench.MoveMenuDown();
+                workBench.SelectButton();
+            }
+        }
+
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -126,7 +154,7 @@ public class Player : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || !canInput)
         {
             return;
         }
@@ -135,12 +163,23 @@ public class Player : MonoBehaviour
 
     public void OnWhack(InputAction.CallbackContext context)
     {
-        if (!context.performed || selectedObject != null || currentWhackDelay > 0f || !canInput)
+        if (!context.performed || selectedObject != null || currentWhackDelay > 0f)
         {
             return;
         }
-        Whack();
-        currentWhackDelay = startingWhackDelay;
+
+        if (canInput)
+        {
+            Whack();
+            currentWhackDelay = startingWhackDelay;
+        }
+        
+        if (!canInput)
+        {
+            //workBench.SubmitButton();
+        }
+
+
     }
 
     public void OnPause(InputAction.CallbackContext context)
@@ -264,6 +303,7 @@ public class Player : MonoBehaviour
                 break;
             case "Workbench":
                 interactObject = other.gameObject;
+                workBench = interactObject.GetComponent<Workbench>();
                 break;
             case "Currency":
                 PickupCurrency(other.gameObject);
@@ -362,7 +402,7 @@ public class Player : MonoBehaviour
     {
         if (interactObject.tag == "Workbench")
         {
-            interactObject.GetComponent<Workbench>().Interact(this);
+            workBench.Interact(this);
         }
     }
 

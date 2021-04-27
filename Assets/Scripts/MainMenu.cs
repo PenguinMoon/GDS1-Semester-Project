@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject lvlSelectCanvas;
 
+    [Header("First Highlighted Button on Each Screen")]
+    [SerializeField] GameObject[] btn;
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
+
     public void OpenLevelSelect()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         lvlSelectCanvas.SetActive(true);
         mainCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(btn[1]);
     }
 
     public void OnExitButtonClicked()
@@ -24,6 +35,7 @@ public class MainMenu : MonoBehaviour
     {
         lvlSelectCanvas.SetActive(false);
         mainCanvas.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(btn[0]);
     }
 
 }

@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
+  isBeingHeld: 0
+  bitsPrice: 1
+  circuitsPrice: 0
 --- !u!65 &4474708606472557035
 BoxCollider:
   m_ObjectHideFlags: 0

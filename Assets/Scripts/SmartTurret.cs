@@ -11,6 +11,8 @@ public class SmartTurret : Object
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
 
+    // Turret Vairables
+
     [SerializeField] float FOVAngle = 360f;
     float viewAngle = 0f;
     [SerializeField] float rotSpeed = 2f;
@@ -20,6 +22,8 @@ public class SmartTurret : Object
     int currentAmmo = 0;
     [SerializeField] float delayBetweenReloading = 1.5f;
     float currentReloadDelay = 0f;
+
+    // Turret UI
 
     [SerializeField] Image ammoImage;
     protected bool isActive;

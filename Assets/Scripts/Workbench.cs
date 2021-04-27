@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Workbench : MonoBehaviour
 {
-    [SerializeField] GameObject workbenchUI;
+    [SerializeField] GameObject workbench;
+    [SerializeField] ListPositionCtrl workbenchMenu;
     [SerializeField] Button defaultSelectedButton;
     [SerializeField] GameObject turretPrefab;
     [SerializeField] int turretCost = 1;
@@ -14,28 +15,74 @@ public class Workbench : MonoBehaviour
 
     private void Awake()
     {
-        workbenchUI.SetActive(false);
+        StartCoroutine("ResetWorkbenchUI");
+        workbench.GetComponent<Canvas>().enabled = false;
+    }
+
+    private void Start()
+    {
+
+    }
+
+    IEnumerator ResetWorkbenchUI()
+    {
+        for (int i = 0; i < workbenchMenu.listBank.GetListLength() - 1; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            MoveMenuUp();
+        }
+        workbench.GetComponent<Canvas>().enabled = true;
+        workbench.SetActive(false);
     }
 
     public void Interact(Player player)
     {
         playerRef = player;
 
-        defaultSelectedButton.Select();
-        playerRef.EnterMenu();
-        StartCoroutine("ActivateWorkshop");
+        StartCoroutine("ActivateWorkbench");
     }
 
-    IEnumerator ActivateWorkshop()
+    IEnumerator ActivateWorkbench()
     {
         yield return new WaitForSeconds(0.01f);
-        workbenchUI.SetActive(true);
+        playerRef.EnterMenu();
+        StartCoroutine("StartSelectButton", 0f);
+        workbench.SetActive(true);
     }
 
     public void StopInteract()
     {
-        workbenchUI.SetActive(false);
+        workbench.SetActive(false);
         playerRef.ExitMenu();
+    }
+
+    public void SelectButton()
+    {
+        StartCoroutine("StartSelectButton", 0.3f);
+    }
+
+    IEnumerator StartSelectButton(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        defaultSelectedButton = workbenchMenu.listBoxes[workbenchMenu.GetCenteredContentID()].GetComponent<Button>();
+        defaultSelectedButton.Select();
+    }
+
+    public void SubmitButton()
+    {
+        Debug.Log(workbenchMenu.GetCenteredContentID());
+        defaultSelectedButton = workbenchMenu.listBoxes[workbenchMenu.GetCenteredContentID()].GetComponent<Button>();
+        defaultSelectedButton.Select();
+    }
+
+    public void MoveMenuUp()
+    {
+        workbenchMenu.MoveOneUnitUp();
+    }
+
+    public void MoveMenuDown()
+    {
+        workbenchMenu.MoveOneUnitDown();
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -50,52 +97,83 @@ public class Workbench : MonoBehaviour
     //    StopInteract();
     //}
 
-    private bool canAffordItem(string itemName)
+    private bool canAffordItem(Object item)
     {
-        switch (itemName)
-        {
-            case "Ammo":
-            case "Turret":
-                return playerRef.inventory["Bits"] >= 1;
-            case "Better Turret":
-                return playerRef.inventory["Bits"] >= 2 && playerRef.inventory["Circuits"] >= 1;
-        }
 
-        return false;
+        if (item.bitsPrice <= playerRef.inventory["Bits"] && item.circuitsPrice <= playerRef.inventory["Circuits"])
+            return true;
+        else
+            return false;
+
+        // Old shop system
+        /*        switch (itemName)
+                {
+                    case "Ammo":
+                    case "Turret_Revised":
+                        return playerRef.inventory["Bits"] >= 1;
+                    case "MachineTurret_Revised":
+                        return playerRef.inventory["Bits"] >= 2 && playerRef.inventory["Circuits"] >= 1;
+                    case "CannonTurret":
+                        return playerRef.inventory["Bits"] >= 3 && playerRef.inventory["Circuits"] >= 2;
+                    case "Flamethrower":
+                        return playerRef.inventory["Bits"] >= 1 && playerRef.inventory["Circuits"] >= 2;
+                }*/
     }
 
     private bool canHoldItem()
     {
         if (playerRef.selectedObject == null)
-            return true;
-        else
-            return false;
-    }
-
-    private void takeCurrencyFromPlayer(string itemName)
-    {
-        switch (itemName)
         {
-            case "Ammo":
-            case "Turret":
-                playerRef.inventory["Bits"]--;
-                break;
-            case "Better Turret":
-                playerRef.inventory["Bits"] -= 2;
-                playerRef.inventory["Circuits"]--;
-                break;
+            return true;
+        }
+
+        else
+        {
+            return false;
         }
     }
 
-    public void OnTurretMakeButtonPressed(GameObject item)
+    private void takeCurrencyFromPlayer(Object item)
+    {
+
+        playerRef.inventory["Bits"] -= item.bitsPrice;
+        playerRef.inventory["Circuits"] -= item.circuitsPrice;
+        
+        // Old shop system
+        /*        switch (itemName)
+                {
+                    case "Ammo":
+                    case "Turret_Revised":
+                        playerRef.inventory["Bits"]--;
+                        break;
+                    case "MachineTurret_Revised":
+                        playerRef.inventory["Bits"] -= 2;
+                        playerRef.inventory["Circuits"]--;
+                        break;
+                    case "CannonTurret":
+                        playerRef.inventory["Bits"] -= 3;
+                        playerRef.inventory["Circuits"] -= 2;
+                        break;
+                    case "Flamethrower":
+                        playerRef.inventory["Bits"] -= 1;
+                        playerRef.inventory["Circuits"] -=2;
+                        break;
+                }*/
+    }
+
+    public void OnTurretMakeButtonPressed(Object item)
     {
         if (playerRef && item)
         {
-            if (canAffordItem(item.name) && canHoldItem())
+            if (canAffordItem(item) && canHoldItem())
             {
-                playerRef.ReceiveTurret(item);
-
-                takeCurrencyFromPlayer(item.name);
+                playerRef.ReceiveTurret(item.gameObject);
+                takeCurrencyFromPlayer(item);
+                StopInteract();
+            }
+            else
+            {
+                Debug.Log("PLAYER CANNOT AFFORD ITEM");
             }
         }
     }

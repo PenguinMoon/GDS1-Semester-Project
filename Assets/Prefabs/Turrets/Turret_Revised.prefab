@@ -15301,6 +15301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
   isBeingHeld: 0
+  bitsPrice: 1
+  circuitsPrice: 0
   gunTransform: {fileID: 9064424375889875366}
   baseTransform: {fileID: 9064424375913804581}
   enemyMask:

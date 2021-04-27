@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 556336104}
   - component: {fileID: 556336103}
   - component: {fileID: 556336102}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1814753026}
   - component: {fileID: 1814753025}
   - component: {fileID: 3098560157497219351}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7850940677822612997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: HoldObjectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 2840487629057466069}
   - component: {fileID: 3929372517965521518}
   - component: {fileID: 9155952788137081229}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,8 @@ GameObject:
   - component: {fileID: 1739327157164521414}
   - component: {fileID: 1739327157164521415}
   - component: {fileID: 1739327157164521403}
-  m_Layer: 0
+  - component: {fileID: 1931729045}
+  m_Layer: 13
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -420,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dac3e300f1e9a1488b2843d7f4c58fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canInput: 0
   playerInput: {fileID: 6942440810104222228}
   interactObject: {fileID: 0}
   sprintParticle: {fileID: 9149835213869154414}
@@ -474,7 +476,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1739327157164521402}
         m_MethodName: OnInteract
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -499,7 +501,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f3bf278a-39c6-4c7c-85af-ba0ec155d568
-    m_ActionName: Player/Sprint[/Keyboard/shift,/Keyboard/shift,/Keyboard/shift,/Keyboard/shift,/Keyboard/shift]
+    m_ActionName: Player/Sprint[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1739327157164521402}
@@ -516,11 +518,62 @@ MonoBehaviour:
     m_ActionId: 67304501-8db4-4699-8009-8dcffa08a8f9
     m_ActionName: Player/Whack[/Keyboard/f,/Keyboard/f,/Keyboard/f,/Keyboard/f,/Keyboard/f]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1739327157164521402}
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 305ebcf4-03ab-468b-b25d-a88cb9c3a0ad
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a73e3cce-c4dd-4676-acbd-bd55b0767d0b
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed457648-717b-4801-b366-14db0cc66a8e
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b5502ff6-dfae-4099-833c-f6f998be4b2d
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8dd21412-2e41-4fcc-b862-ff91096b7fee
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c735f57-5f69-4ac7-9f8f-6aa8d821a740
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 467eaa2c-3cad-46bf-a1c4-591173f8742a
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15f04890-a344-4f7a-a91f-a9ba646a6cb2
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3e50417-9e10-432a-ac3d-0d0530efc6e5
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast,/VirtualKeyboardDevice/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 050aa324-8e29-4b02-8f5a-01784e473000
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth,/VirtualKeyboardDevice/enter,/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3ccb43fb-b1f5-4bd3-adb9-c1bdbfd95480
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -601,6 +654,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &1931729045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739327157164521412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 1}
 --- !u!1 &1819500638118883734
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +678,7 @@ GameObject:
   - component: {fileID: 8531576042684615154}
   - component: {fileID: 9149835213869154414}
   - component: {fileID: 7732695184920720716}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sprint Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5365,7 +5431,7 @@ GameObject:
   - component: {fileID: 3774301579483391500}
   - component: {fileID: 357622568845289465}
   - component: {fileID: 6910935899226256290}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5437,7 +5503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8789445043959134704}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ArmsPosEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5469,7 +5535,7 @@ GameObject:
   - component: {fileID: 4094573292102892081}
   - component: {fileID: 2231411526806037242}
   - component: {fileID: 2649546439719119721}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: StaminaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5542,7 +5608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5145279320331142367}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ArmsPosHold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
