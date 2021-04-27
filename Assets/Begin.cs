@@ -10,6 +10,6 @@ public class Start : State
     {
         Debug.Log("Enemy: " + _enemyAI.ToString() + " has started moving.");
         _enemyAI.GoToGoal();
-        yield return null;
+        yield break;
     }
 }
