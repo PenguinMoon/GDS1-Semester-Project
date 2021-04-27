@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6104678003545204416}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -66,7 +66,7 @@ MonoBehaviour:
     type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: 58ddb7cd7825ce240968785f62456086,
     type: 3}
-  m_MoveAction: {fileID: 3710738434707379630, guid: 58ddb7cd7825ce240968785f62456086,
+  m_MoveAction: {fileID: -5006394730199828286, guid: 58ddb7cd7825ce240968785f62456086,
     type: 3}
   m_SubmitAction: {fileID: 2064916234097673511, guid: 58ddb7cd7825ce240968785f62456086,
     type: 3}
