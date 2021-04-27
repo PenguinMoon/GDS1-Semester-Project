@@ -420,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dac3e300f1e9a1488b2843d7f4c58fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canInput: 0
   playerInput: {fileID: 6942440810104222228}
   interactObject: {fileID: 0}
   sprintParticle: {fileID: 9149835213869154414}
@@ -474,7 +475,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1739327157164521402}
         m_MethodName: OnInteract
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -499,7 +500,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: f3bf278a-39c6-4c7c-85af-ba0ec155d568
-    m_ActionName: Player/Sprint[/Keyboard/shift,/Keyboard/shift,/Keyboard/shift,/Keyboard/shift,/Keyboard/shift]
+    m_ActionName: Player/Sprint[/Keyboard/shift]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1739327157164521402}
@@ -516,11 +517,62 @@ MonoBehaviour:
     m_ActionId: 67304501-8db4-4699-8009-8dcffa08a8f9
     m_ActionName: Player/Whack[/Keyboard/f,/Keyboard/f,/Keyboard/f,/Keyboard/f,/Keyboard/f]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1739327157164521402}
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 305ebcf4-03ab-468b-b25d-a88cb9c3a0ad
     m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a73e3cce-c4dd-4676-acbd-bd55b0767d0b
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed457648-717b-4801-b366-14db0cc66a8e
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b5502ff6-dfae-4099-833c-f6f998be4b2d
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8dd21412-2e41-4fcc-b862-ff91096b7fee
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c735f57-5f69-4ac7-9f8f-6aa8d821a740
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 467eaa2c-3cad-46bf-a1c4-591173f8742a
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15f04890-a344-4f7a-a91f-a9ba646a6cb2
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3e50417-9e10-432a-ac3d-0d0530efc6e5
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast,/VirtualKeyboardDevice/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 050aa324-8e29-4b02-8f5a-01784e473000
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth,/VirtualKeyboardDevice/enter,/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3ccb43fb-b1f5-4bd3-adb9-c1bdbfd95480
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
