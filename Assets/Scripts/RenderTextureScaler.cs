@@ -14,6 +14,7 @@ public class RenderTextureScaler : MonoBehaviour
     {
         _attachedCamera = GetComponent<Camera>();
         _renderTexture = _attachedCamera.targetTexture;
+        Scale();
     }
 
     //// Update is called once per frame
