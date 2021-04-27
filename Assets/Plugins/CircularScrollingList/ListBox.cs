@@ -5,10 +5,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ListBox : MonoBehaviour
 {
-	public Text content; // The display text for the content of the list box
+	public TextMeshProUGUI content; // The display text for the content of the list box
 
 	// These public variables will be initialized
 	// in ListPositionCtrl.InitializeBoxDependency().
@@ -251,7 +252,7 @@ public class ListBox : MonoBehaviour
 
 	/* Update the displaying content on the ListBox.
 	 */
-	private void UpdateDisplayContent()
+	public virtual void UpdateDisplayContent()
 	{
 		// Update the content according to its contentID.
 		content.text = _listBank.GetListContent(_contentID);

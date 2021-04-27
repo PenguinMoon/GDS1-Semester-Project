@@ -105,7 +105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.85, y: 48.895}
+  m_AnchoredPosition: {x: 36.854, y: 42.6}
   m_SizeDelta: {x: 26.29248, y: 38.199997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &103679871362016972
@@ -137,8 +137,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dfe22edc0aceaa042947ca0383a58aa2, type: 2}
+  m_sharedMaterial: {fileID: -2170497614942292901, guid: dfe22edc0aceaa042947ca0383a58aa2,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -493,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74fb0bc5cdce554eba6c60a0e789157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 5531166530272688023}
+  content: {fileID: 6666069522242714733}
   listBoxID: 0
   lastListBox: {fileID: 0}
   nextListBox: {fileID: 0}

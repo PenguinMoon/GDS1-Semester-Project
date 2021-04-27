@@ -123,6 +123,8 @@ public class Player : MonoBehaviour
         // Handle UI input
         if (!canInput)
         {
+            // Reset player movementInput vector so that player doesn't move when exiting menu
+            movementInput = new Vector3(0, 0);
             if (!context.performed)
             {
                 return;
@@ -152,7 +154,7 @@ public class Player : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || !canInput)
         {
             return;
         }
