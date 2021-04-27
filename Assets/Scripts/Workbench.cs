@@ -64,7 +64,6 @@ public class Workbench : MonoBehaviour
     IEnumerator StartSelectButton(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        Debug.Log(workbenchMenu.GetCenteredContentID());
         defaultSelectedButton = workbenchMenu.listBoxes[workbenchMenu.GetCenteredContentID()].GetComponent<Button>();
         defaultSelectedButton.Select();
     }
