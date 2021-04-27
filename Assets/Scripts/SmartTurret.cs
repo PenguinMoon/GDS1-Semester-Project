@@ -103,7 +103,7 @@ public class SmartTurret : Object
         {
             Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo);
 
-            if (rayInfo.collider.gameObject.tag == "Enemy")
+            if (rayInfo.collider.gameObject && rayInfo.collider.gameObject.tag == "Enemy")
             {
                 foundEnemies.Add(hit.transform);
             }
