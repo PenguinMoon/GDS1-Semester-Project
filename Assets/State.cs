@@ -4,7 +4,12 @@ public abstract class State
 {
     protected EnemyAI _enemyAI;
 
-    public virtual IEnumerator Start()
+    public State(EnemyAI _enemyAI)
+    {
+        this._enemyAI = _enemyAI;
+    }
+
+    public virtual IEnumerator Begin()
     {
         yield break;
     }

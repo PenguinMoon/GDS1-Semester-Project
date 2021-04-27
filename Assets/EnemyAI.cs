@@ -14,12 +14,11 @@ public class EnemyAI : StateMachine
     // Start is called before the first frame update
     void Start()
     {
-        agent.destination = goal.position;
+        SetState(new Start(this));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoToGoal()
     {
-        
+        agent.destination = goal.position;
     }
 }
