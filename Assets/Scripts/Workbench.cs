@@ -130,7 +130,6 @@ public class Workbench : MonoBehaviour
 
         else
         {
-            Debug.Log("PLAYER CANNOT AFFORD ITEM");
             return false;
         }
     }
@@ -172,6 +171,10 @@ public class Workbench : MonoBehaviour
                 playerRef.ReceiveTurret(item.gameObject);
 
                 takeCurrencyFromPlayer(item);
+            }
+            else
+            {
+                Debug.Log("PLAYER CANNOT AFFORD ITEM");
             }
         }
     }

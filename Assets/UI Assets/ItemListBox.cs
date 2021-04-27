@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ItemListBox : ListBox
 {
+    public GameObject item;
     public TextMeshProUGUI bitsPriceText;
     public TextMeshProUGUI circuitPriceText;
 
@@ -23,6 +25,7 @@ public class ItemListBox : ListBox
     public override void UpdateDisplayContent()
     {
         // Update the content according to its contentID.
-        //bitsPriceText.text = ;
+        bitsPriceText.text = item.GetComponent<Object>().bitsPrice.ToString();
+        circuitPriceText.text = item.GetComponent<Object>().circuitsPrice.ToString();
     }
 }
