@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 556336104}
   - component: {fileID: 556336103}
   - component: {fileID: 556336102}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1814753026}
   - component: {fileID: 1814753025}
   - component: {fileID: 3098560157497219351}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7850940677822612997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: HoldObjectPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 2840487629057466069}
   - component: {fileID: 3929372517965521518}
   - component: {fileID: 9155952788137081229}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,8 @@ GameObject:
   - component: {fileID: 1739327157164521414}
   - component: {fileID: 1739327157164521415}
   - component: {fileID: 1739327157164521403}
-  m_Layer: 0
+  - component: {fileID: 1931729045}
+  m_Layer: 13
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -653,6 +654,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &1931729045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739327157164521412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 1}
 --- !u!1 &1819500638118883734
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +678,7 @@ GameObject:
   - component: {fileID: 8531576042684615154}
   - component: {fileID: 9149835213869154414}
   - component: {fileID: 7732695184920720716}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sprint Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5417,7 +5431,7 @@ GameObject:
   - component: {fileID: 3774301579483391500}
   - component: {fileID: 357622568845289465}
   - component: {fileID: 6910935899226256290}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5489,7 +5503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8789445043959134704}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ArmsPosEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5521,7 +5535,7 @@ GameObject:
   - component: {fileID: 4094573292102892081}
   - component: {fileID: 2231411526806037242}
   - component: {fileID: 2649546439719119721}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: StaminaBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5594,7 +5608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5145279320331142367}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ArmsPosHold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
