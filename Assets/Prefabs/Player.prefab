@@ -559,10 +559,6 @@ MonoBehaviour:
     m_ActionName: UI/Click[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 15f04890-a344-4f7a-a91f-a9ba646a6cb2
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: b3e50417-9e10-432a-ac3d-0d0530efc6e5
     m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast,/VirtualKeyboardDevice/escape]
   - m_PersistentCalls:
@@ -573,6 +569,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3ccb43fb-b1f5-4bd3-adb9-c1bdbfd95480
     m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f5675cba-1bb8-4d3a-98be-86ab2700e04c
+    m_ActionName: UI/Point[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
