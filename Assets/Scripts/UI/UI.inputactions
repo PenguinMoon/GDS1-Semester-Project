@@ -609,7 +609,7 @@
                     "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad;Joystick;Touch;XR",
+                    "groups": "Gamepad;Joystick;Touch;XR;Keyboard&Mouse",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -617,10 +617,10 @@
                 {
                     "name": "",
                     "id": "90284d04-a1c1-4d1c-8b9c-1a67304a5232",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
