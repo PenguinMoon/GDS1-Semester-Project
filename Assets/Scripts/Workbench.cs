@@ -74,7 +74,7 @@ public class Workbench : MonoBehaviour
 
     public void SelectButton()
     {
-        StartCoroutine("StartSelectButton", 0.3f);
+        StartCoroutine("StartSelectButton", 0.15f);
     }
 
     IEnumerator StartSelectButton(float seconds)

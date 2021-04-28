@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ItemListBox : ListBox
 {
     public GameObject item;
+    public TextMeshProUGUI itemNameText;
     public TextMeshProUGUI bitsPriceText;
     public TextMeshProUGUI circuitPriceText;
 
@@ -25,6 +26,7 @@ public class ItemListBox : ListBox
     public override void UpdateDisplayContent()
     {
         // Update the content according to its contentID.
+        itemNameText.text = item.GetComponent<Object>().objectName;
         bitsPriceText.text = item.GetComponent<Object>().bitsPrice.ToString();
         circuitPriceText.text = item.GetComponent<Object>().circuitsPrice.ToString();
     }

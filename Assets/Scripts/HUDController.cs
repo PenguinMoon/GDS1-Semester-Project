@@ -13,6 +13,8 @@ public class HUDController : MonoBehaviour
     [SerializeField] Slider hpBar;
     [SerializeField] Gradient hpGradient;
     [SerializeField] Image hpImg;
+    [SerializeField] RawImage itemImage;
+    Texture defaultItemImage; 
 
     // Pause Screen Elements
     bool isPaused = false;
@@ -29,6 +31,8 @@ public class HUDController : MonoBehaviour
     {
         foreach (EnemySpawner spawner in FindObjectsOfType<EnemySpawner>())
             enemySpawners.Add(spawner);
+
+        defaultItemImage = itemImage.texture;
     }
 
     // Update is called once per frame
@@ -66,6 +70,14 @@ public class HUDController : MonoBehaviour
     {
         cashText.text = inventory["Bits"].ToString();
         circuitText.text = inventory["Circuits"].ToString();
+    }
+
+    public void UpdateItemSlot(GameObject item)
+    {
+        if (item)
+            itemImage.texture = item.GetComponent<Object>().objectImage;
+        else
+            itemImage.texture = defaultItemImage;
     }
 
     public void SetMaxHP(int hp)

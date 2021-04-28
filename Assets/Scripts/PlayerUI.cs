@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject staminaGroup;
     public bool isDraining, isRecovering;
     float sprintTime, maxSprintTime;
+
+    [SerializeField] Canvas HintTextUI;
+    TextMeshProUGUI HintText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,5 +66,20 @@ public class PlayerUI : MonoBehaviour
                 staminaGroup.SetActive(false);
             }
         }
+    }
+
+    public void UpdateHintText()
+    {
+        
+    }
+
+    public void ShowHintUIText()
+    {
+        HintTextUI.transform.LeanScale(new Vector3(0, 0, 0), 0.5f);
+    }
+
+    public void HideHintUIText()
+    {
+        HintTextUI.transform.LeanScale(new Vector3(0, 0, 0), 0.5f);
     }
 }

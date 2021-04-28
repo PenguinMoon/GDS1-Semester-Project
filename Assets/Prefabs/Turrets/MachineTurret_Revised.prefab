@@ -39,6 +39,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
+      propertyPath: objectName
+      value: Machine Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: objectImage
+      value: 
+      objectReference: {fileID: 2800000, guid: bb05246d618cf8f42b6e90741ff6941e, type: 3}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
       propertyPath: circuitsPrice
       value: 1
       objectReference: {fileID: 0}

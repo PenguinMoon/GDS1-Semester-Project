@@ -29,6 +29,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
+      propertyPath: objectName
+      value: Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: objectImage
+      value: 
+      objectReference: {fileID: 2800000, guid: c747545e3171fed4ca3ed1ae4deb678e, type: 3}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 8835084445145466522, guid: 0f51be5976f00cd44891f5e5785c8412,

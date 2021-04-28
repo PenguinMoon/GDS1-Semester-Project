@@ -15283,7 +15283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 1
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
+  outlineWidth: 4
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -15301,6 +15301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
   isBeingHeld: 0
+  objectName: Turret
+  objectImage: {fileID: 2800000, guid: 8223ec5973d642c4092fd8bef5c819ed, type: 3}
   bitsPrice: 3
   circuitsPrice: 0
   gunTransform: {fileID: 9064424375889875366}

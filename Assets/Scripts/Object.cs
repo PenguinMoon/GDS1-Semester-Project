@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Object : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class Object : MonoBehaviour
     public bool isBeingHeld = false;
 
 
-    // Object Prices
+    // Object Properties
+    [SerializeField] public string objectName;
+    [SerializeField] public Texture objectImage;
     [SerializeField] public int bitsPrice;
     [SerializeField] public int circuitsPrice;
 

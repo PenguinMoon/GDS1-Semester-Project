@@ -360,18 +360,18 @@ public class Player : MonoBehaviour
     }
     private void PlaceSelectedObject()
     {
-        Debug.Log(selectedObject);
-
         if (selectedObject)
         {
             selectedObject.transform.position = interactObject.transform.position;
-            selectedObject.transform.rotation = interactObject.transform.rotation;
+            //selectedObject.transform.rotation = interactObject.transform.rotation;
             selectedObject.transform.SetParent(interactObject.transform);
+            selectedObject.transform.LookAt(interactObject.transform); // Face the object towards the plate
 
             interactObject.GetComponent<ObjectPlate>().placedObject = selectedObject;
             selectedObject.GetComponent<Object>().plate = interactObject;
             selectedObject.GetComponent<Object>().isBeingHeld = false;
 
+            hudController.UpdateItemSlot(null);
             selectedObject = null;
         }
     }
@@ -385,6 +385,7 @@ public class Player : MonoBehaviour
             interactObject.transform.SetParent(heldObjectPoint);
 
             selectedObject = interactObject;
+            hudController.UpdateItemSlot(selectedObject);
 
             if (selectedObject.GetComponent<Object>())
             {
@@ -440,6 +441,7 @@ public class Player : MonoBehaviour
             selectedObject = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
             selectedObject.transform.SetParent(heldObjectPoint);
             selectedObject.GetComponent<Object>().isBeingHeld = true;
+            hudController.UpdateItemSlot(turret);
         }
     }
 
@@ -459,6 +461,5 @@ public class Player : MonoBehaviour
             if (interactObject.TryGetComponent(out Outline outline))
                 outline.enabled = false;
         }
-
     }
 }
