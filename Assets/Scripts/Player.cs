@@ -80,14 +80,6 @@ public class Player : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.E))
         //    Interact();
 
-        // Check if there is movement input before rotating
-        if (movementInput != Vector3.zero)
-        {
-            Quaternion lookDirection = Quaternion.LookRotation(movementInput);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
-        }
-
-
         // Animate arms
         if (selectedObject == null)
         {
@@ -98,8 +90,6 @@ public class Player : MonoBehaviour
             armsObject.localPosition = new Vector3(0.5f, -0.1f, 0.875f);
         }
 
-        rb.velocity = movementInput * movementSpeed;
-
         // Highlight selected object
         if (interactObject)
             EnableOutlineObject();
@@ -108,6 +98,18 @@ public class Player : MonoBehaviour
         // Reduce hit time so player can whack again
         if (currentWhackDelay > 0)
             currentWhackDelay -= Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        // Check if there is movement input before rotating
+        if (movementInput != Vector3.zero)
+        {
+            Quaternion lookDirection = Quaternion.LookRotation(movementInput);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
+        }
+
+        rb.velocity = movementInput * movementSpeed;
     }
 
     public void OnMove(InputAction.CallbackContext context)
