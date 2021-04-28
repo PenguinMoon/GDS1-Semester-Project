@@ -158,6 +158,19 @@ public class Player : MonoBehaviour
         {
             return;
         }
+
+        // Context started and cancelled changes sprint to hold
+        // To change back, change the Sprint input action from pass through to button
+        if (context.started)
+        {
+            isSprinting = true;
+            Debug.Log("Start sprint!");
+        }
+        if (context.canceled)
+        {
+            isSprinting = false;
+            Debug.Log("Stop sprint!");
+        }
         Sprint();
     }
 
