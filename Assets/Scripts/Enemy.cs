@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] float health = 2;
+    float health = 0;
+    [SerializeField] float maxHealth = 0;
 
     [SerializeField] GameObject bitsPrefab;
     [SerializeField] GameObject circuitsPrefab;
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
     bool willDropCircuits = false;
     [SerializeField] Material circuitDropMaterial;
     MeshRenderer rend;
+    EnemyUI enemyUI;
 
     Vector3 currentDirection = Vector3.back;
     Rigidbody rb;
@@ -21,6 +23,9 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rend = GetComponent<MeshRenderer>();
+        enemyUI = GetComponentInChildren<EnemyUI>();
+
+        health = maxHealth;
 
         willDropCircuits = Random.Range(0, 100) < 10;
 
@@ -41,7 +46,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-
+        enemyUI.UpdateHealthBar(health, maxHealth);
         if (health <= 0)
             Die();
     }

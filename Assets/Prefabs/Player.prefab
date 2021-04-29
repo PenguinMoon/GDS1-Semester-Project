@@ -64,10 +64,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[F] Use Workbench'
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dfe22edc0aceaa042947ca0383a58aa2, type: 2}
-  m_sharedMaterial: {fileID: -2170497614942292901, guid: dfe22edc0aceaa042947ca0383a58aa2,
+  m_fontAsset: {fileID: 11400000, guid: 7c91ed2a6c49944418d49fcbba47c3ba, type: 2}
+  m_sharedMaterial: {fileID: -6317436826632533179, guid: 7c91ed2a6c49944418d49fcbba47c3ba,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 711253777}
   - component: {fileID: 711253776}
   m_Layer: 5
-  m_Name: WorkbenchHintUI
+  m_Name: ToolTipCanvas
   m_TagString: IgnoreOutline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

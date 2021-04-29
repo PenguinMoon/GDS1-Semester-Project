@@ -9,7 +9,7 @@ public class Turret_Flamethrower : SmartTurret
     protected override void Update()
     {
         base.Update();
-
+        Debug.Log(isFiring);
         if (isFiring && isActive)
             fireParticles.Play();
         else

@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: damageAmount
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5118767931873448822, guid: 52cae6db6fca31944b0df7c549ce291b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6209267294437973961, guid: 52cae6db6fca31944b0df7c549ce291b,
         type: 3}
       propertyPath: m_Enabled
@@ -86,6 +91,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Flame_Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6858065958209617198, guid: 52cae6db6fca31944b0df7c549ce291b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52cae6db6fca31944b0df7c549ce291b, type: 3}

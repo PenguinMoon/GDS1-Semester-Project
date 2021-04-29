@@ -15314,7 +15314,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 7352072701068594454}
   FOVAngle: 90
-  rotSpeed: 3
+  rotSpeed: 10
   range: 10
   fireDelay: 0.5
   maxAmmo: 30

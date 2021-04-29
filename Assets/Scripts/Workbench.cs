@@ -69,7 +69,7 @@ public class Workbench : MonoBehaviour
     public void DenyAnimation()
     {
         if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
-        workbench.GetComponent<Canvas>().transform.LeanMoveLocalZ(0.5f, 0.1f).setLoopPingPong(2);
+        workbench.GetComponent<Canvas>().transform.LeanMoveLocalX(0.5f, 0.1f).setLoopPingPong(2);
     }
 
     public void SelectButton()
