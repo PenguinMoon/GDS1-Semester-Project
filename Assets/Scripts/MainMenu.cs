@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] ScrollRectScrolling scrollRect;
 
+    [SerializeField] GameObject mainCam;
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -22,12 +24,14 @@ public class MainMenu : MonoBehaviour
 
     public void OpenLevelSelect()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        lvlSelectCanvas.SetActive(true);
         mainCanvas.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(btn[1]);
-        scrollRect.currBtn = btn[1];
-        scrollRect.nextBtn = btn[1];
+        LeanTween.rotate(mainCam, new Vector3(0, 90, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        {
+            lvlSelectCanvas.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(btn[1]);
+            scrollRect.currBtn = btn[1];
+            scrollRect.nextBtn = btn[1];
+        });
     }
 
     public void OnExitButtonClicked()
@@ -38,8 +42,11 @@ public class MainMenu : MonoBehaviour
     public void OpenMainMenu()
     {
         lvlSelectCanvas.SetActive(false);
-        mainCanvas.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(btn[0]);
+        LeanTween.rotate(mainCam, new Vector3(0, 0, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        {
+            mainCanvas.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(btn[0]);
+        });
     }
 
 }
