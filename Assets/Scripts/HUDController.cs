@@ -22,6 +22,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject mainPauseCanvas;    // The main canvas of the pause screen
     [SerializeField] GameObject pauseCanvas;   // The initial screen of the pause screen
     [SerializeField] GameObject confirmCanvas;   // The confirmation screen for quitting the level
+    [SerializeField] GameObject pauseBG;   // BG for the pause screen
 
     int maxWave = 10;
     List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
@@ -100,6 +101,9 @@ public class HUDController : MonoBehaviour
         {
             Time.timeScale = 0;
             mainPauseCanvas.SetActive(true);
+            pauseBG.SetActive(true);
+            pauseCanvas.SetActive(true);
+            LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.4f).setEase(LeanTweenType.easeOutExpo).setIgnoreTimeScale(true);
             isPaused = !isPaused;
         }
         else
@@ -111,7 +115,12 @@ public class HUDController : MonoBehaviour
             else
             {
                 Time.timeScale = 1;
-                mainPauseCanvas.SetActive(false);
+                pauseBG.SetActive(false);
+                LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), 0.4f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                {
+                    mainPauseCanvas.SetActive(false);
+                    pauseCanvas.SetActive(false);
+                });
                 isPaused = !isPaused;
             }
         }
