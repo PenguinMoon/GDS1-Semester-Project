@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 262938103}
   m_Layer: 0
   m_Name: HintText
-  m_TagString: Untagged
+  m_TagString: IgnoreOutline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,9 +240,10 @@ GameObject:
   - component: {fileID: 711253779}
   - component: {fileID: 711253778}
   - component: {fileID: 711253777}
+  - component: {fileID: 711253776}
   m_Layer: 5
   m_Name: WorkbenchHintUI
-  m_TagString: Untagged
+  m_TagString: IgnoreOutline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,6 +328,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &711253776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711253774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adfdaf3e9ee8e8941a374e12b5a6edeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1814753023
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +613,8 @@ MonoBehaviour:
   staminaGroup: {fileID: 7232102997019991724}
   isDraining: 0
   isRecovering: 0
-  HintTextUI: {fileID: 0}
+  HintTextUI: {fileID: 711253779}
+  HintEnabled: 0
 --- !u!1 &1739327157164521412
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +681,10 @@ MonoBehaviour:
   currencyCount: 0
   hudController: {fileID: 0}
   playerUI: {fileID: 9155952788137081229}
+  interactAction: {fileID: 9203822732886912029, guid: 58ddb7cd7825ce240968785f62456086,
+    type: 3}
+  whackAction: {fileID: -7817863446898735594, guid: 869879a9da976b24e89433476a19de3e,
+    type: 3}
 --- !u!114 &6942440810104222228
 MonoBehaviour:
   m_ObjectHideFlags: 0

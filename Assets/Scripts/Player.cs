@@ -38,13 +38,18 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 0 },
-        {"Circuits", 0 }
+        {"Bits", 1000 },
+        {"Circuits", 1000 }
     };
 
     [SerializeField] HUDController hudController;
     [SerializeField] PlayerUI playerUI;
     Workbench workBench;
+
+    // Action references for input UI
+    [SerializeField] private InputActionReference interactAction = null;
+    [SerializeField] private InputActionReference whackAction = null;
+
 
     private void Awake()
     {
@@ -282,9 +287,6 @@ public class Player : MonoBehaviour
                 case "Turret":
                     WhackTurret();
                     break;
-                case "Workbench":
-                    WhackWorkbench();
-                    break;
             }
     }
 
@@ -302,6 +304,7 @@ public class Player : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         DisableOutlineObject();
+        ShowHintText();
         switch (other.gameObject.tag)
         {
             case "Turret":
@@ -329,6 +332,7 @@ public class Player : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         DisableOutlineObject();
+        HideHintText();
         interactObject = null;
     }
 
@@ -355,6 +359,9 @@ public class Player : MonoBehaviour
                     break;
                 case "Object":
                     PickupObject();
+                    break;
+                case "Workbench":
+                    WhackWorkbench();
                     break;
             }
     }
@@ -460,6 +467,39 @@ public class Player : MonoBehaviour
         {
             if (interactObject.TryGetComponent(out Outline outline))
                 outline.enabled = false;
+        }
+    }
+
+    private void ShowHintText()
+    {
+        if (interactObject)
+        {
+            if (interactObject.tag == "Workbench" && !selectedObject)
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Use Workbench");
+                playerUI.ShowHintUIText();
+            }
+            if (interactObject.tag == "Turret")
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Pick up");
+                playerUI.ShowHintUIText();
+            }
+            if ((interactObject.tag == "TurretPlate" || interactObject.tag == "ObjectPlate") && selectedObject)
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Place");
+                playerUI.ShowHintUIText();
+            }
+        }
+    }
+
+    private void HideHintText()
+    {
+        if (interactObject)
+        {
+            playerUI.HideHintUIText();
         }
     }
 }

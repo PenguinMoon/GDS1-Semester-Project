@@ -13,6 +13,7 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField] Canvas HintTextUI;
     TextMeshProUGUI HintText;
+    public bool HintEnabled;
 
 
     // Start is called before the first frame update
@@ -68,18 +69,31 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void UpdateHintText()
+    public void UpdateHintText(string hint)
     {
-        
+        HintTextUI.GetComponentInChildren<TextMeshProUGUI>().text = hint;
     }
 
     public void ShowHintUIText()
     {
-        HintTextUI.transform.LeanScale(new Vector3(0, 0, 0), 0.5f);
+        HintTextUI.enabled = true;
+        // Debug.Log("SHOWING UI");
+/*        if (!HintEnabled)
+        {
+            HintTextUI.transform.LeanScale(new Vector3(1, 1, 1), 0.2f).setEaseInOutExpo();
+            HintEnabled = true;
+        }*/
+
     }
 
     public void HideHintUIText()
     {
-        HintTextUI.transform.LeanScale(new Vector3(0, 0, 0), 0.5f);
+        HintTextUI.enabled = false;
+        //Debug.Log("HIDING UI");
+        /*if (HintEnabled)
+        {
+            HintTextUI.transform.LeanScale(new Vector3(0, 0, 1), 0.2f).setEaseInOutExpo();
+            HintEnabled = false;
+        }*/
     }
 }

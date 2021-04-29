@@ -1,5 +1,5 @@
 {
-    "name": "Player 1",
+    "name": "PlayerUI",
     "maps": [
         {
             "name": "Player",
@@ -644,7 +644,7 @@
                 {
                     "name": "",
                     "id": "4d23d8f5-38da-497d-8beb-934b9a152720",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
