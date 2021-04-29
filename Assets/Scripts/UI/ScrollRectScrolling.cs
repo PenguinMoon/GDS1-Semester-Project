@@ -27,7 +27,6 @@ public class ScrollRectScrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nextBtn);
         if (EventSystem.current.currentSelectedGameObject && EventSystem.current.currentSelectedGameObject.name.Contains("LvlBtn"))
         {
             nextBtn = EventSystem.current.currentSelectedGameObject;
@@ -83,5 +82,10 @@ public class ScrollRectScrolling : MonoBehaviour
     {
         yield return new WaitForSeconds(0.0001f);
         EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void ResetRect()
+    {
+        contentRect.anchoredPosition = new Vector2(300, -100);
     }
 }

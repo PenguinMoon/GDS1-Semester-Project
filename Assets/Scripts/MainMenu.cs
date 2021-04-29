@@ -22,15 +22,29 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    private void Start()
+    {
+        LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+        {
+            EventSystem.current.SetSelectedGameObject(btn[0]);
+        });
+    }
+
     public void OpenLevelSelect()
     {
-        mainCanvas.SetActive(false);
+        //mainCanvas.SetActive(false);
+        LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad);
+
         LeanTween.rotate(mainCam, new Vector3(0, 90, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
-            lvlSelectCanvas.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(btn[1]);
-            scrollRect.currBtn = btn[1];
-            scrollRect.nextBtn = btn[1];
+            //lvlSelectCanvas.SetActive(true);
+            LeanTween.scale(lvlSelectCanvas.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+            {
+                EventSystem.current.SetSelectedGameObject(btn[1]);
+                scrollRect.currBtn = btn[1];
+                scrollRect.nextBtn = btn[1];
+            });
+            scrollRect.ResetRect();
         });
     }
 
@@ -41,11 +55,16 @@ public class MainMenu : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        lvlSelectCanvas.SetActive(false);
+        //lvlSelectCanvas.SetActive(false);
+        LeanTween.scale(lvlSelectCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad);
+
         LeanTween.rotate(mainCam, new Vector3(0, 0, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
-            mainCanvas.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(btn[0]);
+            //mainCanvas.SetActive(true);
+            LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+            {
+                EventSystem.current.SetSelectedGameObject(btn[0]);
+            });
         });
     }
 
