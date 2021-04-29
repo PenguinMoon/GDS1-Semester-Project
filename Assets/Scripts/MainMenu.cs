@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
     [Header("First Highlighted Button on Each Screen")]
     [SerializeField] GameObject[] btn;
 
+    [SerializeField] ScrollRectScrolling scrollRect;
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -24,6 +26,8 @@ public class MainMenu : MonoBehaviour
         lvlSelectCanvas.SetActive(true);
         mainCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(btn[1]);
+        scrollRect.currBtn = btn[1];
+        scrollRect.nextBtn = btn[1];
     }
 
     public void OnExitButtonClicked()

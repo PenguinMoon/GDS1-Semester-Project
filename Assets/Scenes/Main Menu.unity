@@ -1394,6 +1394,7 @@ MonoBehaviour:
   btn:
   - {fileID: 1886092387}
   - {fileID: 353399231}
+  scrollRect: {fileID: 1073221961}
 --- !u!114 &1036299716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1570,6 +1571,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1894680578}
   offset: 355
+  currBtn: {fileID: 0}
+  nextBtn: {fileID: 0}
+  prevBtn: {fileID: 0}
 --- !u!1 &1147088382
 GameObject:
   m_ObjectHideFlags: 0
