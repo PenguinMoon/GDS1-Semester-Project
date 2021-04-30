@@ -86,6 +86,6 @@ public class ScrollRectScrolling : MonoBehaviour
 
     public void ResetRect()
     {
-        contentRect.anchoredPosition = new Vector2(300, -100);
+        contentRect.anchoredPosition = new Vector2(1000, -100);
     }
 }
