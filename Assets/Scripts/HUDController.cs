@@ -23,6 +23,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject pauseCanvas;   // The initial screen of the pause screen
     [SerializeField] GameObject confirmCanvas;   // The confirmation screen for quitting the level
     [SerializeField] GameObject pauseBG;   // BG for the pause screen
+    [SerializeField] GameObject postProcess;   // Post-processing for the pause screen
     bool isTweenFinished = true;   // Checks if the pause tween is finished
 
     int maxWave = 10;
@@ -104,6 +105,7 @@ public class HUDController : MonoBehaviour
             {
                 Time.timeScale = 0;
                 mainPauseCanvas.SetActive(true);
+                postProcess.SetActive(true);
                 pauseBG.SetActive(true);
                 pauseCanvas.SetActive(true);
                 isTweenFinished = false;
@@ -122,6 +124,7 @@ public class HUDController : MonoBehaviour
                 else
                 {
                     Time.timeScale = 1;
+                    postProcess.SetActive(false);
                     pauseBG.SetActive(false);
                     isTweenFinished = false;
                     LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), 0.25f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
