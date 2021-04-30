@@ -23,6 +23,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject pauseCanvas;   // The initial screen of the pause screen
     [SerializeField] GameObject confirmCanvas;   // The confirmation screen for quitting the level
     [SerializeField] GameObject pauseBG;   // BG for the pause screen
+    bool isTweenFinished = true;   // Checks if the pause tween is finished
 
     int maxWave = 10;
     List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
@@ -97,31 +98,40 @@ public class HUDController : MonoBehaviour
     // Pauses the game and enables pause screen
     public void PauseGame()
     {
-        if (!isPaused)
+        if (isTweenFinished)
         {
-            Time.timeScale = 0;
-            mainPauseCanvas.SetActive(true);
-            pauseBG.SetActive(true);
-            pauseCanvas.SetActive(true);
-            LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.4f).setEase(LeanTweenType.easeOutExpo).setIgnoreTimeScale(true);
-            isPaused = !isPaused;
-        }
-        else
-        {
-            if (onAltScreen)
+            if (!isPaused)
             {
-                OpenMainPauseScreen();
+                Time.timeScale = 0;
+                mainPauseCanvas.SetActive(true);
+                pauseBG.SetActive(true);
+                pauseCanvas.SetActive(true);
+                isTweenFinished = false;
+                LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 0.3f).setEase(LeanTweenType.easeOutExpo).setIgnoreTimeScale(true).setOnComplete(() =>
+                {
+                    isTweenFinished = true;
+                });
+                isPaused = !isPaused;
             }
             else
             {
-                Time.timeScale = 1;
-                pauseBG.SetActive(false);
-                LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), 0.4f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                if (onAltScreen)
                 {
-                    mainPauseCanvas.SetActive(false);
-                    pauseCanvas.SetActive(false);
-                });
-                isPaused = !isPaused;
+                    OpenMainPauseScreen();
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    pauseBG.SetActive(false);
+                    isTweenFinished = false;
+                    LeanTween.move(pauseCanvas.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), 0.25f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+                    {
+                        mainPauseCanvas.SetActive(false);
+                        pauseCanvas.SetActive(false);
+                        isTweenFinished = true;
+                    });
+                    isPaused = !isPaused;
+                }
             }
         }
     }
