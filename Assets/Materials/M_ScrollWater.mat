@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_ScrollWater
-  m_Shader: {fileID: 4800000, guid: d51774401655a274ba083f87d138db3d, type: 3}
+  m_Shader: {fileID: 4800000, guid: ab1a1b520f61b524c9966dcc4c2d9ffa, type: 3}
   m_ShaderKeywords: _DIRECTION_VERTICAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 74beeb7ccb074954f91ea6b40382a0e5, type: 3}
-        m_Scale: {x: 3.2, y: 1}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -80,12 +80,12 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.9
+    - _Opacity: 1
     - _Parallax: 0.02
     - _RowCount: 1
     - _ScrollPosition: -6.8
-    - _ScrollXSpeed: -4.39
-    - _ScrollYSpeed: 0
+    - _ScrollXSpeed: 0
+    - _ScrollYSpeed: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

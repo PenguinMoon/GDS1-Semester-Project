@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
             mainCanvas.SetActive(false);
         });
 
-        LeanTween.rotate(mainCam, new Vector3(0, 90, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        LeanTween.rotate(mainCam, new Vector3(5, 90, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             lvlSelectCanvas.SetActive(true);
             LeanTween.scale(lvlSelectCanvas.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
@@ -64,7 +64,7 @@ public class MainMenu : MonoBehaviour
             lvlSelectCanvas.SetActive(false);
         });
 
-        LeanTween.rotate(mainCam, new Vector3(0, 0, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        LeanTween.rotate(mainCam, new Vector3(5, 0, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
             mainCanvas.SetActive(true);
             LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
@@ -74,4 +74,11 @@ public class MainMenu : MonoBehaviour
         });
     }
 
+    public void OpenOptionsMenu()
+    {
+        LeanTween.rotate(mainCam, new Vector3(5, -90, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
+        {
+
+        });
+    }
 }
