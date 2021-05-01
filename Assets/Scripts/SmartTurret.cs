@@ -109,7 +109,7 @@ public class SmartTurret : Object
 
             //if (rayInfo.collider && rayInfo.collider.gameObject.tag == "Enemy")
             //{
-                foundEnemies.Add(hit.transform);
+            foundEnemies.Add(hit.transform);
             //}
         }
 
@@ -157,7 +157,7 @@ public class SmartTurret : Object
     private void TurnToFace(Vector3 position)
     {
         Quaternion targetRotation = Quaternion.LookRotation(position - gunTransform.position);
-        gunTransform.rotation = Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
+        gunTransform.rotation = targetRotation;//Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
     }
 
     private float GetAngleToPos(Vector3 position)

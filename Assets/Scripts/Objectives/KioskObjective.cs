@@ -22,12 +22,10 @@ public class KioskObjective : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered " + other);
 
-        ReceiveBits(1);
     }
 
-    private void ReceiveBits(int amount)
+    public void ReceiveBits(int amount)
     {
         if (remainingBits > 0)
         {

@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
         // Handle player movement
         if (canInput)
             movementInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
-        
+
         // Handle UI input
         if (!canInput)
         {
@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
             Whack();
             currentWhackDelay = startingWhackDelay;
         }
-        
+
         if (!canInput)
         {
             //workBench.SubmitButton();
@@ -326,6 +326,9 @@ public class Player : MonoBehaviour
             case "Currency":
                 PickupCurrency(other.gameObject);
                 break;
+            case "KioskObjective":
+                interactObject = other.gameObject;
+                break;
         }
     }
 
@@ -363,8 +366,21 @@ public class Player : MonoBehaviour
                 case "Workbench":
                     WhackWorkbench();
                     break;
+                case "KioskObjective":
+                    InteractWithObjective();
+                    break;
             }
     }
+
+    private void InteractWithObjective()
+    {
+        if (inventory["Bits"] > 0)
+        {
+            inventory["Bits"]--;
+            interactObject.GetComponent<KioskObjective>().ReceiveBits(1);
+        }
+    }
+
     private void PlaceSelectedObject()
     {
         if (selectedObject)

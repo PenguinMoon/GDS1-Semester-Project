@@ -14,6 +14,7 @@ TagManager:
   - Workbench
   - WorkshopWall
   - IgnoreOutline
+  - KioskObjective
   layers:
   - Default
   - TransparentFX
