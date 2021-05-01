@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currencyAmountTxt: {fileID: 7776680162170944805}
-  requiredBits: 20
+  requiredBits: 30
   onObjectiveRepaired:
     m_PersistentCalls:
       m_Calls: []
