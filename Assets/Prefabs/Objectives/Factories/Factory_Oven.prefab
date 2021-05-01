@@ -775,7 +775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1853ee085e94e94e98ee735813f9b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorPivotPoint: {fileID: 7425455611853246511}
+  doorPivotPoint: {fileID: 5465668024071062075}
+  openXRotation: -91.5
 --- !u!1 &4289714706198667266
 GameObject:
   m_ObjectHideFlags: 0
