@@ -7,8 +7,13 @@ using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
+    enum Screen { Main, LvlSelect, Options };
+
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject lvlSelectCanvas;
+    [SerializeField] GameObject optionsCanvas;
+
+    Screen currentScreen = Screen.Main;
 
     [Header("First Highlighted Button on Each Screen")]
     [SerializeField] GameObject[] btn;
@@ -32,7 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenLevelSelect()
     {
-        
+        currentScreen = Screen.LvlSelect;
         LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
         {
             mainCanvas.SetActive(false);
@@ -58,11 +63,20 @@ public class MainMenu : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        
-        LeanTween.scale(lvlSelectCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+        if (currentScreen == Screen.LvlSelect)
         {
-            lvlSelectCanvas.SetActive(false);
-        });
+            LeanTween.scale(lvlSelectCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+            {
+                lvlSelectCanvas.SetActive(false);
+            });
+        }
+        else
+        {
+            LeanTween.scale(optionsCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+            {
+                optionsCanvas.SetActive(false);
+            });
+        }
 
         LeanTween.rotate(mainCam, new Vector3(5, 0, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
@@ -76,9 +90,19 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptionsMenu()
     {
+        currentScreen = Screen.Options;
+        LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+        {
+            mainCanvas.SetActive(false);
+        });
+
         LeanTween.rotate(mainCam, new Vector3(5, -90, 0), .9f).setEase(LeanTweenType.easeInOutQuad).setOnComplete(() =>
         {
-
+            optionsCanvas.SetActive(true);
+            LeanTween.scale(optionsCanvas.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
+            {
+                EventSystem.current.SetSelectedGameObject(btn[2]);
+            });
         });
     }
 }
