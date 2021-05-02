@@ -14,7 +14,7 @@ public class Objective_Train : MonoBehaviour
 
     int tweenID = 0;
 
-    private bool isRepaired = false;
+    private bool isRepaired = true;
 
     private void Update()
     {
@@ -49,22 +49,6 @@ public class Objective_Train : MonoBehaviour
         if (LeanTween.descr(tweenID) == null)
         {
             tweenID = LeanTween.rotate(gameObject, Quaternion.LookRotation(waypoints[nextWaypointIndex].position - transform.position).eulerAngles, timeToRotate).id;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            other.gameObject.transform.parent = transform;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            other.gameObject.transform.parent = null;
         }
     }
 

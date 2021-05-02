@@ -135,7 +135,7 @@ public class SmartTurret : Object
 
             TurnToFace(target);
 
-            if (GetFireAngleToPos(target) <= 5f && currentFireDelay <= 0f && isActive)
+            if (currentFireDelay <= 0f && isActive)
             {
                 Fire();
             }
