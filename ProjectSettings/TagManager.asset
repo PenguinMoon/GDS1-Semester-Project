@@ -15,6 +15,7 @@ TagManager:
   - WorkshopWall
   - IgnoreOutline
   - KioskObjective
+  - TrainWaypoint
   layers:
   - Default
   - TransparentFX

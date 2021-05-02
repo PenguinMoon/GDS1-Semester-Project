@@ -28,7 +28,7 @@ MonoBehaviour:
   firePoint: {fileID: 1720204341149385043}
   FOVAngle: 60
   rotSpeed: 4
-  range: 6
+  range: 8
   fireDelay: 0.2
   maxAmmo: 40
   delayBetweenReloading: 0.5

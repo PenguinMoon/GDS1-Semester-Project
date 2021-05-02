@@ -520,6 +520,12 @@ public class Player : MonoBehaviour
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Place");
                 playerUI.ShowHintUIText();
             }
+            if (interactObject.tag == "KioskObjective")
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("Hold [" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Repair");
+                playerUI.ShowHintUIText();
+            }
         }
     }
 

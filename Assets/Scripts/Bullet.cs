@@ -31,14 +31,14 @@ public class Bullet : MonoBehaviour
     {
         if (collision.collider.gameObject.tag == "Enemy")
             OnEnemyHit(collision.gameObject);
-        if (collision.collider.gameObject.tag == "Player")
-            Destroy(gameObject);
+
+
+         Destroy(gameObject);
     }
 
     protected virtual void OnEnemyHit(GameObject enemy)
     {
         DealDamageTo(enemy.GetComponent<Enemy>());
-        Destroy(gameObject);
     }
 
     protected void DealDamageTo(Enemy enemy)
