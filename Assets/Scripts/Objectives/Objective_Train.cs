@@ -12,11 +12,19 @@ public class Objective_Train : MonoBehaviour
     private void OnValidate()
     {
         selfCart = GetComponent<Cinemachine.CinemachineDollyCart>();
-        selfCart.m_Position = 0;
+        if (selfCart)
+        {
+            selfCart.m_Position = 0;
 
-        linkCart.m_Position = selfCart.m_Position - 7.5f;
-        carriageCart.m_Position = selfCart.m_Position - 15f;
+            linkCart.m_Position = selfCart.m_Position - 7.5f;
+            carriageCart.m_Position = selfCart.m_Position - 15f;
 
-        linkCart.m_Speed = carriageCart.m_Speed = selfCart.m_Speed;
+            SetTrainSpeed(0);
+        }
+    }
+
+    public void SetTrainSpeed(float speed)
+    {
+        linkCart.m_Speed = carriageCart.m_Speed = selfCart.m_Speed = speed;
     }
 }
