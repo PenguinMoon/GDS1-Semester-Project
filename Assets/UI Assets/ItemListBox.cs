@@ -8,6 +8,7 @@ public class ItemListBox : ListBox
 {
     public GameObject item;
     public TextMeshProUGUI itemNameText;
+    public RawImage itemImage;
     public TextMeshProUGUI bitsPriceText;
     public TextMeshProUGUI circuitPriceText;
 
@@ -27,6 +28,7 @@ public class ItemListBox : ListBox
     {
         // Update the content according to its contentID.
         itemNameText.text = item.GetComponent<Object>().objectName;
+        itemImage.texture = item.GetComponent<Object>().objectImage;
         bitsPriceText.text = item.GetComponent<Object>().bitsPrice.ToString();
         circuitPriceText.text = item.GetComponent<Object>().circuitsPrice.ToString();
     }

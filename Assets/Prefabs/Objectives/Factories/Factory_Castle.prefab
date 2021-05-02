@@ -3628,6 +3628,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5533054319061580690}
     m_Modifications:
+    - target: {fileID: 661456557403921336, guid: c3b913c6f5356f04aa399d833fc460d6,
+        type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 5255531530330481644, guid: 08a3e3d9ac9909f46ac7d3a7131a9adc,
+        type: 3}
+    - target: {fileID: 3501655612396630055, guid: c3b913c6f5356f04aa399d833fc460d6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5830317702752510059, guid: 08a3e3d9ac9909f46ac7d3a7131a9adc,
+        type: 3}
     - target: {fileID: 5036071401278221436, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
       propertyPath: m_Name
@@ -3731,12 +3743,12 @@ PrefabInstance:
     - target: {fileID: 3600000499507578249, guid: a8d82b549cf3a92439c303f020c9a1f9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 3600000499507578249, guid: a8d82b549cf3a92439c303f020c9a1f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 3600000499507578249, guid: a8d82b549cf3a92439c303f020c9a1f9,
         type: 3}

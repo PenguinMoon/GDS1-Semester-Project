@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 0 },
-        {"Circuits", 0 }
+        {"Bits", 110 },
+        {"Circuits", 110 }
     };
 
     [SerializeField] HUDController hudController;
@@ -546,7 +546,7 @@ public class Player : MonoBehaviour
             if (interactObject.tag == "Bin")
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
-                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Dipose");
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Dispose");
                 playerUI.ShowHintUIText();
             }
         }

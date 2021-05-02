@@ -914,5 +914,6 @@ MonoBehaviour:
   nextListBox: {fileID: 0}
   item: {fileID: 0}
   itemNameText: {fileID: 6305022973885687476}
+  itemImage: {fileID: 889972637}
   bitsPriceText: {fileID: 6666069522242714733}
   circuitPriceText: {fileID: 901384941436572000}
