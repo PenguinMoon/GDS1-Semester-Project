@@ -158,7 +158,6 @@ public class Player : MonoBehaviour
                 workBench.SelectButton();
             }
         }
-
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -343,6 +342,9 @@ public class Player : MonoBehaviour
             case "KioskObjective":
                 interactObject = other.gameObject;
                 break;
+            case "Bin":
+                interactObject = other.gameObject;
+                break;
         }
     }
 
@@ -379,6 +381,9 @@ public class Player : MonoBehaviour
                     break;
                 case "Workbench":
                     WhackWorkbench();
+                    break;
+                case "Bin":
+                    DisposeSelectedObject();
                     break;
             }
     }
@@ -457,6 +462,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void DisposeSelectedObject()
+    {
+        if (selectedObject)
+        {
+            inventory["Bits"] += selectedObject.GetComponent<Object>().bitsPrice;
+            inventory["Circuits"] += selectedObject.GetComponent<Object>().circuitsPrice;
+            selectedObject.GetComponent<Object>().DestroyObject();
+            hudController.UpdateItemSlot(null);
+            selectedObject = null;
+        }
+    }
+
     public void EnterMenu()
     {
         movementSpeed = 0f;
@@ -524,6 +541,12 @@ public class Player : MonoBehaviour
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("Hold [" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Repair");
+                playerUI.ShowHintUIText();
+            }
+            if (interactObject.tag == "Bin")
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Dipose");
                 playerUI.ShowHintUIText();
             }
         }

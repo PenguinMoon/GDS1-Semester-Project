@@ -39,6 +39,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
+      propertyPath: bitsPrefab
+      value: 
+      objectReference: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
+        type: 3}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
       propertyPath: objectName
       value: Machine Gun
       objectReference: {fileID: 0}
@@ -52,6 +58,12 @@ PrefabInstance:
       propertyPath: circuitsPrice
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: circuitsPrefab
+      value: 
+      objectReference: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
+        type: 3}
     - target: {fileID: 9064424375599687995, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

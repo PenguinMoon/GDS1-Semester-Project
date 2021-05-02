@@ -97,8 +97,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plate: {fileID: 0}
   isBeingHeld: 0
+  objectName: Ammo
+  objectImage: {fileID: 2800000, guid: 1b39c7a0a1bef7c4eaedd0cadd642d2d, type: 3}
   bitsPrice: 1
   circuitsPrice: 0
+  bitsPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
+    type: 3}
+  circuitsPrefab: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
+    type: 3}
 --- !u!65 &4474708606472557035
 BoxCollider:
   m_ObjectHideFlags: 0

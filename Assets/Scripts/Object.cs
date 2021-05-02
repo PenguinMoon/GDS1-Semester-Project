@@ -16,6 +16,7 @@ public class Object : MonoBehaviour
     [SerializeField] public int bitsPrice;
     [SerializeField] public int circuitsPrice;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,10 @@ public class Object : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }

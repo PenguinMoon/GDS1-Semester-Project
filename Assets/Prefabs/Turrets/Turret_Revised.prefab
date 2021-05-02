@@ -15305,6 +15305,10 @@ MonoBehaviour:
   objectImage: {fileID: 2800000, guid: 8223ec5973d642c4092fd8bef5c819ed, type: 3}
   bitsPrice: 3
   circuitsPrice: 0
+  bitsPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
+    type: 3}
+  circuitsPrefab: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
+    type: 3}
   gunTransform: {fileID: 9064424375889875366}
   baseTransform: {fileID: 9064424375913804581}
   enemyMask:
