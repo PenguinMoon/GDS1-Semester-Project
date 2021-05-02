@@ -14,7 +14,7 @@ public class Objective_Train : MonoBehaviour
 
     int tweenID = 0;
 
-    private bool isRepaired = true;
+    private bool isRepaired = false;
 
     private void Update()
     {
