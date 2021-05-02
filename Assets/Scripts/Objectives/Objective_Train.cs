@@ -4,66 +4,19 @@ using UnityEngine;
 
 public class Objective_Train : MonoBehaviour
 {
-    [SerializeField] List<Transform> waypoints;
+    Cinemachine.CinemachineDollyCart selfCart;
 
-    int nextWaypointIndex = 0;
+    [SerializeField] Cinemachine.CinemachineDollyCart linkCart;
+    [SerializeField] Cinemachine.CinemachineDollyCart carriageCart;
 
-    [SerializeField] float movementSpeed = 5f;
-    [SerializeField] float timeToRotate = 0.5f;
-    [SerializeField] float waypointTolerance = 1f;
-
-    int tweenID = 0;
-
-    private bool isRepaired = false;
-
-    private void Update()
+    private void OnValidate()
     {
-        if (isRepaired)
-        {
-            float distance = Vector3.Distance(transform.position, waypoints[nextWaypointIndex].position);
+        selfCart = GetComponent<Cinemachine.CinemachineDollyCart>();
+        selfCart.m_Position = 0;
 
-            if (distance < waypointTolerance)
-            {
-                nextWaypointIndex = nextWaypointIndex < waypoints.Count - 1 ? nextWaypointIndex + 1 : 0;
-                RotateInDir();
-            }
+        linkCart.m_Position = selfCart.m_Position - 7.5f;
+        carriageCart.m_Position = selfCart.m_Position - 15f;
 
-            MoveForward();
-        }
-    }
-
-    public void RepairTrain()
-    {
-        isRepaired = true;
-    }
-
-    private void MoveForward()
-    {
-        Vector3 towardsTarget = waypoints[nextWaypointIndex].position - transform.position;
-
-        transform.position += (towardsTarget.normalized * movementSpeed) * Time.deltaTime;
-    }
-
-    private void RotateInDir()
-    {
-        if (LeanTween.descr(tweenID) == null)
-        {
-            tweenID = LeanTween.rotate(gameObject, Quaternion.LookRotation(waypoints[nextWaypointIndex].position - transform.position).eulerAngles, timeToRotate).id;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        for (int i = 0; i < waypoints.Count; i++)
-        {
-            int toIndex = i + 1;
-
-            if (i == waypoints.Count - 1)
-                toIndex = 0;
-
-            Gizmos.DrawLine(waypoints[i].position, waypoints[toIndex].position);
-
-            Gizmos.DrawWireSphere(waypoints[i].position, waypointTolerance);
-        }
+        linkCart.m_Speed = carriageCart.m_Speed = selfCart.m_Speed;
     }
 }
