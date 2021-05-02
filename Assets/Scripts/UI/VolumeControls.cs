@@ -19,9 +19,9 @@ public class VolumeControls : MonoBehaviour
         sfxSlider.value = PlayerPrefs.GetFloat("SFX Vol", 0.5f);
     }
 
-        // --- Audio related functions below ---
-        // Sets current master volume and saves it
-        public void SetMasterVol()
+    // --- Audio related functions below ---
+    // Sets current master volume and saves it
+    public void SetMasterVol()
     {
         float masterVol = masterSlider.value;
         mixer.SetFloat("MasterVol", Mathf.Log10(masterVol) * 20);
