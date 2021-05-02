@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992929277256dd14fa8780d04481e6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.8
+  moveSpeed: 8
   maxHealth: 4
   bitsPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
     type: 3}

@@ -16,6 +16,7 @@ TagManager:
   - IgnoreOutline
   - KioskObjective
   - TrainWaypoint
+  - Bin
   layers:
   - Default
   - TransparentFX
