@@ -9,6 +9,6 @@ public class Factory_Oven : MonoBehaviour
 
     public void OpenDoor()
     {
-        LeanTween.rotate(doorPivotPoint, new Vector3(openXRotation, 0, 0), 2f);
+        LeanTween.rotateLocal(doorPivotPoint, new Vector3(openXRotation, 0, 0), 2f);
     }
 }

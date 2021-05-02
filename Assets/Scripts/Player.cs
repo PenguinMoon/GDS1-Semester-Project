@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference interactAction = null;
     [SerializeField] private InputActionReference whackAction = null;
 
+    private bool isInteractKeyHeld = false;
+    private float maxRepairDelay = 0.1f;
+    private float repairDelay = 0f;
 
     private void Awake()
     {
@@ -103,6 +106,14 @@ public class Player : MonoBehaviour
         // Reduce hit time so player can whack again
         if (currentWhackDelay > 0)
             currentWhackDelay -= Time.deltaTime;
+
+        //Check should dump bits into objective
+        if (isInteractKeyHeld && interactObject && interactObject.tag == "KioskObjective")
+            InteractWithObjective();
+
+        //Decrement repair delay if necessary
+        if (repairDelay > 0)
+            repairDelay -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -154,8 +165,11 @@ public class Player : MonoBehaviour
     {
         if (!context.performed)
         {
+            isInteractKeyHeld = false;
             return;
         }
+
+        isInteractKeyHeld = true;
         Interact();
     }
 
@@ -366,18 +380,16 @@ public class Player : MonoBehaviour
                 case "Workbench":
                     WhackWorkbench();
                     break;
-                case "KioskObjective":
-                    InteractWithObjective();
-                    break;
             }
     }
 
     private void InteractWithObjective()
     {
-        if (inventory["Bits"] > 0)
+        if (inventory["Bits"] > 0 && repairDelay <= 0)
         {
             inventory["Bits"]--;
             interactObject.GetComponent<KioskObjective>().ReceiveBits(1);
+            repairDelay = maxRepairDelay;
         }
     }
 
