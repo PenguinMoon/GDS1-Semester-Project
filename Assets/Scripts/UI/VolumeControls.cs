@@ -14,9 +14,9 @@ public class VolumeControls : MonoBehaviour
     void Start()
     {
         // Sets volume sliders to match current volume
-        masterSlider.value = PlayerPrefs.GetFloat("Master Vol", 0.5f);
-        musicSlider.value = PlayerPrefs.GetFloat("Music Vol", 0.5f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFX Vol", 0.5f);
+        masterSlider.value = PlayerPrefs.GetFloat("Master Vol", 1f);
+        musicSlider.value = PlayerPrefs.GetFloat("Music Vol", 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFX Vol", 1f);
     }
 
     // --- Audio related functions below ---

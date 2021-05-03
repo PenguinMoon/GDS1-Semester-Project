@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
@@ -22,6 +22,10 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] GameObject mainCam;
 
+    [Header("Audio Stuff")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip btnSound;
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -37,6 +41,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenLevelSelect()
     {
+        audioSource.PlayOneShot(btnSound);
         currentScreen = Screen.LvlSelect;
         LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
         {
@@ -58,11 +63,13 @@ public class MainMenu : MonoBehaviour
 
     public void OnExitButtonClicked()
     {
+        audioSource.PlayOneShot(btnSound);
         Application.Quit();
     }
 
     public void OpenMainMenu()
     {
+        audioSource.PlayOneShot(btnSound);
         if (currentScreen == Screen.LvlSelect)
         {
             LeanTween.scale(lvlSelectCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
@@ -90,6 +97,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptionsMenu()
     {
+        audioSource.PlayOneShot(btnSound);
         currentScreen = Screen.Options;
         LeanTween.scale(mainCanvas.GetComponent<RectTransform>(), new Vector3(0, 0, 0), .5f).setEase(LeanTweenType.easeOutQuad).setOnComplete(() =>
         {
