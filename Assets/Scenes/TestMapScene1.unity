@@ -4199,11 +4199,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2170497614942292901, guid: dfe22edc0aceaa042947ca0383a58aa2,
         type: 2}
-    - target: {fileID: 1056117392081900761, guid: eb53e9b6360969b42a6226a5b18570aa,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
     - target: {fileID: 1056117392563064139, guid: eb53e9b6360969b42a6226a5b18570aa,
         type: 3}
       propertyPath: m_AnchorMax.x
