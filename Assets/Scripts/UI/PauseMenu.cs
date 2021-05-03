@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     private void OnEnable()
     {
         EventSystem.current.SetSelectedGameObject(btn.gameObject);
+        btn.transform.localScale = new Vector3(1.2f, 1.2f, 0);
         btn.OnSelect(null);
     }
 
