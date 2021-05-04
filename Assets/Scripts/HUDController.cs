@@ -22,6 +22,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject mainPauseCanvas;    // The main canvas of the pause screen
     [SerializeField] GameObject pauseCanvas;   // The initial screen of the pause screen
     [SerializeField] GameObject confirmCanvas;   // The confirmation screen for quitting the level
+    [SerializeField] GameObject optionsCanvas;   // The options screen
     [SerializeField] GameObject pauseBG;   // BG for the pause screen
     [SerializeField] GameObject postProcess;   // Post-processing for the pause screen
     bool isTweenFinished = true;   // Checks if the pause tween is finished
@@ -144,6 +145,7 @@ public class HUDController : MonoBehaviour
     public void OpenMainPauseScreen()
     {
         confirmCanvas.SetActive(false);
+        optionsCanvas.SetActive(false);
         pauseCanvas.SetActive(true);
         onAltScreen = false;
     }
@@ -153,6 +155,13 @@ public class HUDController : MonoBehaviour
     {
         pauseCanvas.SetActive(false);
         confirmCanvas.SetActive(true);
+        onAltScreen = true;
+    }
+
+    public void OpenOptionsScreen()
+    {
+        pauseCanvas.SetActive(false);
+        optionsCanvas.SetActive(true);
         onAltScreen = true;
     }
 }
