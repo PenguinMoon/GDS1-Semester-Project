@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 286465968133155389}
   m_Layer: 0
   m_Name: TurretPlate
-  m_TagString: TurretPlate
+  m_TagString: ObjectPlate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

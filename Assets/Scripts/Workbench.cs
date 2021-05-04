@@ -12,7 +12,7 @@ public class Workbench : MonoBehaviour
     [SerializeField] int turretCost = 1;
     public AnimationCurve curve;
 
-    private Player playerRef;
+    [SerializeField] private Player playerRef;
 
     private void Awake()
     {
@@ -34,9 +34,11 @@ public class Workbench : MonoBehaviour
 
     public void Interact(Player player)
     {
-        if (!workbench.activeSelf && !LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
+        if (!workbench.activeSelf && !LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject) && !playerRef)
         {
+            Debug.Log("ACTIVATING WB");
             playerRef = player;
+            if(playerRef)
             StartCoroutine("ActivateWorkbench");
         }
     }
@@ -53,12 +55,16 @@ public class Workbench : MonoBehaviour
 
     public void StopInteract()
     {
-            workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.0f, 0.0f, 1), 0.5f).setEaseOutExpo().setOnComplete(DeactivateWorkbench);
-            playerRef.ExitMenu();
+        workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.0f, 0.0f, 1), 0.3f).setEaseOutExpo();
+        StartCoroutine("DeactivateWorkbench");
+        if(playerRef)
+        playerRef.ExitMenu();
+        playerRef = null;
     }
 
-    public void DeactivateWorkbench()
+    IEnumerator DeactivateWorkbench()
     {
+        yield return new WaitForSeconds(0.3f);
         workbench.GetComponent<Canvas>().enabled = false;
         if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
         {
