@@ -24,6 +24,7 @@ public class Factory_Oven : MonoBehaviour
     {
         foreach (Collider col in doorChildren)
         {
+            if(col)
             col.enabled = isEnabled;
         }
     }

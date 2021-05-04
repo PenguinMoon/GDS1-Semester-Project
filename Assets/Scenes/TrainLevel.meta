@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scenes/TrainLevel.meta
 guid: c7c68c4e4fc947d4eabffa6ef0b1e86a
+=======
+guid: 90dcefd6e40115c40bb5973a89c1c41c
+>>>>>>> 31d8a63f43085cb422648bf4a3e0810d14f53e77:Assets/Scenes/PostProcessingTest_Profiles.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

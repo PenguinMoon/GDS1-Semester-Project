@@ -34,7 +34,7 @@ public class Workbench : MonoBehaviour
 
     public void Interact(Player player)
     {
-        if (!workbench.activeSelf)
+        if (!workbench.activeSelf && !LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
         {
             playerRef = player;
             StartCoroutine("ActivateWorkbench");
@@ -45,15 +45,15 @@ public class Workbench : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
         playerRef.EnterMenu();
-        StartCoroutine("StartSelectButton", 0f);
         workbench.SetActive(true);
         workbench.GetComponent<Canvas>().enabled = true;
+        StartCoroutine("StartSelectButton", 0.1f);
         workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.06f, 0.06f, 1), 0.5f).setEase(curve);
     }
 
     public void StopInteract()
     {
-            workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.0f, 0.0f, 1), 0.3f).setEaseOutExpo().setOnComplete(DeactivateWorkbench);
+            workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.0f, 0.0f, 1), 0.5f).setEaseOutExpo().setOnComplete(DeactivateWorkbench);
             playerRef.ExitMenu();
     }
 
@@ -69,7 +69,7 @@ public class Workbench : MonoBehaviour
     public void DenyAnimation()
     {
         if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
-        workbench.GetComponent<Canvas>().transform.LeanMoveX(0.5f, 0.1f).setLoopPingPong(2);
+        workbench.GetComponent<Canvas>().transform.LeanMoveX(0.1f, 0.1f).setLoopPingPong(2);
     }
 
     public void SelectButton()
