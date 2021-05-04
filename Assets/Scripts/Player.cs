@@ -54,6 +54,10 @@ public class Player : MonoBehaviour
     private float maxRepairDelay = 0.1f;
     private float repairDelay = 0f;
 
+    [Header("Audio Stuff")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] SFXData sfxData;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -125,7 +129,7 @@ public class Player : MonoBehaviour
             Quaternion lookDirection = Quaternion.LookRotation(movementInput);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
         }
-
+        
         Vector3 vel = movementInput * movementSpeed;
 
         if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
@@ -413,6 +417,7 @@ public class Player : MonoBehaviour
     {
         if (selectedObject)
         {
+            audioSource.PlayOneShot(sfxData.TowerPlace);
             selectedObject.transform.position = interactObject.transform.position;
             //selectedObject.transform.rotation = interactObject.transform.rotation;
             selectedObject.transform.SetParent(interactObject.transform);
@@ -431,6 +436,7 @@ public class Player : MonoBehaviour
     {
         if (!selectedObject)
         {
+            audioSource.PlayOneShot(sfxData.TowerPickup);
             interactObject.transform.position = heldObjectPoint.position;
             interactObject.transform.rotation = heldObjectPoint.transform.rotation;
             interactObject.transform.SetParent(heldObjectPoint);
