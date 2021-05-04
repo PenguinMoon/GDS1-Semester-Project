@@ -78,7 +78,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        hudController.UpdateCash(inventory);
+        if (hudController)
+            hudController.UpdateCash(inventory);
 
         //OLD INPUT//
         //Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -129,8 +130,6 @@ public class Player : MonoBehaviour
 
         if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
         {
-            Debug.Log(hit.distance);
-
             if (hit.distance > 0.2f)
                 vel += Physics.gravity * 1.5f;
         }

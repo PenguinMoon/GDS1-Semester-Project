@@ -9,10 +9,14 @@ public class Objective_Train : MonoBehaviour
     [SerializeField] Cinemachine.CinemachineDollyCart linkCart;
     [SerializeField] Cinemachine.CinemachineDollyCart carriageCart;
 
-    [SerializeField] bool generateTrainTrack = false;
+    
     [SerializeField] GameObject trainTrackObj;
-    [SerializeField] List<GameObject> visualizedTrack = new List<GameObject>();
+    [SerializeField] Transform trackParent;
+    [SerializeField] bool generateTrainTrack = false;
+    List<GameObject> visualizedTrack = new List<GameObject>();
     Cinemachine.CinemachinePathBase track;
+
+    [SerializeField] ParticleSystem smokeParticle;
 
     private void OnValidate()
     {
@@ -26,7 +30,7 @@ public class Objective_Train : MonoBehaviour
 
             track = selfCart.m_Path;
 
-            SetTrainSpeed(15);
+            SetTrainSpeed(0);
         }
 
         if (generateTrainTrack)
@@ -36,19 +40,26 @@ public class Objective_Train : MonoBehaviour
     public void SetTrainSpeed(float speed)
     {
         linkCart.m_Speed = carriageCart.m_Speed = selfCart.m_Speed = speed;
+
+        if (speed > 0)
+            smokeParticle.Play();
     }
 
     private void GenerateTrack()
     {
         foreach (GameObject g in visualizedTrack)
         {
-            DestroyImmediate(g);
+            UnityEditor.EditorApplication.delayCall += () =>
+            {
+                if (g != null)
+                    DestroyImmediate(g);
+            };
         }
         visualizedTrack.Clear();
 
         for (int i = 0; i < track.PathLength; i+=5)
         {
-            GameObject obj = Instantiate(trainTrackObj, transform);
+            GameObject obj = Instantiate(trainTrackObj, trackParent);
             Cinemachine.CinemachineDollyCart cart = obj.GetComponent<Cinemachine.CinemachineDollyCart>();
             cart.m_Path = track;
             cart.m_Position = i;

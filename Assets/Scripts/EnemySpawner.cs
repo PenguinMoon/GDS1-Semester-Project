@@ -78,7 +78,19 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, Vector3.one * 0.5f);
+        Gizmos.DrawCube(transform.position, Vector3.one);
+
+        Gizmos.color = Color.green;
+        for (int i = 0; i < _enemyGoal.Count; i++)
+        {
+            if (i == 0)
+            {
+                Gizmos.DrawLine(transform.position, _enemyGoal[i].position);
+            }
+            
+            if (i < _enemyGoal.Count-1)
+                Gizmos.DrawLine(_enemyGoal[i].position, _enemyGoal[i+1].position);
+        }
     }
 
 }
