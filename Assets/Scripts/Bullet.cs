@@ -32,8 +32,8 @@ public class Bullet : MonoBehaviour
         if (collision.collider.gameObject.tag == "Enemy")
             OnEnemyHit(collision.gameObject);
 
-
-         Destroy(gameObject);
+        if (!(collision.collider.gameObject.tag == "Player" && collision.collider.gameObject.tag == "Bullet"))
+            Destroy(gameObject);
     }
 
     protected virtual void OnEnemyHit(GameObject enemy)
