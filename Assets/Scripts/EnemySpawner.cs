@@ -16,9 +16,9 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     private List<Transform> _enemyGoal;
-    
 
-    private float _timeTilNextWave = 10f;
+
+    private float _timeTilNextWave = 20f;
     public int _waveIndex = 0;
     public bool isFinished = false;
 
@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitWhile(LaneFull);
             SpawnEnemy();
-            yield return new WaitForSeconds(_spawnDelay);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 
@@ -87,9 +87,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 Gizmos.DrawLine(transform.position, _enemyGoal[i].position);
             }
-            
-            if (i < _enemyGoal.Count-1)
-                Gizmos.DrawLine(_enemyGoal[i].position, _enemyGoal[i+1].position);
+
+            if (i < _enemyGoal.Count - 1)
+                Gizmos.DrawLine(_enemyGoal[i].position, _enemyGoal[i + 1].position);
         }
     }
 

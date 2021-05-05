@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 110 },
-        {"Circuits", 110 }
+        {"Bits", 0 },
+        {"Circuits", 0 }
     };
 
     [SerializeField] HUDController hudController;
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour
             Quaternion lookDirection = Quaternion.LookRotation(movementInput);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
         }
-        
+
         Vector3 vel = movementInput * movementSpeed;
 
         if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
