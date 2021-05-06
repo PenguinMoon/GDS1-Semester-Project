@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     [Header("Audio Stuff")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] SFXData sfxData;
-    float stepRate = 0.3f;  // Time between each footstep sound
+    float stepRate = 0.4f;  // Time between each footstep sound
     float stepDelay;    // Current counter of the time between each footstep
 
     private void Awake()
@@ -270,7 +270,7 @@ public class Player : MonoBehaviour
                 playerUI.isDraining = false;
                 sprintRoutine = StartCoroutine(RecoverSprint());
                 movementSpeed = 7f;
-                stepRate = 0.3f;
+                stepRate = 0.4f;
                 isSprinting = false;
                 sprintParticle.Stop();
                 Debug.Log("Stop Sprinting");
@@ -287,7 +287,7 @@ public class Player : MonoBehaviour
         sprintParticle.Play();
         Debug.Log("Sprinting");
         playerUI.isDraining = true;
-        stepRate = 0.15f;
+        stepRate = 0.2f;
         while (sprintTime > 0f)
         {
             sprintTime -= Time.deltaTime * maxSprintTime;
@@ -300,7 +300,7 @@ public class Player : MonoBehaviour
         sprintParticle.Stop();
         sprintRoutine = StartCoroutine(RecoverSprint());
         Debug.Log("Stop Sprinting");
-        stepRate = 0.3f;
+        stepRate = 0.4f;
     }
 
     // Recovers sprint time/stamina over time after a 2 second delay
@@ -481,6 +481,7 @@ public class Player : MonoBehaviour
     {
         if (interactObject.tag == "Turret")
         {
+            audioSource.PlayOneShot(sfxData.Whack);
             interactObject.GetComponent<SmartTurret>().HitByPlayer();
         }
     }
