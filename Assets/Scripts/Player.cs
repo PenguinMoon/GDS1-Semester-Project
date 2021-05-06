@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 110 },
-        {"Circuits", 110 }
+        {"Bits", 0 },
+        {"Circuits", 0 }
     };
 
     [SerializeField] HUDController hudController;
@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
     [Header("Audio Stuff")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] SFXData sfxData;
+    float stepRate = 0.3f;  // Time between each footstep sound
+    float stepDelay;    // Current counter of the time between each footstep
 
     private void Awake()
     {
@@ -78,6 +80,8 @@ public class Player : MonoBehaviour
 
         var dvc = InputSystem.GetDevice<VirtualKeyboardDevice>();
         InputSystem.EnableDevice(dvc);
+
+        stepDelay = 0;
     }
 
     void Update()
@@ -119,6 +123,8 @@ public class Player : MonoBehaviour
         //Decrement repair delay if necessary
         if (repairDelay > 0)
             repairDelay -= Time.deltaTime;
+
+        stepDelay -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -126,10 +132,15 @@ public class Player : MonoBehaviour
         // Check if there is movement input before rotating
         if (movementInput != Vector3.zero)
         {
+            if (stepDelay <= 0f)
+            {
+                audioSource.PlayOneShot(sfxData.Footstep);
+                stepDelay = stepRate;
+            }
             Quaternion lookDirection = Quaternion.LookRotation(movementInput);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
         }
-        
+
         Vector3 vel = movementInput * movementSpeed;
 
         if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
@@ -259,6 +270,7 @@ public class Player : MonoBehaviour
                 playerUI.isDraining = false;
                 sprintRoutine = StartCoroutine(RecoverSprint());
                 movementSpeed = 7f;
+                stepRate = 0.3f;
                 isSprinting = false;
                 sprintParticle.Stop();
                 Debug.Log("Stop Sprinting");
@@ -275,6 +287,7 @@ public class Player : MonoBehaviour
         sprintParticle.Play();
         Debug.Log("Sprinting");
         playerUI.isDraining = true;
+        stepRate = 0.15f;
         while (sprintTime > 0f)
         {
             sprintTime -= Time.deltaTime * maxSprintTime;
@@ -287,6 +300,7 @@ public class Player : MonoBehaviour
         sprintParticle.Stop();
         sprintRoutine = StartCoroutine(RecoverSprint());
         Debug.Log("Stop Sprinting");
+        stepRate = 0.3f;
     }
 
     // Recovers sprint time/stamina over time after a 2 second delay

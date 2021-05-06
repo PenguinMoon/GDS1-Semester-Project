@@ -9,7 +9,7 @@ public class Objective_Train : MonoBehaviour
     [SerializeField] Cinemachine.CinemachineDollyCart linkCart;
     [SerializeField] Cinemachine.CinemachineDollyCart carriageCart;
 
-    
+
     [SerializeField] GameObject trainTrackObj;
     [SerializeField] Transform trackParent;
     [SerializeField] bool generateTrainTrack = false;
@@ -17,6 +17,11 @@ public class Objective_Train : MonoBehaviour
     Cinemachine.CinemachinePathBase track;
 
     [SerializeField] ParticleSystem smokeParticle;
+
+    private void Awake()
+    {
+        GenerateTrack();
+    }
 
     private void OnValidate()
     {
@@ -57,7 +62,7 @@ public class Objective_Train : MonoBehaviour
         }
         visualizedTrack.Clear();
 
-        for (int i = 0; i < track.PathLength; i+=5)
+        for (int i = 0; i < track.PathLength; i += 5)
         {
             GameObject obj = Instantiate(trainTrackObj, trackParent);
             Cinemachine.CinemachineDollyCart cart = obj.GetComponent<Cinemachine.CinemachineDollyCart>();

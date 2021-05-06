@@ -15313,7 +15313,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6209267294437973967, guid: 52cae6db6fca31944b0df7c549ce291b,
     type: 3}
   firePoint: {fileID: 7352072701068594454}
-  FOVAngle: 90
+  FOVAngle: 360
   rotSpeed: 10
   range: 10
   fireDelay: 0.5

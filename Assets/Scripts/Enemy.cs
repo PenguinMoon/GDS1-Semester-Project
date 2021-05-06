@@ -6,11 +6,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     float health = 0;
-    [SerializeField] float maxHealth = 0;
+    float maxHealth = 2f;
 
     [SerializeField] GameObject bitsPrefab;
     [SerializeField] GameObject circuitsPrefab;
-    [SerializeField, Range(0, 10)] int amountOfCurrencyToDrop = 2;
+    int amountOfCurrencyToDrop = 0;
 
     bool willDropCircuits = false;
     [SerializeField] Material circuitDropMaterial;
@@ -25,12 +25,17 @@ public class Enemy : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         enemyUI = GetComponentInChildren<EnemyUI>();
 
-        health = maxHealth;
-
         willDropCircuits = Random.Range(0, 100) < 10;
 
         if (willDropCircuits)
+        {
             rend.material = circuitDropMaterial;
+            maxHealth *= 3f;
+        }
+
+        health = maxHealth;
+
+        amountOfCurrencyToDrop = Random.Range(0, 100) < 40 ? 1 : 0;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,7 +43,7 @@ public class Enemy : MonoBehaviour
         switch (collision.collider.gameObject.tag)
         {
             case "WorkshopWall":
-                Destroy(this.gameObject);
+                Destroy(gameObject);
                 break;
         }
     }
