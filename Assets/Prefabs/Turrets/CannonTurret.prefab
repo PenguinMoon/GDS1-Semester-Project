@@ -7,6 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3519591515660458230, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519591515660458230, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -5879946881041096815, guid: dcaec74349120a64a82319855a0f9182,
+        type: 2}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: range
@@ -17,6 +28,11 @@ PrefabInstance:
       propertyPath: FOVAngle
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: fireClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bf60508f2c116754382daae3c58e3e42, type: 3}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: rotSpeed

@@ -18,10 +18,6 @@ MonoBehaviour:
   objectImage: {fileID: 2800000, guid: 45c67548df7790d4e8020f73d7983a99, type: 3}
   bitsPrice: 2
   circuitsPrice: 1
-  bitsPrefab: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
-    type: 3}
-  circuitsPrefab: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
-    type: 3}
   gunTransform: {fileID: 870292457618660835}
   baseTransform: {fileID: 870292457617293152}
   enemyMask:
@@ -42,6 +38,8 @@ MonoBehaviour:
   - {fileID: 3374042022704030768}
   - {fileID: 1365823930735374090}
   - {fileID: 7812861540461108645}
+  audioSource: {fileID: 4683939622494573747}
+  fireClip: {fileID: 8300000, guid: a920b06025aef2f499f40ef43f7bdeb4, type: 3}
   fireParticles: {fileID: 183051324965408022}
 --- !u!1 &8241922787849937817
 GameObject:
@@ -4934,6 +4932,12 @@ PrefabInstance:
 --- !u!1 &870292457321549747 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9064424376121377782, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8203495359863917637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4683939622494573747 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3519591515660458230, guid: d6b56bac53776c44fb5dff96ffeae4a1,
     type: 3}
   m_PrefabInstance: {fileID: 8203495359863917637}
   m_PrefabAsset: {fileID: 0}

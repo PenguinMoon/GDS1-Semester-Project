@@ -45,6 +45,10 @@ public class SmartTurret : Object
 
     Vector3 debugTargetPos = Vector3.zero;
 
+    [Header("Audio Stuff")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip fireClip;
+
     private void Start()
     {
         currentAmmo = maxAmmo;
@@ -148,6 +152,7 @@ public class SmartTurret : Object
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         currentFireDelay = fireDelay;
 
+        audioSource.PlayOneShot(fireClip);
         PlayParticle(ParticleEffects.Fire);
 
         currentAmmo--;

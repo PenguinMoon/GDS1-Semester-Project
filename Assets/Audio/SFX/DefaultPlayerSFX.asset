@@ -14,9 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPlace: {fileID: 8300000, guid: b2d71ea5468fc944793c28ad9bd3e862, type: 3}
   towerPickup: {fileID: 8300000, guid: 4896a95e9878d4540bbb4ce41ef55dd4, type: 3}
-  footsteps:
-  - {fileID: 8300000, guid: 92cbb4b3da8fccc499e448d7cda44bd0, type: 3}
-  - {fileID: 8300000, guid: 0976beb0c99e4e24f8f05cbd04bcadb5, type: 3}
-  whacks:
-  - {fileID: 8300000, guid: 055627b3f07cf804494d0d649d9deb95, type: 3}
-  - {fileID: 8300000, guid: 8efa9028be88b2e49a9255e95ab7c591, type: 3}
+  footstep: {fileID: 8300000, guid: 625114eaca64ab047b72c51c89a2d52e, type: 3}
+  whack: {fileID: 8300000, guid: 8efa9028be88b2e49a9255e95ab7c591, type: 3}
