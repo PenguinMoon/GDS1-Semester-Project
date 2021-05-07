@@ -7,8 +7,6 @@ public class Cannonball : Bullet
     float explosionRadius = 5f;
 
     [SerializeField] GameObject explosionPrefab;
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip clip;
 
     protected override void OnEnemyHit(GameObject enemy)
     {

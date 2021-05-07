@@ -32,7 +32,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fireClip
       value: 
-      objectReference: {fileID: 8300000, guid: bf60508f2c116754382daae3c58e3e42, type: 3}
+      objectReference: {fileID: 8300000, guid: 3af97c829864ff942b7d1cc8ec546d92, type: 3}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
       propertyPath: rotSpeed
