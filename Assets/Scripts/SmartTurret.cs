@@ -16,7 +16,7 @@ public class SmartTurret : Object
 
     [HideInInspector] public bool repaired = true;
     [SerializeField] bool hasInfiniteAmmo = false;
-    [SerializeField] float FOVAngle = 360f;
+    float FOVAngle = 360f;
     float viewAngle = 0f;
     [SerializeField] float rotSpeed = 2f;
     [SerializeField] float range = 15f;
@@ -105,20 +105,14 @@ public class SmartTurret : Object
 
     private void AimGun()
     {
-        RaycastHit[] hits = Physics.SphereCastAll(baseTransform.position, range, transform.forward, 1f, enemyMask);
+        Collider[] colls = Physics.OverlapSphere(baseTransform.position, range, enemyMask);
 
         List<Transform> foundEnemies = new List<Transform>();
 
-        foreach (RaycastHit hit in hits)
+        foreach (Collider coll in colls)
         {
-            //Commented this out as it was causing issues with the new enemy navigation ??????
-
-            Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo, enemyMask);
-
-            if (rayInfo.collider)
-            {
-                foundEnemies.Add(hit.transform);
-            }
+            Debug.DrawLine(firePoint.position, coll.transform.position, Color.blue);
+            foundEnemies.Add(coll.transform);
         }
 
 
@@ -129,11 +123,11 @@ public class SmartTurret : Object
         //Restrict view angle by half when turret is being held
         viewAngle = isBeingHeld ? FOVAngle * 0.5f : FOVAngle;
 
-        if (viewAngle < 40f)
-            viewAngle = 40f;
-
-        if (closestEnemy && GetAngleToPos(closestEnemy.position) <= viewAngle)
+        if (closestEnemy)
         {
+            if (isBeingHeld && !(GetAngleToPos(closestEnemy.position) <= viewAngle))
+                return;
+
             Vector3 target = closestEnemy.position;
 
             if (Vector3.Distance(baseTransform.position, target) > 5f)
@@ -175,13 +169,6 @@ public class SmartTurret : Object
     {
         Vector3 targetDir = position - baseTransform.position;
         float angle = Vector3.Angle(baseTransform.forward, targetDir);
-        return angle;
-    }
-
-    private float GetFireAngleToPos(Vector3 position)
-    {
-        Vector3 targetDir = position - gunTransform.position;
-        float angle = Vector3.Angle(gunTransform.forward, targetDir);
         return angle;
     }
 
