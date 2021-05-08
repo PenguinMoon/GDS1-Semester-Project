@@ -106,7 +106,11 @@ public class EnemySpawner : MonoBehaviour
     private void GenerateLane()
     {
         foreach (GameObject g in visualLane)
-            Destroy(g);
+            UnityEditor.EditorApplication.delayCall += () =>
+            {
+                if (g != null)
+                    DestroyImmediate(g);
+            };
 
         for (int i = 0; i < _enemyGoal.Count; i++)
         {
@@ -119,13 +123,19 @@ public class EnemySpawner : MonoBehaviour
 
 
             Vector3 pos = (previousValue.position + _enemyGoal[i].position) / 2;
-            pos.y = -0.4f;
+
+            Physics.Raycast(pos, Vector3.down, out RaycastHit hit);
+            if (hit.collider)
+                pos.y = hit.point.y;
+
             Quaternion rot = Quaternion.LookRotation(_enemyGoal[i].position - previousValue.position);
             float dist = Vector3.Distance(previousValue.position, _enemyGoal[i].position);
 
             GameObject tile = Instantiate(laneTile, pos, rot);
             tile.transform.localScale = new Vector3(1, 0.05f, dist + 1);
             tile.transform.SetParent(transform);
+
+            visualLane.Add(tile);
         }
 
         generateLane = false;
