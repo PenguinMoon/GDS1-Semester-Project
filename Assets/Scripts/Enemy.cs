@@ -38,15 +38,27 @@ public class Enemy : MonoBehaviour
         amountOfCurrencyToDrop = Random.Range(0, 100) < 40 ? 1 : 0;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        switch (collision.collider.gameObject.tag)
+        switch (other.tag)
         {
             case "WorkshopWall":
                 Destroy(gameObject);
                 break;
         }
     }
+
+    //Changed so player can walk through the area
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    switch (collision.collider.gameObject.tag)
+    //    {
+    //        case "WorkshopWall":
+    //            Destroy(gameObject);
+    //            break;
+    //    }
+    //}
 
     public void TakeDamage(float amount)
     {

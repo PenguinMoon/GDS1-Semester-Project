@@ -15,12 +15,12 @@ public class WorkshopWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.gameObject.tag == "Enemy")
+        if (other.tag == "Enemy")
             parent.TakeDamage(1);
     }
 }
