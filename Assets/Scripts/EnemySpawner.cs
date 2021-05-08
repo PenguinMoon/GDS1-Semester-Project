@@ -17,6 +17,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private List<Transform> _enemyGoal;
 
+    [SerializeField] bool generateLane = false;
+    [SerializeField] GameObject laneTile;
+    List<GameObject> visualLane = new List<GameObject>();
+
 
     private float _timeTilNextWave = 20f;
     public int _waveIndex = 0;
@@ -25,6 +29,12 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(RunSpawner());
+    }
+
+    private void OnValidate()
+    {
+        if (generateLane)
+            GenerateLane();
     }
 
     IEnumerator RunSpawner()
@@ -91,6 +101,34 @@ public class EnemySpawner : MonoBehaviour
             if (i < _enemyGoal.Count - 1)
                 Gizmos.DrawLine(_enemyGoal[i].position, _enemyGoal[i + 1].position);
         }
+    }
+
+    private void GenerateLane()
+    {
+        foreach (GameObject g in visualLane)
+            Destroy(g);
+
+        for (int i = 0; i < _enemyGoal.Count; i++)
+        {
+            Transform previousValue;
+
+            if (i == 0)
+                previousValue = transform;
+            else
+                previousValue = _enemyGoal[i - 1];
+
+
+            Vector3 pos = (previousValue.position + _enemyGoal[i].position) / 2;
+            pos.y = -0.4f;
+            Quaternion rot = Quaternion.LookRotation(_enemyGoal[i].position - previousValue.position);
+            float dist = Vector3.Distance(previousValue.position, _enemyGoal[i].position);
+
+            GameObject tile = Instantiate(laneTile, pos, rot);
+            tile.transform.localScale = new Vector3(1, 0.05f, dist + 1);
+            tile.transform.SetParent(transform);
+        }
+
+        generateLane = false;
     }
 
 }

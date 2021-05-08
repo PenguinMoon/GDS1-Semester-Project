@@ -18,11 +18,15 @@ public class Objective_Train : MonoBehaviour
 
     [SerializeField] ParticleSystem smokeParticle;
     [SerializeField] SmartTurret trainTurret;
+    [SerializeField] List<GameObject> trainTurretPlatforms;
 
     private void Awake()
     {
         GenerateTrack();
         trainTurret.repaired = false;
+
+        foreach (GameObject g in trainTurretPlatforms)
+            g.SetActive(false);
     }
 
     private void OnValidate()
@@ -52,6 +56,9 @@ public class Objective_Train : MonoBehaviour
         {
             smokeParticle.Play();
             trainTurret.repaired = true;
+
+            foreach (GameObject g in trainTurretPlatforms)
+                g.SetActive(true);
         }
 
     }
