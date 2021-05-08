@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7425740445478273415}
   - component: {fileID: 7425740445478273412}
   - component: {fileID: 7425740445478273413}
-  - component: {fileID: 7425740445478273414}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7425740445478273408}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.97}
-  m_LocalScale: {x: 1.3, y: 4, z: 0.5}
+  m_LocalScale: {x: 1.2, y: 4, z: 0.5}
   m_Children: []
   m_Father: {fileID: 7425740445913590744}
   m_RootOrder: 1
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &7425740445478273414
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425740445478273408}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7425740445913590745
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +122,6 @@ GameObject:
   - component: {fileID: 7425740447160792352}
   - component: {fileID: 7425740447160792357}
   - component: {fileID: 7425740447160792358}
-  - component: {fileID: 7425740447160792359}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -154,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 7425740447160792353}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -6}
-  m_LocalScale: {x: 1.2, y: 0.5, z: 5}
+  m_LocalScale: {x: 1.3, y: 0.5, z: 5}
   m_Children: []
   m_Father: {fileID: 7425740445913590744}
   m_RootOrder: 0
@@ -206,16 +190,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7425740447160792359
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425740447160792353}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
