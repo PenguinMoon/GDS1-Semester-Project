@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class SmartTurret : Object
 
     // Turret Vairables
 
+    [HideInInspector] public bool repaired = true;
+    [SerializeField] bool hasInfiniteAmmo = false;
     [SerializeField] float FOVAngle = 360f;
     float viewAngle = 0f;
     [SerializeField] float rotSpeed = 2f;
@@ -62,39 +65,42 @@ public class SmartTurret : Object
 
     protected virtual void Update()
     {
-        if (currentFireDelay > 0)
-            currentFireDelay -= Time.deltaTime;
-
-        if (currentAmmo == 0)
+        if (repaired)
         {
-            //Sleep particle start
-            isActive = false;
-            ammoImage.color = Color.grey;
-            particles[(int)ParticleEffects.Inactive].Play();
-        }
-        else if (currentAmmo == maxAmmo)
-        {
-            //Sleep particle end
-            isActive = true;
-            ammoImage.color = Color.green;
-            particles[(int)ParticleEffects.Inactive].Stop();
-        }
+            if (currentFireDelay > 0)
+                currentFireDelay -= Time.deltaTime;
 
-        if (isActive)
-            AimGun();
-        else
-        {
-            if (currentReloadDelay > 0)
-                currentReloadDelay -= Time.deltaTime;
-
-            if (currentReloadDelay <= 0f)
+            if (currentAmmo == 0)
             {
-                ReloadAmmo(1);
-                currentReloadDelay = delayBetweenReloading;
+                //Sleep particle start
+                isActive = false;
+                ammoImage.color = Color.grey;
+                particles[(int)ParticleEffects.Inactive].Play();
             }
-        }
+            else if (currentAmmo == maxAmmo)
+            {
+                //Sleep particle end
+                isActive = true;
+                ammoImage.color = Color.green;
+                particles[(int)ParticleEffects.Inactive].Stop();
+            }
 
-        UpdateFOVUI();
+            if (isActive)
+                AimGun();
+            else
+            {
+                if (currentReloadDelay > 0)
+                    currentReloadDelay -= Time.deltaTime;
+
+                if (currentReloadDelay <= 0f)
+                {
+                    ReloadAmmo(1);
+                    currentReloadDelay = delayBetweenReloading;
+                }
+            }
+
+            UpdateFOVUI();
+        }
     }
 
     private void AimGun()
@@ -107,14 +113,16 @@ public class SmartTurret : Object
         {
             //Commented this out as it was causing issues with the new enemy navigation ??????
 
-            //Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo);
+            Physics.Linecast(firePoint.position, hit.transform.position, out RaycastHit rayInfo, enemyMask);
 
-            //Debug.Log(rayInfo.collider);
+            Debug.Log(rayInfo.collider.gameObject);
 
-            //if (rayInfo.collider && rayInfo.collider.gameObject.tag == "Enemy")
-            //{
-            foundEnemies.Add(hit.transform);
-            //}
+            string[] allowedObjs = { "Enemy", "Bullet" };
+
+            if (rayInfo.collider)//((rayInfo.collider && Array.Exists(allowedObjs, element => element == rayInfo.collider.tag)) || !rayInfo.collider)
+            {
+                foundEnemies.Add(hit.transform);
+            }
         }
 
 
@@ -132,7 +140,7 @@ public class SmartTurret : Object
         {
             Vector3 target = closestEnemy.position;
 
-            if (Vector3.Distance(baseTransform.position, target) > 10f)
+            if (Vector3.Distance(baseTransform.position, target) > 5f)
                 target += closestEnemy.forward;
 
             debugTargetPos = target;
@@ -155,7 +163,9 @@ public class SmartTurret : Object
         audioSource.PlayOneShot(fireClip);
         PlayParticle(ParticleEffects.Fire);
 
-        currentAmmo--;
+        if (!hasInfiniteAmmo)
+            currentAmmo--;
+
         UpdateAmmoUI();
     }
 

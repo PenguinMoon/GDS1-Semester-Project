@@ -17,10 +17,12 @@ public class Objective_Train : MonoBehaviour
     Cinemachine.CinemachinePathBase track;
 
     [SerializeField] ParticleSystem smokeParticle;
+    [SerializeField] SmartTurret trainTurret;
 
     private void Awake()
     {
         GenerateTrack();
+        trainTurret.repaired = false;
     }
 
     private void OnValidate()
@@ -47,7 +49,11 @@ public class Objective_Train : MonoBehaviour
         linkCart.m_Speed = carriageCart.m_Speed = selfCart.m_Speed = speed;
 
         if (speed > 0)
+        {
             smokeParticle.Play();
+            trainTurret.repaired = true;
+        }
+
     }
 
     private void GenerateTrack()

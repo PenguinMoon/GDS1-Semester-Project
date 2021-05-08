@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 0 },
-        {"Circuits", 0 }
+        {"Bits", 110 },
+        {"Circuits", 110 }
     };
 
     [SerializeField] HUDController hudController;
