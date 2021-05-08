@@ -18,7 +18,6 @@ public class SmartTurret : Object
     [SerializeField] bool hasInfiniteAmmo = false;
     float FOVAngle = 360f;
     float viewAngle = 0f;
-    [SerializeField] float rotSpeed = 2f;
     [SerializeField] float range = 15f;
     [SerializeField] float fireDelay = 0.5f;
     [SerializeField] int maxAmmo = 30;
