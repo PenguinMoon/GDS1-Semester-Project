@@ -46,9 +46,13 @@ MonoBehaviour:
   randomizeParameters: 0
   enemyPrefab: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
     type: 3}
+  enemies:
+  - {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026, type: 3}
+  - {fileID: 3996227429540853555, guid: cc75ce02c8fbdfd45990cc43d2a2d67a, type: 3}
   _spawnDelay: 0
   _maxNumInLane: 0
   _enemyGoal: []
+  generateLane: 0
   laneTile: {fileID: 2649826721202054508, guid: 7a58178fe9dbc1b44bdf06c08bd20b8c,
     type: 3}
   _waveIndex: 0

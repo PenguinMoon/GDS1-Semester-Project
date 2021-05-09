@@ -7,7 +7,9 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] bool randomizeParameters = false;
 
-    [SerializeField] GameObject enemyPrefab;
+    [Space]
+    [Header("Enemies in order of rarity")]
+    [SerializeField] List<GameObject> enemies;
 
     [SerializeField, Range(1, 5)] int _spawnDelay;
     [SerializeField, Range(1, 20)] int _maxNumInLane;
@@ -71,9 +73,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        _enemies.Add(Instantiate(enemyPrefab, transform.position, transform.rotation).transform);
+        _enemies.Add(Instantiate(GetEnemyToSpawn(), transform.position, transform.rotation).transform);
         _enemies.Last().GetComponent<EnemyAI>().SetGoal(_enemyGoal.ToList());
         _enemies.Last().GetComponent<EnemyAI>().Begin();
+    }
+
+    private GameObject GetEnemyToSpawn()
+    {
+        int rand = Random.Range(0, enemies.Count);
+
+        return enemies[rand];
     }
 
     private int EnemiesAlive()
@@ -105,6 +114,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void GenerateLane()
     {
+        transform.rotation = Quaternion.LookRotation(_enemyGoal[0].position - transform.position);
+
         foreach (GameObject g in visualLane)
             UnityEditor.EditorApplication.delayCall += () =>
             {
@@ -132,7 +143,7 @@ public class EnemySpawner : MonoBehaviour
             float dist = Vector3.Distance(previousValue.position, _enemyGoal[i].position);
 
             GameObject tile = Instantiate(laneTile, pos, rot);
-            tile.transform.localScale = new Vector3(1, 0.05f, dist + 1);
+            tile.transform.localScale = new Vector3(2, 0.05f, dist + 1);
             tile.transform.SetParent(transform);
 
             visualLane.Add(tile);
