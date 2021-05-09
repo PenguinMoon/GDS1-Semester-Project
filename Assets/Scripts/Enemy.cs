@@ -6,14 +6,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 1f;
     float health = 0;
-    float maxHealth = 2f;
+    [SerializeField] float maxHealth = 2f;
 
-    [SerializeField] GameObject bitsPrefab;
-    [SerializeField] GameObject circuitsPrefab;
+    [SerializeField] GameObject partToDrop;
+    [SerializeField, Range(0, 100)] int chanceToDropPart;
     int amountOfCurrencyToDrop = 0;
 
-    bool willDropCircuits = false;
-    [SerializeField] Material circuitDropMaterial;
     MeshRenderer rend;
     EnemyUI enemyUI;
 
@@ -25,17 +23,9 @@ public class Enemy : MonoBehaviour
         rend = GetComponent<MeshRenderer>();
         enemyUI = GetComponentInChildren<EnemyUI>();
 
-        willDropCircuits = Random.Range(0, 100) < 10;
-
-        if (willDropCircuits)
-        {
-            rend.material = circuitDropMaterial;
-            maxHealth *= 3f;
-        }
-
         health = maxHealth;
 
-        amountOfCurrencyToDrop = Random.Range(0, 100) < 40 ? 1 : 0;
+        amountOfCurrencyToDrop = Random.Range(0, 100) < chanceToDropPart ? 1 : 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,18 +37,6 @@ public class Enemy : MonoBehaviour
                 break;
         }
     }
-
-    //Changed so player can walk through the area
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    switch (collision.collider.gameObject.tag)
-    //    {
-    //        case "WorkshopWall":
-    //            Destroy(gameObject);
-    //            break;
-    //    }
-    //}
 
     public void TakeDamage(float amount)
     {
@@ -77,11 +55,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        if (willDropCircuits)
-            Instantiate(circuitsPrefab, GetDropPosition(), Quaternion.identity);
-        else
-            for (int i = 0; i < amountOfCurrencyToDrop; i++)
-                Instantiate(bitsPrefab, GetDropPosition(), Quaternion.identity);
+        for (int i = 0; i < amountOfCurrencyToDrop; i++)
+            Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
 
         Destroy(gameObject);
     }
