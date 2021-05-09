@@ -27,14 +27,12 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject postProcess;   // Post-processing for the pause screen
     bool isTweenFinished = true;   // Checks if the pause tween is finished
 
-    int maxWave = 10;
-    List<EnemySpawner> enemySpawners = new List<EnemySpawner>();
+    WaveManager waveManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        foreach (EnemySpawner spawner in FindObjectsOfType<EnemySpawner>())
-            enemySpawners.Add(spawner);
+        waveManager = FindObjectOfType<WaveManager>();
 
         defaultItemImage = itemImage.texture;
     }
@@ -45,29 +43,9 @@ public class HUDController : MonoBehaviour
         UpdateWaveCounter();
     }
 
-    bool isAllWavesCompleted()
-    {
-        foreach (EnemySpawner spawner in enemySpawners)
-            if (!spawner.isFinished)
-                return false;
-
-        return true;
-    }
-
     public void UpdateWaveCounter()
     {
-        int currentWave = int.MaxValue;
-
-        foreach (EnemySpawner spawner in enemySpawners)
-        {
-            if (spawner._waveIndex < currentWave)
-                currentWave = spawner._waveIndex;
-        }
-
-        if (isAllWavesCompleted())
-            SceneManager.LoadScene(3);
-
-        waveText.text = "Waves Remaining: " + (maxWave - currentWave).ToString();
+        waveText.text = "Waves Remaining: " + waveManager.GetWavesRemaining().ToString();
     }
 
     public void UpdateCash(Dictionary<string, int> inventory)

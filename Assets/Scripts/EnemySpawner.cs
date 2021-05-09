@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(RunSpawner());
+        //StartCoroutine(RunSpawner());
     }
 
     private void OnValidate()
@@ -65,6 +65,23 @@ public class EnemySpawner : MonoBehaviour
         return wave * 3;
     }
 
+    //Called by the Wave Manager Script
+    public IEnumerator SpawnWaveOfNum(int num)
+    {
+        Debug.Log("Spawning " + num + " enemies");
+        for (int i = 0; i < num; i++)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+    //Called by the Wave Manager Script
+    public bool HasEnemies()
+    {
+        return EnemiesAlive() > 0;
+    }
+
     private IEnumerator SpawnWave()
     {
         _waveIndex++;
@@ -81,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
         _enemies.Add(Instantiate(GetEnemyToSpawn(), transform.position, transform.rotation).transform);
         _enemies.Last().GetComponent<EnemyAI>().SetGoal(_enemyGoal.ToList());
         _enemies.Last().GetComponent<EnemyAI>().Begin();
+        _enemies.Last().transform.SetParent(transform);
     }
 
     private GameObject GetEnemyToSpawn()
@@ -90,7 +108,7 @@ public class EnemySpawner : MonoBehaviour
         return enemies[rand];
     }
 
-    private int EnemiesAlive()
+    public int EnemiesAlive()
     {
         _enemies = _enemies.Where(enemy => enemy != null).ToList();
         return _enemies.Count;
@@ -117,7 +135,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void GenerateLane()
+    public void GenerateLane()
     {
         transform.rotation = Quaternion.LookRotation(_enemyGoal[0].position - transform.position);
 
