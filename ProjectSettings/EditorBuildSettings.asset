@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TestMapScene1.unity
     guid: ce00bb13dc438ee4fbefaa9024a60a1a
   - enabled: 1
+    path: Assets/Scenes/Train_Level.unity
+    guid: 87377705e13ed6d4a872a2cf25d2bb0d
+  - enabled: 1
     path: Assets/Scenes/Game Over.unity
     guid: 64866826a3908494fbd5c7d8f57fc2e1
   - enabled: 1

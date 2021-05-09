@@ -28,6 +28,11 @@ public class EnemySpawner : MonoBehaviour
     public int _waveIndex = 0;
     public bool isFinished = false;
 
+    private void Awake()
+    {
+        GenerateLane();
+    }
+
     private void Start()
     {
         StartCoroutine(RunSpawner());
