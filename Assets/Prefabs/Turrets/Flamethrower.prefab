@@ -26,8 +26,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3448226261084719010, guid: fadb80080b955e141a2593ac5dd3ef23,
     type: 3}
   firePoint: {fileID: 1720204341149385043}
-  FOVAngle: 60
-  rotSpeed: 4
+  repaired: 1
+  hasInfiniteAmmo: 0
   range: 8
   fireDelay: 0.2
   maxAmmo: 40
@@ -39,7 +39,7 @@ MonoBehaviour:
   - {fileID: 1365823930735374090}
   - {fileID: 7812861540461108645}
   audioSource: {fileID: 4683939622494573747}
-  fireClip: {fileID: 8300000, guid: a920b06025aef2f499f40ef43f7bdeb4, type: 3}
+  fireClip: {fileID: 8300000, guid: db2ecbf31d68b9142bf58a612707b33e, type: 3}
   fireParticles: {fileID: 183051324965408022}
 --- !u!1 &8241922787849937817
 GameObject:
@@ -4814,6 +4814,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519591515660458230, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3519591515660458230, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7335617131629887601, guid: d6b56bac53776c44fb5dff96ffeae4a1,
         type: 3}
