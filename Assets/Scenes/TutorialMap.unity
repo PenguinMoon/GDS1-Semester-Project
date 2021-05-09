@@ -1906,7 +1906,7 @@ PrefabInstance:
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
       propertyPath: waves.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}

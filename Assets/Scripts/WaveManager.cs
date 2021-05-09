@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveManager : MonoBehaviour
 {
@@ -18,9 +19,7 @@ public class WaveManager : MonoBehaviour
             spawners.Clear();
 
         foreach (EnemySpawner e in FindObjectsOfType<EnemySpawner>())
-        {
             spawners.Add(e);
-        }
     }
 
     private void Start()
@@ -30,31 +29,34 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator RunWaves()
     {
-        //Wait before spawning the first wave
-        yield return new WaitForSeconds(timeBetweenWaves);
-
-        for (int i = 0; i < waves.Count-1; i++)
+        for (int i = 0; i < waves.Count; i++)
         {
-            currentWave = i;
+            yield return new WaitForSeconds(timeBetweenWaves);
+
+            currentWave = i+1;
             //Spawn enemies at each spawner
             foreach (EnemySpawner spawner in spawners)
                 StartCoroutine(spawner.SpawnWaveOfNum(waves[i]));
 
             //Wait while any enemy spawners have enemies alive
             yield return new WaitWhile(IsWaveInProgress);
-            yield return new WaitForSeconds(timeBetweenWaves);
         }
+
+        OnAllWavesCompleted();
     }
 
     private bool IsWaveInProgress()
     {
         foreach(EnemySpawner spawner in spawners)
-        {
             if (spawner.HasEnemies())
                 return true;
-        }
 
         return false;
+    }
+
+    private void OnAllWavesCompleted()
+    {
+        SceneManager.LoadScene("Game Win");
     }
 
     public int GetWavesRemaining()
