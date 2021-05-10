@@ -9,7 +9,7 @@ public class LevelSelectButton : MonoBehaviour
     {
         if (lvlName != "")
         {
-            SceneManager.LoadScene(lvlName);
+            FindObjectOfType<LevelLoader>().LoadLevel(lvlName);
         }
     }
 }

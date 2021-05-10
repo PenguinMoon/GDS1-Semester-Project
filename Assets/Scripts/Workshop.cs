@@ -8,25 +8,28 @@ public class Workshop : MonoBehaviour
     [SerializeField] int health = 100;
     [SerializeField] HUDController hud;
 
+    LevelLoader levelLoader;
+
+    private void Awake()
+    {
+        levelLoader = FindObjectOfType<LevelLoader>();
+        if (!levelLoader)
+            Debug.LogWarning("NO LEVEL LOADER IN THIS LEVEL - PLEASE LOAD FROM MAIN MENU");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         hud.SetMaxHP(health);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int damage)
     {
         health -= damage;
 
-        if (health <= 0)
-            SceneManager.LoadScene(sceneName: "Game Over");
-
         hud.UpdateHP(health);
+
+        if (health <= 0 && !levelLoader.isLoadingLevel)
+            levelLoader.LoadLevel("Game Over");
     }
 }

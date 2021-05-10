@@ -13,6 +13,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] float timeBetweenWaves = 15f;
     [HideInInspector] public int currentWave = 0;
 
+    LevelLoader levelLoader;
+
     private void Awake()
     {
         if (spawners.Count > 0)
@@ -20,6 +22,10 @@ public class WaveManager : MonoBehaviour
 
         foreach (EnemySpawner e in FindObjectsOfType<EnemySpawner>())
             spawners.Add(e);
+
+        levelLoader = FindObjectOfType<LevelLoader>();
+        if (!levelLoader)
+            Debug.LogWarning("NO LEVEL LOADER IN THIS LEVEL - PLEASE LOAD FROM MAIN MENU");
     }
 
     private void Start()
@@ -56,7 +62,7 @@ public class WaveManager : MonoBehaviour
 
     private void OnAllWavesCompleted()
     {
-        SceneManager.LoadScene("Game Win");
+        levelLoader.LoadLevel("Game Win");
     }
 
     public int GetWavesRemaining()
