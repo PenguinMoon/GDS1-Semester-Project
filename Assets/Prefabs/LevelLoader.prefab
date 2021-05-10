@@ -98,7 +98,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!1 &8307138059222719639
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,8 +255,8 @@ CanvasGroup:
   m_GameObject: {fileID: 8307138059810573455}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &8307138060142175008
 GameObject:
@@ -302,3 +302,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb12d4e863b83e0458be2e6359154d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLoadingLevel: 0
