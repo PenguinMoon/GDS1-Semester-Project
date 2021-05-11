@@ -10,7 +10,6 @@ public class EnemyUI : MonoBehaviour
 
     public void UpdateHealthBar(float health, float maxHealth)
     {
-        Debug.Log(health);
         healthBar.value = health / maxHealth;
     }
 }
