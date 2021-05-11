@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 110 },
-        {"Circuits", 110 }
+        {"Bits", 0 },
+        {"Circuits", 0 }
     };
 
     [SerializeField] HUDController hudController;
@@ -483,6 +483,7 @@ public class Player : MonoBehaviour
             interactObject.GetComponent<SmartTurret>().ReloadAmmo(selectedObject.GetComponent<Ammo>().reloadObject());
             selectedObject.GetComponent<Ammo>().deleteObject();
             selectedObject = null;
+            hudController.UpdateItemSlot(selectedObject);
         }
     }
 
