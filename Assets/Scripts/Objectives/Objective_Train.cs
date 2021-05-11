@@ -20,17 +20,15 @@ public class Objective_Train : MonoBehaviour
     [SerializeField] SmartTurret trainTurret;
     [SerializeField] List<GameObject> trainTurretPlatforms;
 
-    private void Awake()
+    private void Start()
     {
-        GenerateTrack();
         trainTurret.repaired = false;
 
         foreach (GameObject g in trainTurretPlatforms)
             g.SetActive(false);
-    }
 
-    private void OnValidate()
-    {
+        Debug.Log("Set everything correctly");
+
         selfCart = GetComponent<Cinemachine.CinemachineDollyCart>();
         if (selfCart)
         {
@@ -44,8 +42,7 @@ public class Objective_Train : MonoBehaviour
             SetTrainSpeed(0);
         }
 
-        if (generateTrainTrack)
-            GenerateTrack();
+        GenerateTrack();
     }
 
     public void SetTrainSpeed(float speed)
@@ -67,11 +64,7 @@ public class Objective_Train : MonoBehaviour
     {
         foreach (GameObject g in visualizedTrack)
         {
-            UnityEditor.EditorApplication.delayCall += () =>
-            {
-                if (g != null)
-                    DestroyImmediate(g);
-            };
+            Destroy(g);
         }
         visualizedTrack.Clear();
 
