@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference interactAction = null;
     [SerializeField] private InputActionReference whackAction = null;
 
+    bool hintTextVisible;
+
     private bool isInteractKeyHeld = false;
     private float maxRepairDelay = 0.1f;
     private float repairDelay = 0f;
@@ -355,7 +357,10 @@ public class Player : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         DisableOutlineObject();
+
+        if(!hintTextVisible)
         ShowHintText();
+
         switch (other.gameObject.tag)
         {
             case "Turret":
@@ -591,11 +596,13 @@ public class Player : MonoBehaviour
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Dispose");
                 playerUI.ShowHintUIText();
             }
+            hintTextVisible = true;
         }
     }
 
     private void HideHintText()
     {
+        hintTextVisible = false;
         if (interactObject)
         {
             playerUI.HideHintUIText();
