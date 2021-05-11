@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4296,16 +4296,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 3ca20631304e73045979aa9e1157c6da, type: 3}
+      objectReference: {fileID: 2800000, guid: d4d2cdec0d985bf45b11b85e9c077b6d, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
-      value: River Crossing
+      value: Hot Stuff
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: TestMapScene1
+      value: Level1Map
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
@@ -10005,15 +10005,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894680579}
     m_Modifications:
+    - target: {fileID: 697999784478513553, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: m_text
+      value: 'Difficulty : Advanced'
+      objectReference: {fileID: 0}
     - target: {fileID: 697999784809829649, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: bfce222b69904d546ab173aad80efb75, type: 3}
+      objectReference: {fileID: 2800000, guid: 9694f07149d0cf84cbed60ff0cf8ba1d, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
-      value: Level 4
+      value: Central Station
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
@@ -10030,6 +10035,11 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 115344320}
+    - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Train_Level
+      objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_Pivot.x
@@ -15133,22 +15143,22 @@ PrefabInstance:
     - target: {fileID: 697999784478513553, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
-      value: 'Difficulty : Advanced'
+      value: 'Difficulty : Moderate'
       objectReference: {fileID: 0}
     - target: {fileID: 697999784809829649, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 9694f07149d0cf84cbed60ff0cf8ba1d, type: 3}
+      objectReference: {fileID: 2800000, guid: bfce222b69904d546ab173aad80efb75, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
-      value: Central Station
+      value: River Crossing
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Train_Level
+      value: Level2Map
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
