@@ -37,7 +37,7 @@ public class Workbench : MonoBehaviour
 
     public void Interact(Player player)
     {
-        if (!workbench.activeSelf && !LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
+        if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
         {
             Debug.Log("ACTIVATING WB");
             playerRef = player;
