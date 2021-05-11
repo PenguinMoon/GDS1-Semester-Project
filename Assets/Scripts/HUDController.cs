@@ -20,6 +20,8 @@ public class HUDController : MonoBehaviour
     bool isPaused = false;
     bool isFastForward = false;
     float currentTimeScale = 1.0f;
+    [SerializeField] Image speedImg;
+    [SerializeField] Image fastSpeedImg;
 
     bool onAltScreen = false; // If a second screen is opened on the pause menu e.g. settings screen.
     [SerializeField] GameObject mainPauseCanvas;    // The main canvas of the pause screen
@@ -129,12 +131,16 @@ public class HUDController : MonoBehaviour
             if (isFastForward)
             {
                 currentTimeScale = 1f;
+                speedImg.enabled = true;
+                fastSpeedImg.enabled = false;
                 Time.timeScale = currentTimeScale;
                 isFastForward = !isFastForward;
             }
             else
             {
                 currentTimeScale = 2.5f;
+                speedImg.enabled = false;
+                fastSpeedImg.enabled = true;
                 Time.timeScale = currentTimeScale;
                 isFastForward = !isFastForward;
             }
