@@ -250,6 +250,15 @@ public class Player : MonoBehaviour
         hudController.PauseGame();
     }
 
+    public void OnFastForward(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        hudController.FastForward();
+    }
+
     // Activates sprinting only if the player has enough stamina remaining
     void Sprint()
     {

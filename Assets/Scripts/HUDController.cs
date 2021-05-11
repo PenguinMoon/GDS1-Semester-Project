@@ -18,6 +18,9 @@ public class HUDController : MonoBehaviour
 
     // Pause Screen Elements
     bool isPaused = false;
+    bool isFastForward = false;
+    float currentTimeScale = 1.0f;
+
     bool onAltScreen = false; // If a second screen is opened on the pause menu e.g. settings screen.
     [SerializeField] GameObject mainPauseCanvas;    // The main canvas of the pause screen
     [SerializeField] GameObject pauseCanvas;   // The initial screen of the pause screen
@@ -102,7 +105,7 @@ public class HUDController : MonoBehaviour
                 }
                 else
                 {
-                    Time.timeScale = 1;
+                    Time.timeScale = currentTimeScale;
                     postProcess.SetActive(false);
                     pauseBG.SetActive(false);
                     isTweenFinished = false;
@@ -114,6 +117,26 @@ public class HUDController : MonoBehaviour
                     });
                     isPaused = !isPaused;
                 }
+            }
+        }
+    }
+
+    // Speeds up the game
+    public void FastForward()
+    {
+        if (!isPaused)
+        {
+            if (isFastForward)
+            {
+                currentTimeScale = 1f;
+                Time.timeScale = currentTimeScale;
+                isFastForward = !isFastForward;
+            }
+            else
+            {
+                currentTimeScale = 2.5f;
+                Time.timeScale = currentTimeScale;
+                isFastForward = !isFastForward;
             }
         }
     }
