@@ -7,8 +7,13 @@ public class TutorialManager : MonoBehaviour
 
     //Tutorial Objects
     [SerializeField] Player player;
+    [SerializeField] SmartTurret turret;
     [SerializeField] TurretPlate turretPlate;
     [SerializeField] TurretPlate turretPlate2;
+    [SerializeField] GameObject workbench;
+    [SerializeField] GameObject workbench2;
+
+    [SerializeField] GameObject arrow;
 
     DialogueManager dialogueManager;
     int stepIndex;
@@ -23,6 +28,41 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        switch (stepIndex)
+        {
+            case 0:
+            arrow.transform.position = turret.transform.position;
+            break;
+
+            case 1:
+            arrow.transform.position = turretPlate.transform.position;
+            break;
+
+            case 4:
+            arrow.transform.position = workbench.transform.position;
+            break;
+
+            case 5:
+            arrow.transform.position = turretPlate2.transform.position;
+            break;
+
+            case 6:
+            arrow.transform.position = turret.transform.position;
+            break;
+
+            case 7:
+            arrow.transform.position = workbench2.transform.position;
+            break;
+
+            case 8:
+            arrow.transform.position = turret.transform.position;
+            break;
+
+            default:
+                arrow.transform.position = new Vector3(1000,1000,1000);
+            break;
+        }
+
         if (stepIndex == 0 && player.selectedObject.tag == "Turret") // Player picks up initial turret
         {
             stepIndex++;
