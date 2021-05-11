@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class WaveManager : MonoBehaviour
 {
     List<EnemySpawner> spawners = new List<EnemySpawner>();
@@ -12,8 +12,10 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] float timeBetweenWaves = 15f;
     [HideInInspector] public int currentWave = 0;
+    [SerializeField] AudioClip gameWinClip;
 
     LevelLoader levelLoader;
+    AudioSource audio;
 
     private void Awake()
     {
@@ -26,6 +28,8 @@ public class WaveManager : MonoBehaviour
         levelLoader = FindObjectOfType<LevelLoader>();
         if (!levelLoader)
             Debug.LogWarning("NO LEVEL LOADER IN THIS LEVEL - PLEASE LOAD FROM MAIN MENU");
+
+        audio = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -39,7 +43,7 @@ public class WaveManager : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenWaves);
 
-            currentWave = i+1;
+            currentWave = i + 1;
             //Spawn enemies at each spawner
             foreach (EnemySpawner spawner in spawners)
                 StartCoroutine(spawner.SpawnWaveOfNum(waves[i]));
@@ -53,7 +57,7 @@ public class WaveManager : MonoBehaviour
 
     private bool IsWaveInProgress()
     {
-        foreach(EnemySpawner spawner in spawners)
+        foreach (EnemySpawner spawner in spawners)
             if (spawner.HasEnemies())
                 return true;
 
@@ -62,6 +66,16 @@ public class WaveManager : MonoBehaviour
 
     private void OnAllWavesCompleted()
     {
+        StartCoroutine(LoadLevelAfterAudio());
+    }
+
+    IEnumerator LoadLevelAfterAudio()
+    {
+        audio.clip = gameWinClip;
+        audio.Play();
+
+        yield return new WaitForSeconds(gameWinClip.length / 2.5f);
+
         levelLoader.LoadLevel("Game Win");
     }
 

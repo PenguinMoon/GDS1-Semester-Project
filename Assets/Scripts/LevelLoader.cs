@@ -33,7 +33,7 @@ public class LevelLoader : MonoBehaviour
 
         while (percent <= 1)
         {
-            percent += Time.deltaTime * fadeSpeed;
+            percent += Time.unscaledDeltaTime * fadeSpeed;
             fadeImage.alpha = percent;
 
             yield return null;
@@ -41,7 +41,7 @@ public class LevelLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelName);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
 
         isLoadingLevel = false;
 
@@ -55,7 +55,7 @@ public class LevelLoader : MonoBehaviour
 
         while (percent >= 0)
         {
-            percent -= Time.deltaTime * fadeSpeed;
+            percent -= Time.unscaledDeltaTime * fadeSpeed;
             fadeImage.alpha = percent;
 
             yield return null;

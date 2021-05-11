@@ -140,11 +140,8 @@ public class EnemySpawner : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(_enemyGoal[0].position - transform.position);
 
         foreach (GameObject g in visualLane)
-            UnityEditor.EditorApplication.delayCall += () =>
-            {
-                if (g != null)
-                    DestroyImmediate(g);
-            };
+            if (g != null)
+                Destroy(g);
 
         for (int i = 0; i < _enemyGoal.Count; i++)
         {
