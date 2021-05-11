@@ -4287,20 +4287,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894680579}
     m_Modifications:
+    - target: {fileID: 697999784478513553, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: m_text
+      value: 'Difficulty : Moderate'
+      objectReference: {fileID: 0}
     - target: {fileID: 697999784809829649, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: bfce222b69904d546ab173aad80efb75, type: 3}
+      objectReference: {fileID: 2800000, guid: 3ca20631304e73045979aa9e1157c6da, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
-      value: Level 2
+      value: River Crossing
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
+      value: TestMapScene1
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
