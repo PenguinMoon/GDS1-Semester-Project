@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Workbench : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class Workbench : MonoBehaviour
     [SerializeField] Button defaultSelectedButton;
     [SerializeField] GameObject turretPrefab;
     [SerializeField] int turretCost = 1;
+    EventSystem eventSystem;
     public AnimationCurve curve;
 
     [SerializeField] private Player playerRef;
 
     private void Awake()
     {
+        eventSystem = FindObjectOfType<EventSystem>();
         StartCoroutine("ResetWorkbenchUI");
         workbench.GetComponent<Canvas>().transform.localScale = new Vector3(0,0,1);
         workbench.GetComponent<Canvas>().enabled = false;
@@ -34,7 +37,7 @@ public class Workbench : MonoBehaviour
 
     public void Interact(Player player)
     {
-        if (!workbench.activeSelf && !LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject) && !playerRef)
+        if (!workbench.activeSelf && !LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
         {
             Debug.Log("ACTIVATING WB");
             playerRef = player;
@@ -86,6 +89,7 @@ public class Workbench : MonoBehaviour
     IEnumerator StartSelectButton(float seconds)
     {
         yield return new WaitForSeconds(seconds);
+        eventSystem.SetSelectedGameObject(null);
         defaultSelectedButton = workbenchMenu.listBoxes[workbenchMenu.GetCenteredContentID()].GetComponent<Button>();
         defaultSelectedButton.Select();
     }
