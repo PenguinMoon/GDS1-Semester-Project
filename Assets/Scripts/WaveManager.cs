@@ -74,7 +74,7 @@ public class WaveManager : MonoBehaviour
         audio.clip = gameWinClip;
         audio.Play();
 
-        yield return new WaitForSeconds(gameWinClip.length / 2);
+        yield return new WaitForSeconds(gameWinClip.length / 2.5f);
 
         levelLoader.LoadLevel("Game Win");
     }
