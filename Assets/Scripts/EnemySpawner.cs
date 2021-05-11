@@ -109,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
         {
             int rand = Random.Range(0, 100);
 
-            if (rand < 25)
+            if (rand < 15)
                 return enemies[1];
             else
                 return enemies[0];
