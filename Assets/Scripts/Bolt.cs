@@ -5,11 +5,11 @@ using UnityEngine;
 public class Bolt : MonoBehaviour
 {
     //float lifeTime = 0f;
-    float maxLifeTime = 20f;
+    float maxLifeTime = 30f;
 
     // How long until the material colour starts flashing e.g. starts flashing after 15secs
     // NOTE: Time should always be LOWER than maxLifeTime, or else it doesn't flash at all
-    float startFlashTime = 17f;
+    float startFlashTime = 25f;
 
     Material _material; // The material on the gameobject
     Color origColour;   // Material's original colour

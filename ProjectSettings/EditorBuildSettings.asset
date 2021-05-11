@@ -12,7 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/TutorialMap.unity
     guid: bdfcb17ea8da68d4c9049fb4bfd12d6c
   - enabled: 1
-    path: Assets/Scenes/TestMapScene1.unity
+    path: Assets/Scenes/Level1Map.unity
+    guid: 3502a60375ddf2a4190ba0e0bf3a8b99
+  - enabled: 1
+    path: Assets/Scenes/Level2Map.unity
     guid: ce00bb13dc438ee4fbefaa9024a60a1a
   - enabled: 1
     path: Assets/Scenes/Train_Level.unity

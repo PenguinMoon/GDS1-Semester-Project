@@ -103,9 +103,17 @@ public class EnemySpawner : MonoBehaviour
 
     private GameObject GetEnemyToSpawn()
     {
-        int rand = Random.Range(0, enemies.Count);
+        if (enemies.Count == 1)
+            return enemies[0];
+        else
+        {
+            int rand = Random.Range(0, 100);
 
-        return enemies[rand];
+            if (rand < 25)
+                return enemies[1];
+            else
+                return enemies[0];
+        }
     }
 
     public int EnemiesAlive()
