@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
-        {"Bits", 0 },
-        {"Circuits", 0 }
+        {"Bits", 100 },
+        {"Circuits", 100 }
     };
 
     [SerializeField] HUDController hudController;
@@ -412,7 +412,7 @@ public class Player : MonoBehaviour
                         PlaceSelectedObject();
                     break;
                 case "Turret":
-                    if (selectedObject == null)
+                    if (selectedObject == null || (selectedObject != null && selectedObject.tag == "Turret"))
                         PickupObject();
                     else if (selectedObject != null && selectedObject.GetComponent<Ammo>() != null)
                     {
@@ -443,6 +443,8 @@ public class Player : MonoBehaviour
 
     private void PlaceSelectedObject()
     {
+        Debug.Log("Trying to place object...");
+
         if (selectedObject)
         {
             audioSource.PlayOneShot(sfxData.TowerPlace);
@@ -462,7 +464,12 @@ public class Player : MonoBehaviour
 
     private void PickupObject()
     {
-        if (!selectedObject)
+        if (selectedObject && selectedObject.tag == "Turret") 
+        {
+            SwapObjects();
+        }
+
+        else if (!selectedObject)
         {
             audioSource.PlayOneShot(sfxData.TowerPickup);
             interactObject.transform.position = heldObjectPoint.position;
@@ -479,6 +486,11 @@ public class Player : MonoBehaviour
             }
 
         }
+    }
+
+    private void SwapObjects() 
+    {
+        Debug.Log("Should swap turrets");
     }
 
     private void ReloadTurret()

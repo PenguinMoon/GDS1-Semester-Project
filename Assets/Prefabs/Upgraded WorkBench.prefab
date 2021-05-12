@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listController: {fileID: 5036071400305710247}
+  _contents: 00000000010000000200000003000000
 --- !u!114 &5036071400305710247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,7 +859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workbench: {fileID: 2680202056500353957}
   workbenchMenu: {fileID: 5036071400305710247}
-  defaultSelectedButton: {fileID: 0}
+  defaultSelectedButton: {fileID: 3501655612396630055}
   turretPrefab: {fileID: 7128025926260794609, guid: 428e987bc837ff24cb95737399cf8796,
     type: 3}
   turretCost: 1
@@ -904,6 +905,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  playerRef: {fileID: 0}
 --- !u!114 &3201442766518185798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,6 +1985,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5283078530970031610}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3501655612396630055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8775583646063093213, guid: b65305968674b164fadc73956987c5bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5283078530970031610}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &661456557403921336 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4646787733142883906, guid: b65305968674b164fadc73956987c5bd,
