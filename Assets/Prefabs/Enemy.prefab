@@ -964,7 +964,7 @@ MonoBehaviour:
   maxHealth: 3
   partToDrop: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
     type: 3}
-  chanceToDropPart: 70
+  chanceToDropPart: 100
 --- !u!195 &-7780192404362861432
 NavMeshAgent:
   m_ObjectHideFlags: 0

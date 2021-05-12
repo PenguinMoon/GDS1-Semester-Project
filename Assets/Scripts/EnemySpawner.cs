@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -17,16 +18,9 @@ public class EnemySpawner : MonoBehaviour
         GenerateLane();
     }
 
-    //Returns how many enemies should spawn on given wave
-    private int GetWaveEnemyNum(int wave)
-    {
-        return wave * 3;
-    }
-
     //Called by the Wave Manager Script
     public IEnumerator SpawnWaveOfNum(int num, List<GameObject> options)
     {
-        Debug.Log("Spawning " + num + " enemies");
         for (int i = 0; i < num; i++)
         {
             SpawnRandomEnemy(options);
@@ -58,6 +52,7 @@ public class EnemySpawner : MonoBehaviour
     private int EnemiesAlive()
     {
         _enemies = _enemies.Where(enemy => enemy != null).ToList();
+
         return _enemies.Count;
     }
 
