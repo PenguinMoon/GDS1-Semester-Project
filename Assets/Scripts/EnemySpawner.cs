@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -53,15 +52,7 @@ public class EnemySpawner : MonoBehaviour
     {
         int rand = Random.Range(0, options.Count);
 
-<<<<<<< HEAD
-            if (rand < 15)
-                return enemies[1];
-            else
-                return enemies[0];
-        }
-=======
         SpawnEnemy(options[rand]);
->>>>>>> 3aa1284467cc7fe448332f9f818e1d14dd109cdc
     }
 
     private int EnemiesAlive()
