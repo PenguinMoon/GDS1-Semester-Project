@@ -5,47 +5,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] bool randomizeParameters = false;
-
-    [Space]
-    [Header("Enemies in order of rarity")]
-    [SerializeField] List<GameObject> enemies;
-
-    [SerializeField, Range(1, 5)] int _spawnDelay;
-    [SerializeField, Range(1, 20)] int _maxNumInLane;
-
     private List<Transform> _enemies = new List<Transform>();
 
     [SerializeField]
     private List<Transform> _enemyGoal;
 
-    [SerializeField] bool generateLane = false;
     [SerializeField] GameObject laneTile;
     List<GameObject> visualLane = new List<GameObject>();
-
-
-    private float _timeTilNextWave = 20f;
-    public int _waveIndex = 0;
-    public bool isFinished = false;
 
     private void Awake()
     {
         GenerateLane();
-    }
-
-    IEnumerator RunSpawner()
-    {
-        yield return new WaitForSeconds(_timeTilNextWave);
-        while (_waveIndex < 10)
-        {
-            //yield return SpawnWave();
-
-            yield return new WaitWhile(EnemyAlive);
-
-            yield return new WaitForSeconds(_timeTilNextWave);
-        }
-
-        isFinished = true;
     }
 
     //Returns how many enemies should spawn on given wave
@@ -81,35 +51,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnRandomEnemy(List<GameObject> options)
     {
-        int rand = Random.Range(0, options.Count - 1);
+        int rand = Random.Range(0, options.Count);
 
         SpawnEnemy(options[rand]);
     }
 
-    private GameObject GetEnemyToSpawn()
-    {
-        if (enemies.Count == 1)
-            return enemies[0];
-        else
-        {
-            int rand = Random.Range(0, 100);
-
-            if (rand < 25)
-                return enemies[1];
-            else
-                return enemies[0];
-        }
-    }
-
-    public int EnemiesAlive()
+    private int EnemiesAlive()
     {
         _enemies = _enemies.Where(enemy => enemy != null).ToList();
         return _enemies.Count;
     }
-
-    private bool LaneFull() => EnemiesAlive() >= _maxNumInLane;
-
-    private bool EnemyAlive() => EnemiesAlive() > 0;
 
     private void OnDrawGizmos()
     {
@@ -161,8 +112,6 @@ public class EnemySpawner : MonoBehaviour
 
             visualLane.Add(tile);
         }
-
-        generateLane = false;
     }
 
 }
