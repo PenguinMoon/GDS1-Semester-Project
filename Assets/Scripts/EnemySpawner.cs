@@ -33,23 +33,12 @@ public class EnemySpawner : MonoBehaviour
         GenerateLane();
     }
 
-    private void Start()
-    {
-        //StartCoroutine(RunSpawner());
-    }
-
-    private void OnValidate()
-    {
-        if (generateLane)
-            GenerateLane();
-    }
-
     IEnumerator RunSpawner()
     {
         yield return new WaitForSeconds(_timeTilNextWave);
         while (_waveIndex < 10)
         {
-            yield return SpawnWave();
+            //yield return SpawnWave();
 
             yield return new WaitWhile(EnemyAlive);
 
@@ -66,12 +55,12 @@ public class EnemySpawner : MonoBehaviour
     }
 
     //Called by the Wave Manager Script
-    public IEnumerator SpawnWaveOfNum(int num)
+    public IEnumerator SpawnWaveOfNum(int num, List<GameObject> options)
     {
         Debug.Log("Spawning " + num + " enemies");
         for (int i = 0; i < num; i++)
         {
-            SpawnEnemy();
+            SpawnRandomEnemy(options);
             yield return new WaitForSeconds(1.5f);
         }
     }
@@ -82,23 +71,19 @@ public class EnemySpawner : MonoBehaviour
         return EnemiesAlive() > 0;
     }
 
-    private IEnumerator SpawnWave()
+    private void SpawnEnemy(GameObject enemy)
     {
-        _waveIndex++;
-        for (int i = 0; i < GetWaveEnemyNum(_waveIndex); i++)
-        {
-            yield return new WaitWhile(LaneFull);
-            SpawnEnemy();
-            yield return new WaitForSeconds(1.5f);
-        }
-    }
-
-    private void SpawnEnemy()
-    {
-        _enemies.Add(Instantiate(GetEnemyToSpawn(), transform.position, transform.rotation).transform);
+        _enemies.Add(Instantiate(enemy, transform.position, transform.rotation).transform);
         _enemies.Last().GetComponent<EnemyAI>().SetGoal(_enemyGoal.ToList());
         _enemies.Last().GetComponent<EnemyAI>().Begin();
         _enemies.Last().transform.SetParent(transform);
+    }
+
+    private void SpawnRandomEnemy(List<GameObject> options)
+    {
+        int rand = Random.Range(0, options.Count - 1);
+
+        SpawnEnemy(options[rand]);
     }
 
     private GameObject GetEnemyToSpawn()
