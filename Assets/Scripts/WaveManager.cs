@@ -7,12 +7,13 @@ public class WaveManager : MonoBehaviour
 {
     List<EnemySpawner> spawners = new List<EnemySpawner>();
 
-    [Header("Index: Wave, Value: Amount of Enemies")]
-    [SerializeField] List<int> waves;
+    [SerializeField] List<WaveData> enemyWaves;
 
     [SerializeField] float timeBetweenWaves = 15f;
     [HideInInspector] public int currentWave = 0;
     [SerializeField] AudioClip gameWinClip;
+
+
 
     LevelLoader levelLoader;
     AudioSource audio;
@@ -39,14 +40,17 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator RunWaves()
     {
-        for (int i = 0; i < waves.Count; i++)
+        for (int i = 0; i < enemyWaves.Count; i++)
         {
             yield return new WaitForSeconds(timeBetweenWaves);
 
             currentWave = i + 1;
+
+            int numOfEnemiesToSpawn = enemyWaves[i].totalEnemies / spawners.Count;
+
             //Spawn enemies at each spawner
             foreach (EnemySpawner spawner in spawners)
-                StartCoroutine(spawner.SpawnWaveOfNum(waves[i]));
+                StartCoroutine(spawner.SpawnWaveOfNum(numOfEnemiesToSpawn, enemyWaves[i].enemies));
 
             //Wait while any enemy spawners have enemies alive
             yield return new WaitWhile(IsWaveInProgress);
@@ -81,6 +85,13 @@ public class WaveManager : MonoBehaviour
 
     public int GetWavesRemaining()
     {
-        return waves.Count - currentWave;
+        return enemyWaves.Count - currentWave;
     }
+}
+
+[System.Serializable]
+public struct WaveData
+{
+    public int totalEnemies;
+    public List<GameObject> enemies;
 }

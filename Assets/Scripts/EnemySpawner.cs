@@ -5,58 +5,17 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] bool randomizeParameters = false;
-
-    [Space]
-    [Header("Enemies in order of rarity")]
-    [SerializeField] List<GameObject> enemies;
-
-    [SerializeField, Range(1, 5)] int _spawnDelay;
-    [SerializeField, Range(1, 20)] int _maxNumInLane;
-
     private List<Transform> _enemies = new List<Transform>();
 
     [SerializeField]
     private List<Transform> _enemyGoal;
 
-    [SerializeField] bool generateLane = false;
     [SerializeField] GameObject laneTile;
     List<GameObject> visualLane = new List<GameObject>();
-
-
-    private float _timeTilNextWave = 20f;
-    public int _waveIndex = 0;
-    public bool isFinished = false;
 
     private void Awake()
     {
         GenerateLane();
-    }
-
-    private void Start()
-    {
-        //StartCoroutine(RunSpawner());
-    }
-
-    private void OnValidate()
-    {
-        if (generateLane)
-            GenerateLane();
-    }
-
-    IEnumerator RunSpawner()
-    {
-        yield return new WaitForSeconds(_timeTilNextWave);
-        while (_waveIndex < 10)
-        {
-            yield return SpawnWave();
-
-            yield return new WaitWhile(EnemyAlive);
-
-            yield return new WaitForSeconds(_timeTilNextWave);
-        }
-
-        isFinished = true;
     }
 
     //Returns how many enemies should spawn on given wave
@@ -66,12 +25,12 @@ public class EnemySpawner : MonoBehaviour
     }
 
     //Called by the Wave Manager Script
-    public IEnumerator SpawnWaveOfNum(int num)
+    public IEnumerator SpawnWaveOfNum(int num, List<GameObject> options)
     {
         Debug.Log("Spawning " + num + " enemies");
         for (int i = 0; i < num; i++)
         {
-            SpawnEnemy();
+            SpawnRandomEnemy(options);
             yield return new WaitForSeconds(1.5f);
         }
     }
@@ -82,49 +41,34 @@ public class EnemySpawner : MonoBehaviour
         return EnemiesAlive() > 0;
     }
 
-    private IEnumerator SpawnWave()
+    private void SpawnEnemy(GameObject enemy)
     {
-        _waveIndex++;
-        for (int i = 0; i < GetWaveEnemyNum(_waveIndex); i++)
-        {
-            yield return new WaitWhile(LaneFull);
-            SpawnEnemy();
-            yield return new WaitForSeconds(1.5f);
-        }
-    }
-
-    private void SpawnEnemy()
-    {
-        _enemies.Add(Instantiate(GetEnemyToSpawn(), transform.position, transform.rotation).transform);
+        _enemies.Add(Instantiate(enemy, transform.position, transform.rotation).transform);
         _enemies.Last().GetComponent<EnemyAI>().SetGoal(_enemyGoal.ToList());
         _enemies.Last().GetComponent<EnemyAI>().Begin();
         _enemies.Last().transform.SetParent(transform);
     }
 
-    private GameObject GetEnemyToSpawn()
+    private void SpawnRandomEnemy(List<GameObject> options)
     {
-        if (enemies.Count == 1)
-            return enemies[0];
-        else
-        {
-            int rand = Random.Range(0, 100);
+        int rand = Random.Range(0, options.Count);
 
+<<<<<<< HEAD
             if (rand < 15)
                 return enemies[1];
             else
                 return enemies[0];
         }
+=======
+        SpawnEnemy(options[rand]);
+>>>>>>> 3aa1284467cc7fe448332f9f818e1d14dd109cdc
     }
 
-    public int EnemiesAlive()
+    private int EnemiesAlive()
     {
         _enemies = _enemies.Where(enemy => enemy != null).ToList();
         return _enemies.Count;
     }
-
-    private bool LaneFull() => EnemiesAlive() >= _maxNumInLane;
-
-    private bool EnemyAlive() => EnemiesAlive() > 0;
 
     private void OnDrawGizmos()
     {
@@ -176,8 +120,6 @@ public class EnemySpawner : MonoBehaviour
 
             visualLane.Add(tile);
         }
-
-        generateLane = false;
     }
 
 }
