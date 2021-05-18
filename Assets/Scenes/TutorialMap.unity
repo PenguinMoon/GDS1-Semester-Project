@@ -186,6 +186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1739327157164521402, guid: ca34e91fa5d4f4a4a8239046923579ea,
         type: 3}
+      propertyPath: vcam
+      value: 
+      objectReference: {fileID: 1041381057}
+    - target: {fileID: 1739327157164521402, guid: ca34e91fa5d4f4a4a8239046923579ea,
+        type: 3}
       propertyPath: hudController
       value: 
       objectReference: {fileID: 1750915857}
