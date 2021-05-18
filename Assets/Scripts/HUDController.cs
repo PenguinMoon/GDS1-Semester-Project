@@ -22,6 +22,8 @@ public class HUDController : MonoBehaviour
     float currentTimeScale = 1.0f;
     [SerializeField] Image speedImg;
     [SerializeField] Image fastSpeedImg;
+    [SerializeField] Image zoomInImg;
+    [SerializeField] Image zoomOutImg;
 
     bool onAltScreen = false; // If a second screen is opened on the pause menu e.g. settings screen.
     [SerializeField] GameObject mainPauseCanvas;    // The main canvas of the pause screen
@@ -144,6 +146,21 @@ public class HUDController : MonoBehaviour
                 Time.timeScale = currentTimeScale;
                 isFastForward = !isFastForward;
             }
+        }
+    }
+
+    // Changes icon in the zoom box
+    public void Zoom(bool cur)
+    {
+        if (cur)
+        {
+            zoomInImg.enabled = true;
+            zoomOutImg.enabled = false;
+        }
+        else
+        {
+            zoomInImg.enabled = false;
+            zoomOutImg.enabled = true;
         }
     }
 

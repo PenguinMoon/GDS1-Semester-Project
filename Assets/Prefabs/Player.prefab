@@ -782,6 +782,7 @@ MonoBehaviour:
     type: 3}
   audioSource: {fileID: 7059990882550421210}
   sfxData: {fileID: 11400000, guid: c9621d737d23622428a7c4c986d603c2, type: 2}
+  vcam: {fileID: 0}
 --- !u!114 &6942440810104222228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,6 +939,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ca151b1a-2d20-41d7-8086-5091ed4e8bf2
     m_ActionName: Player/FastForward[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1739327157164521402}
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 98e57098-47f7-4cd0-87a7-4d773780d2da
+    m_ActionName: Player/Zoom[/Keyboard/alt]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
