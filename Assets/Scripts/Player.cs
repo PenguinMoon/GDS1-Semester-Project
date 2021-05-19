@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 
 public class Player : MonoBehaviour
@@ -61,6 +62,9 @@ public class Player : MonoBehaviour
     [SerializeField] SFXData sfxData;
     float stepRate = 0.4f;  // Time between each footstep sound
     float stepDelay;    // Current counter of the time between each footstep
+
+    [SerializeField] CinemachineVirtualCamera vcam; // Player's follow cam
+    bool isZoomOut = false;
 
     private void Awake()
     {
@@ -261,6 +265,15 @@ public class Player : MonoBehaviour
         hudController.FastForward();
     }
 
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+        Zoom();
+    }
+
     // Activates sprinting only if the player has enough stamina remaining
     void Sprint()
     {
@@ -341,6 +354,21 @@ public class Player : MonoBehaviour
                     WhackTurret();
                     break;
             }
+    }
+
+    private void Zoom()
+    {
+        if (isZoomOut)
+        {
+            ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 15f;
+            isZoomOut = false;
+        }
+        else
+        {
+            ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 32f;
+            isZoomOut = true;
+        }
+        hudController.Zoom(isZoomOut);
     }
 
     private void PickupCurrency(GameObject coin)
@@ -488,9 +516,44 @@ public class Player : MonoBehaviour
         }
     }
 
+    public GameObject swapToObject;
     private void SwapObjects() 
     {
+        GameObject currentHeldObject = selectedObject;
+        swapToObject = interactObject;
+        GameObject turretPlate = interactObject.GetComponent<Object>().plate;
+
         Debug.Log("Should swap turrets");
+
+        if (swapToObject)
+        {
+            audioSource.PlayOneShot(sfxData.TowerPickup);
+            swapToObject.transform.position = heldObjectPoint.position;
+            swapToObject.transform.rotation = heldObjectPoint.transform.rotation;
+            swapToObject.transform.SetParent(heldObjectPoint);
+
+            selectedObject = swapToObject;
+            hudController.UpdateItemSlot(selectedObject);
+
+            if (selectedObject.GetComponent<Object>())
+            {
+                selectedObject.GetComponent<Object>().isBeingHeld = true;
+                selectedObject.GetComponent<Object>().plate.GetComponent<ObjectPlate>().placedObject = null;
+            }
+
+            audioSource.PlayOneShot(sfxData.TowerPlace);
+            currentHeldObject.transform.position = turretPlate.transform.position;
+            currentHeldObject.transform.SetParent(turretPlate.transform);
+            currentHeldObject.transform.LookAt(turretPlate.transform); // Face the object towards the plate
+
+            turretPlate.GetComponent<ObjectPlate>().placedObject = currentHeldObject;
+            currentHeldObject.GetComponent<Object>().plate = turretPlate;
+            currentHeldObject.GetComponent<Object>().isBeingHeld = false;
+
+
+        }
+
+
     }
 
     private void ReloadTurret()
@@ -590,6 +653,18 @@ public class Player : MonoBehaviour
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Pick up");
                 playerUI.ShowHintUIText();
             }
+            if (interactObject.tag == "Turret" && selectedObject.tag == "Turret")
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Swap");
+                playerUI.ShowHintUIText();
+            }
+            if (interactObject.tag == "Turret" && selectedObject.tag == "Object")
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Use");
+                playerUI.ShowHintUIText();
+            }
             if ((interactObject.tag == "TurretPlate" || interactObject.tag == "ObjectPlate") && selectedObject)
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
@@ -620,4 +695,5 @@ public class Player : MonoBehaviour
             playerUI.HideHintUIText();
         }
     }
+
 }
