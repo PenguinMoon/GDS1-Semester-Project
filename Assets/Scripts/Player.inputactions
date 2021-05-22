@@ -296,6 +296,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4c3621c2-51d0-4fed-9ec1-1037db7fd25a",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "83511bde-79b7-4c8a-938c-d4a76927b189",
                     "path": "<Gamepad>/select",
                     "interactions": "",

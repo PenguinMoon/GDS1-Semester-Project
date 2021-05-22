@@ -783,6 +783,7 @@ MonoBehaviour:
   audioSource: {fileID: 7059990882550421210}
   sfxData: {fileID: 11400000, guid: c9621d737d23622428a7c4c986d603c2, type: 2}
   vcam: {fileID: 0}
+  swapToObject: {fileID: 0}
 --- !u!114 &6942440810104222228
 MonoBehaviour:
   m_ObjectHideFlags: 0
