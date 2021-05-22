@@ -1,0 +1,44 @@
+# Blender MTL File: 'untitled.blend'
+# Material Count: 4
+
+newmtl Material.020
+Ns 475.611127
+Ka 1.000000 1.000000 1.000000
+Kd 0.868882 0.868882 0.868882
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Tub
+Ns 380.250007
+Ka 0.300000 0.300000 0.300000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl m_shower
+Ns 657.223125
+Ka 1.000000 1.000000 1.000000
+Kd 0.180316 0.180316 0.180316
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Bump E:\\Animations\\BLENDER\\projects\\Bathrooms\\Moder_Bathroom_1\\Models\\shower-cabin\\textures\\m_shower_normal.png
+refl E:\\Animations\\BLENDER\\projects\\Bathrooms\\Moder_Bathroom_1\\Models\\shower-cabin\\textures\\m_shower_metallic.jpeg
+
+newmtl steel_plate
+Ns 508.646439
+Ka 1.000000 1.000000 1.000000
+Kd 0.334322 0.334322 0.334322
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
