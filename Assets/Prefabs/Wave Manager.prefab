@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168aebf3ac725c44e9036ad35346d797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves: 01000000010000000200000002000000050000000500000005000000050000000500000005000000
+  enemyWaves: []
   timeBetweenWaves: 10
   currentWave: 0
   gameWinClip: {fileID: 8300000, guid: 0cfa4134d1cf9cd439b54f4db7f78c7f, type: 3}
@@ -57,7 +57,8 @@ AudioSource:
   m_GameObject: {fileID: 3620397727374483662}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2428291415807172464, guid: dcaec74349120a64a82319855a0f9182,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.6

@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 1739327157164521403}
   - component: {fileID: 1931729045}
   - component: {fileID: 7059990882550421210}
+  - component: {fileID: 10798045008997724}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -1139,6 +1140,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &10798045008997724
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739327157164521412}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1819500638118883734
 GameObject:
   m_ObjectHideFlags: 0
@@ -6831,15 +6851,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6b56bac53776c44fb5dff96ffeae4a1, type: 3}
---- !u!1 &9064424376567120804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9064424376121377782, guid: d6b56bac53776c44fb5dff96ffeae4a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 716669010}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9064424376567120807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9064424376121377781, guid: d6b56bac53776c44fb5dff96ffeae4a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 716669010}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9064424376567120804 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9064424376121377782, guid: d6b56bac53776c44fb5dff96ffeae4a1,
     type: 3}
   m_PrefabInstance: {fileID: 716669010}
   m_PrefabAsset: {fileID: 0}

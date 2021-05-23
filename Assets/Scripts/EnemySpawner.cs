@@ -7,6 +7,8 @@ public class EnemySpawner : MonoBehaviour
 {
     private List<Transform> _enemies = new List<Transform>();
 
+    private ParticleSystem _enemySpawnParticle;
+
     [SerializeField]
     private List<Transform> _enemyGoal;
 
@@ -16,6 +18,7 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         GenerateLane();
+        _enemySpawnParticle = GetComponentInChildren<ParticleSystem>();
     }
 
     //Called by the Wave Manager Script
@@ -37,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(GameObject enemy)
     {
         _enemies.Add(Instantiate(enemy, transform.position, transform.rotation).transform);
+        _enemySpawnParticle.Play();
         _enemies.Last().GetComponent<EnemyAI>().SetGoal(_enemyGoal.ToList());
         _enemies.Last().GetComponent<EnemyAI>().Begin();
         _enemies.Last().transform.SetParent(transform);

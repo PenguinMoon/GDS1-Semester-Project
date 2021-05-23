@@ -4904,10 +4904,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1677820602}
+    m_SelectOnDown: {fileID: 1677820602}
+    m_SelectOnLeft: {fileID: 1677820602}
+    m_SelectOnRight: {fileID: 1677820602}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -25533,7 +25533,7 @@ MonoBehaviour:
     type: 3}
   m_TrackedDeviceOrientationAction: {fileID: 1178756815422314170, guid: de2e7122f5d66604e97d7b84c1ee62ed,
     type: 3}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
 --- !u!114 &1599292619
 MonoBehaviour:

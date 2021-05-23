@@ -40,6 +40,8 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator RunWaves()
     {
+        yield return new WaitForSeconds(10f);   // Delay for intro cutscene
+
         for (int i = 0; i < enemyWaves.Count; i++)
         {
             yield return new WaitForSeconds(timeBetweenWaves);
