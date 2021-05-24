@@ -63,8 +63,10 @@ public class Player : MonoBehaviour
     float stepRate = 0.4f;  // Time between each footstep sound
     float stepDelay;    // Current counter of the time between each footstep
 
+    [Space(10)]
     [SerializeField] CinemachineVirtualCamera vcam; // Player's follow cam
     bool isZoomOut = false;
+    [SerializeField] IntroSequence introController;
 
     private void Awake()
     {
@@ -162,7 +164,7 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || introController)
         {
             return;
         }
@@ -194,7 +196,7 @@ public class Player : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || introController)
         {
             isInteractKeyHeld = false;
             return;
@@ -206,7 +208,7 @@ public class Player : MonoBehaviour
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (!context.performed || !canInput)
+        if (!context.performed || !canInput || introController)
         {
             return;
         }
@@ -228,7 +230,7 @@ public class Player : MonoBehaviour
 
     public void OnWhack(InputAction.CallbackContext context)
     {
-        if (!context.performed || selectedObject != null || currentWhackDelay > 0f)
+        if (!context.performed || selectedObject != null || currentWhackDelay > 0f || introController)
         {
             return;
         }
@@ -253,12 +255,19 @@ public class Player : MonoBehaviour
         {
             return;
         }
+
+        if (introController)
+        {
+            introController.SkipCutscene();
+            return;
+        }
+
         hudController.PauseGame();
     }
 
     public void OnFastForward(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || introController)
         {
             return;
         }
@@ -267,7 +276,7 @@ public class Player : MonoBehaviour
 
     public void OnZoom(InputAction.CallbackContext context)
     {
-        if (!context.performed)
+        if (!context.performed || introController)
         {
             return;
         }

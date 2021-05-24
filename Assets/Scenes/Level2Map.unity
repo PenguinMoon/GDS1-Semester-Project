@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: hudController
       value: 
       objectReference: {fileID: 1750915857}
+    - target: {fileID: 1739327157164521402, guid: ca34e91fa5d4f4a4a8239046923579ea,
+        type: 3}
+      propertyPath: introController
+      value: 
+      objectReference: {fileID: 1570643327}
     - target: {fileID: 1739327157164521412, guid: ca34e91fa5d4f4a4a8239046923579ea,
         type: 3}
       propertyPath: m_Name
@@ -6655,6 +6660,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea156c0821c8b1b41b2eb98864fa2d69, type: 3}
+--- !u!114 &1570643327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2311856900178130561, guid: ea156c0821c8b1b41b2eb98864fa2d69,
+    type: 3}
+  m_PrefabInstance: {fileID: 1570643326}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf737f845973e64386979f1579bb4fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1587957274
 GameObject:
   m_ObjectHideFlags: 0
