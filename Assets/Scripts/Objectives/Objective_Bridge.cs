@@ -5,6 +5,7 @@ using UnityEngine;
 public class Objective_Bridge : MonoBehaviour
 {
     [SerializeField] Transform[] pivotPoints;
+    [SerializeField] GameObject playerBlocker;
 
     void Start() 
     {
@@ -13,6 +14,7 @@ public class Objective_Bridge : MonoBehaviour
 
     public void OnRepair() {
         SetHalfRotationTo(0, 2f);
+        playerBlocker.SetActive(false);
     }
 
     void SetHalfRotationTo(float rot, float time) {
