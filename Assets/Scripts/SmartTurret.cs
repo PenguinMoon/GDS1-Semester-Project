@@ -161,7 +161,8 @@ public class SmartTurret : Object
     private void TurnToFace(Vector3 position)
     {
         Quaternion targetRotation = Quaternion.LookRotation(position - gunTransform.position);
-        gunTransform.rotation = targetRotation;//Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
+        //Quaternion.euler performs an error correcting with aiming. The aiming bone is off by 90 degrees in the model and this is not fixable as of yet.
+        gunTransform.rotation = targetRotation *  Quaternion.Euler(90, 0, 0);//Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
     }
 
     private float GetAngleToPos(Vector3 position)
