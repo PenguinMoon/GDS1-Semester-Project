@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6915653338227514107}
   - component: {fileID: 3386699638765481592}
+  - component: {fileID: 1147414502130100579}
   m_Layer: 0
   m_Name: Robot
   m_TagString: Untagged
@@ -126,6 +127,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.009120963, z: 0.0005025659}
     m_Extent: {x: 0.009802012, y: 0.016386632, z: 0.006007523}
   m_DirtyAABB: 0
+--- !u!95 &1147414502130100579
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573391928398574075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 518c1d1fd73f9425898b0b6b5f87dceb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1400950354589630452
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992929277256dd14fa8780d04481e6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
   maxHealth: 3
   partToDrop: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
     type: 3}
@@ -1134,6 +1153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7976508289666731426}
+  - component: {fileID: 2827597304528245525}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -1158,6 +1178,25 @@ Transform:
   m_Father: {fileID: 6541951608883238872}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2827597304528245525
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8371499382326691816}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7cc7965d237564d0ab0255c61d599b8c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9102884451997170471
 GameObject:
   m_ObjectHideFlags: 0
