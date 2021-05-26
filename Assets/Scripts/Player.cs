@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
-
+using UnityEditor.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject interactObject;
 
-    Transform armsObject;
+    //Transform armsObject;
 
     [SerializeField] ParticleSystem sprintParticle;
 
@@ -68,10 +68,12 @@ public class Player : MonoBehaviour
     bool isZoomOut = false;
     [SerializeField] IntroSequence introController;
 
+    [SerializeField] Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        armsObject = gameObject.transform.Find("Arms");
+        //armsObject = gameObject.transform.Find("Arms");
         playerAnim = gameObject.GetComponentInChildren<Animator>();
 
         canInput = true;
@@ -106,14 +108,14 @@ public class Player : MonoBehaviour
         //    Interact();
 
         // Animate arms
-        if (selectedObject == null)
-        {
-            armsObject.localPosition = new Vector3(0.5f, 0, 0.125f);
-        }
-        else
-        {
-            armsObject.localPosition = new Vector3(0.5f, -0.1f, 0.875f);
-        }
+        //if (selectedObject == null)
+        //{
+        //    armsObject.localPosition = new Vector3(0.5f, 0, 0.125f);
+        //}
+        //else
+        //{
+        //    armsObject.localPosition = new Vector3(0.5f, -0.1f, 0.875f);
+        //}
 
         // Highlight selected object
         if (interactObject)
@@ -150,6 +152,8 @@ public class Player : MonoBehaviour
         }
 
         Vector3 vel = movementInput * movementSpeed;
+
+        animator.SetFloat("WalkSpeed", movementInput.magnitude * movementSpeed);
 
         if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
         {
