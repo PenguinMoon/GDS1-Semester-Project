@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0, 100)] int chanceToDropPart;
     int amountOfCurrencyToDrop = 0;
 
+    [SerializeField] ParticleSystem deathParticle;
+
     MeshRenderer rend;
     EnemyUI enemyUI;
 
@@ -57,6 +59,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < amountOfCurrencyToDrop; i++)
             Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
 
+        Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

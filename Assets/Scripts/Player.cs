@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     //Transform armsObject;
 
     [SerializeField] ParticleSystem sprintParticle;
+    [SerializeField] ParticleSystem craftParticle;
 
     Animator playerAnim;
     float currentWhackDelay = 0f;
@@ -623,6 +624,7 @@ public class Player : MonoBehaviour
             selectedObject.transform.SetParent(heldObjectPoint);
             selectedObject.GetComponent<Object>().isBeingHeld = true;
             hudController.UpdateItemSlot(turret);
+            craftParticle.Play();
         }
     }
 

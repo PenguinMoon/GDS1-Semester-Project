@@ -984,6 +984,8 @@ MonoBehaviour:
   partToDrop: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
     type: 3}
   chanceToDropPart: 100
+  deathParticle: {fileID: 464801855710940144, guid: 8cded9a40f5639e46aef255a37687f9e,
+    type: 3}
 --- !u!195 &-7780192404362861432
 NavMeshAgent:
   m_ObjectHideFlags: 0
