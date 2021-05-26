@@ -155,13 +155,7 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("WalkSpeed", movementInput.magnitude * movementSpeed);
 
-        if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
-        {
-            //Debug.Log(hit.distance);
-
-            if (hit.distance > 0.2f)
-                vel += Physics.gravity * 1.5f;
-        }
+        vel += Physics.gravity;
 
         rb.velocity = vel;
     }

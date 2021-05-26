@@ -6117,7 +6117,6 @@ GameObject:
   - component: {fileID: 1395485984}
   - component: {fileID: 1395485987}
   - component: {fileID: 1395485986}
-  - component: {fileID: 1395485985}
   m_Layer: 0
   m_Name: Workshop Floor
   m_TagString: Untagged
@@ -6139,20 +6138,6 @@ Transform:
   m_Father: {fileID: 656678669}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1395485985
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395485983}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1395485986
 MeshRenderer:
   m_ObjectHideFlags: 0
