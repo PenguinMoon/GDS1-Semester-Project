@@ -68,11 +68,16 @@ public class Player : MonoBehaviour
     bool isZoomOut = false;
     [SerializeField] IntroSequence introController;
 
+    [Space(10)]
+    [Header("Stuff Rhys Added that will need to be checked")]
     [SerializeField] Animator animator;
+
+    [SerializeField] CharacterController characterController;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         //armsObject = gameObject.transform.Find("Arms");
         playerAnim = gameObject.GetComponentInChildren<Animator>();
 
@@ -121,7 +126,6 @@ public class Player : MonoBehaviour
         if (interactObject)
             EnableOutlineObject();
 
-
         // Reduce hit time so player can whack again
         if (currentWhackDelay > 0)
             currentWhackDelay -= Time.deltaTime;
@@ -137,6 +141,8 @@ public class Player : MonoBehaviour
         stepDelay -= Time.deltaTime;
     }
 
+    private float gravity = 0;
+
     private void FixedUpdate()
     {
         // Check if there is movement input before rotating
@@ -151,18 +157,22 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, rotationSpeed * Time.deltaTime);
         }
 
-        Vector3 vel = movementInput * movementSpeed;
+        
 
         animator.SetFloat("WalkSpeed", movementInput.magnitude * movementSpeed);
 
         if (Physics.Raycast(transform.position - Vector3.up, Vector3.down, out RaycastHit hit))
         {
-            //Debug.Log(hit.distance);
+            Debug.Log(hit.distance);
 
             if (hit.distance > 0.2f)
-                vel += Physics.gravity * 1.5f;
+                gravity -= 9.8f * Time.deltaTime;
         }
-
+        if (characterController.isGrounded)
+        {
+            gravity = 0;
+        }
+        Vector3 vel = (movementInput * movementSpeed * Time.deltaTime) + (Vector3.up * gravity);
         rb.velocity = vel;
     }
 
