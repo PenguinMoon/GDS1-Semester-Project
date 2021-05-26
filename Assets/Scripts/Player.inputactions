@@ -506,7 +506,7 @@
                 {
                     "name": "",
                     "id": "1064910b-abd7-4e03-bef6-34b8ebed4413",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Keyboard",
@@ -527,7 +527,7 @@
                 },
                 {
                     "name": "",
-                    "id": "013bdf68-8c76-434b-a7e2-21970b5d693a",
+                    "id": "975cd91d-a34f-453f-b480-e1f929a1abf0",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
@@ -564,7 +564,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": "Keyboard&Mouse",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -654,28 +654,6 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8088cf3f-7567-40ef-b014-be33574be95f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "345beb9d-9e63-4bb5-99b9-d01268a0c8de",
-                    "path": "<Pen>/tip",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

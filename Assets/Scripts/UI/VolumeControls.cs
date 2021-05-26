@@ -13,6 +13,11 @@ public class VolumeControls : MonoBehaviour
 
     void Start()
     {
+        // Sets audio mixer channels at the start
+        mixer.SetFloat("MasterVol", Mathf.Log10(PlayerPrefs.GetFloat("Master Vol", 1f)) * 20);
+        mixer.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("Music Vol", 1f)) * 20);
+        mixer.SetFloat("SFXVol", Mathf.Log10(PlayerPrefs.GetFloat("SFX Vol", 1f)) * 20);
+
         // Sets volume sliders to match current volume
         masterSlider.value = PlayerPrefs.GetFloat("Master Vol", 1f);
         musicSlider.value = PlayerPrefs.GetFloat("Music Vol", 1f);
