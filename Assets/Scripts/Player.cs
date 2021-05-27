@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
-using UnityEditor.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -40,8 +39,13 @@ public class Player : MonoBehaviour
     public int currencyCount = 0;
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
+    #if UNITY_EDITOR
         {"Bits", 100 },
         {"Circuits", 100 }
+    #else
+        {"Bits", 0 },
+        {"Circuits", 0 }
+    #endif
     };
 
     [SerializeField] HUDController hudController;
