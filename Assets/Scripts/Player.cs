@@ -156,7 +156,8 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("WalkSpeed", movementInput.magnitude * movementSpeed);
 
-        vel += Physics.gravity;
+        // Player floating fix - Reactivate if needed
+        //vel += Physics.gravity;
 
         rb.velocity = vel;
     }
