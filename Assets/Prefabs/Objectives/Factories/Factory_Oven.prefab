@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorPivotPoint: {fileID: 5465668024071062075}
-  openXRotation: -91.5
+  openXRotation: -96
 --- !u!1 &4289714706198667266
 GameObject:
   m_ObjectHideFlags: 0

@@ -5586,7 +5586,7 @@ PrefabInstance:
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
@@ -5596,7 +5596,7 @@ PrefabInstance:
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
       propertyPath: enemyWaves.Array.data[1].totalEnemies
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
@@ -5612,6 +5612,21 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyWaves.Array.data[4].totalEnemies
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[5].totalEnemies
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[6].totalEnemies
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[7].totalEnemies
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
@@ -5640,7 +5655,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
+      propertyPath: enemyWaves.Array.data[5].enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[6].enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[7].enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
       propertyPath: enemyWaves.Array.data[0].enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemies.Array.data[3]
       value: 
       objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
         type: 3}
@@ -5684,11 +5732,47 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyWaves.Array.data[4].enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+      objectReference: {fileID: 5666991125237923324, guid: 01b9d17995da00946b7c28b04af85fe7,
         type: 3}
     - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
         type: 3}
       propertyPath: enemyWaves.Array.data[4].enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 3996227429540853555, guid: cc75ce02c8fbdfd45990cc43d2a2d67a,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[5].enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[5].enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 3996227429540853555, guid: cc75ce02c8fbdfd45990cc43d2a2d67a,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[6].enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[6].enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 3996227429540853555, guid: cc75ce02c8fbdfd45990cc43d2a2d67a,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[7].enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: dbfabacfffafe884181aee5673dcbced,
+        type: 3}
+    - target: {fileID: 3620397727374483657, guid: f2e19d2dfbff6ff49a65cb343d2eed8f,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[7].enemies.Array.data[1]
       value: 
       objectReference: {fileID: 3996227429540853555, guid: cc75ce02c8fbdfd45990cc43d2a2d67a,
         type: 3}
@@ -8731,7 +8815,7 @@ PrefabInstance:
     - target: {fileID: 4617075468937626192, guid: 7afd5686dd5748e4ba14d1a355641428,
         type: 3}
       propertyPath: openXRotation
-      value: -93
+      value: -96
       objectReference: {fileID: 0}
     - target: {fileID: 5465668024071062075, guid: 7afd5686dd5748e4ba14d1a355641428,
         type: 3}
