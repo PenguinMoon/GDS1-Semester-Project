@@ -29,6 +29,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4474708606472558103, guid: ceff07462ad075f42923dddedd13f015,
         type: 3}
+    - target: {fileID: 3836328729813460978, guid: c3b913c6f5356f04aa399d833fc460d6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f5c55ed57b70f849a22ccaddc96326d, type: 2}
     - target: {fileID: 4521414531265462766, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -82,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 5036071401278221436, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
       propertyPath: m_Name
-      value: Ammo Workbench
+      value: Ammo Workbench Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5036071401278221437, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
