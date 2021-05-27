@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     {
         // Platform dependent compilation stuff
         // Basically when its played in the Unity Editor, bits & circuits = 100 for debug purposes
-        // After being built, bits & circuits = 0 so players don't start with any currency
+        // After the game is built, bits & circuits = 0 so players don't start with any currency
         #if UNITY_EDITOR
             {"Bits", 100 },
             {"Circuits", 100 }

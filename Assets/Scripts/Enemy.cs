@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
         switch (other.tag)
         {
             case "WorkshopWall":
+                Instantiate(deathParticle, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 break;
         }
