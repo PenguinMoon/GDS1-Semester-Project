@@ -10285,7 +10285,7 @@ MonoBehaviour:
   plate: {fileID: 0}
   isBeingHeld: 0
   objectName: Cannon
-  objectImage: {fileID: 2800000, guid: c747545e3171fed4ca3ed1ae4deb678e, type: 3}
+  objectImage: {fileID: 2800000, guid: 60e74cfe3519c2d458b37722b5cc9b84, type: 3}
   bitsPrice: 3
   circuitsPrice: 4
   gunTransform: {fileID: 246750843829323067}

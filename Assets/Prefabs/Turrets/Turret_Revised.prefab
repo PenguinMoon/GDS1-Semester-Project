@@ -15277,7 +15277,7 @@ MonoBehaviour:
   plate: {fileID: 0}
   isBeingHeld: 0
   objectName: Turret
-  objectImage: {fileID: 2800000, guid: 8223ec5973d642c4092fd8bef5c819ed, type: 3}
+  objectImage: {fileID: 2800000, guid: 5c2157afff3a4d7448be2328895b411c, type: 3}
   bitsPrice: 3
   circuitsPrice: 0
   gunTransform: {fileID: 6050043893701310159}

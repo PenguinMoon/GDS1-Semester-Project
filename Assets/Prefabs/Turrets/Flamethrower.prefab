@@ -212,7 +212,7 @@ MonoBehaviour:
   plate: {fileID: 0}
   isBeingHeld: 0
   objectName: Flamethrower
-  objectImage: {fileID: 2800000, guid: 45c67548df7790d4e8020f73d7983a99, type: 3}
+  objectImage: {fileID: 2800000, guid: 4f097ca5a2904d94594621a8ad846dcf, type: 3}
   bitsPrice: 2
   circuitsPrice: 1
   gunTransform: {fileID: 1429831735033210657}
