@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6099530800310030548}
   - component: {fileID: 4134934343187102446}
   - component: {fileID: 7850663146745269235}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 2112249349449940862}
   - component: {fileID: 3956327585437751108}
   - component: {fileID: 3617282906645320529}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: CurrencyImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1175487387893800408}
   - component: {fileID: 8517230947736016491}
   - component: {fileID: 4274379892415273089}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Objective
   m_TagString: KioskObjective
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 1266965012043736323}
   - component: {fileID: 8409994130316595382}
   - component: {fileID: 4955741092090605282}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 8272017779232728210}
   - component: {fileID: 7919472683275029047}
   - component: {fileID: 3294390980646052725}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Post
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 5923084712428761443}
   - component: {fileID: 4020946092852472452}
   - component: {fileID: 3440506396486768939}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 8269692259763748889}
   - component: {fileID: 7776680162170944805}
   - component: {fileID: 5173840516825144852}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: CurrencyAmountTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 6762336408563393361}
   - component: {fileID: 6863875994962035370}
   - component: {fileID: 5107748267519469658}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: HudCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

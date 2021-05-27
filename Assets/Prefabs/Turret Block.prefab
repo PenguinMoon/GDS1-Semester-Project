@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4723216409371442172}
   - component: {fileID: 4723216409371442171}
   - component: {fileID: 4723216409371442170}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Turret Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +186,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TurretPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308163297703186643, guid: 48f807661a0afab458cf32e42df4c794,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f807661a0afab458cf32e42df4c794, type: 3}
