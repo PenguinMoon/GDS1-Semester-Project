@@ -394,7 +394,7 @@ public class Player : MonoBehaviour
             switch (interactObject.tag)
             {
                 case "Turret":
-                    WhackTurret();
+                    //WhackTurret();
                     break;
             }
     }
