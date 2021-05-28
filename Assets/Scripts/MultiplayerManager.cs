@@ -11,6 +11,7 @@ public class MultiplayerManager : MonoBehaviour
     public HUDController hudController;
 
     public static int playerCount = 0;
+    private bool gameStarted = false;
 
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
@@ -34,8 +35,7 @@ public class MultiplayerManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        inputManager.JoinPlayer();
+    {   
         inputManager.DisableJoining();
 
         if (FindObjectOfType<IntroSequence>() == null) {
@@ -46,6 +46,9 @@ public class MultiplayerManager : MonoBehaviour
     public void IntroSequenceFinished() {
         //Spawn one player at the start of the game
         inputManager.EnableJoining();
+        inputManager.JoinPlayer();
+        MultiplayerManager.playerCount = 1;
+        gameStarted = true;
         hudController.UpdateCash(inventory);
     }
 
@@ -54,7 +57,8 @@ public class MultiplayerManager : MonoBehaviour
             multiCam.NewPlayerSpawned();
         }
 
-        MultiplayerManager.playerCount = inputManager.playerCount;
+        if (gameStarted)
+            MultiplayerManager.playerCount = inputManager.playerCount;
     }
 
     public void ReceiveCurrency(int bits, int circuits) {
