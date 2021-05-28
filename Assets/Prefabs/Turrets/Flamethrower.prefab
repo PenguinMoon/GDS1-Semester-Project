@@ -213,8 +213,8 @@ MonoBehaviour:
   isBeingHeld: 0
   objectName: Flamethrower
   objectImage: {fileID: 2800000, guid: 4f097ca5a2904d94594621a8ad846dcf, type: 3}
-  bitsPrice: 2
-  circuitsPrice: 1
+  bitsPrice: 0
+  circuitsPrice: 4
   gunTransform: {fileID: 1429831735033210657}
   baseTransform: {fileID: 6635167435602283209}
   enemyMask:
