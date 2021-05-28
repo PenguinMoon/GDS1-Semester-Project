@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject partToDrop;
     [SerializeField, Range(0, 100)] int chanceToDropPart;
+
+    [SerializeField]
     int amountOfCurrencyToDrop = 1;
 
 
@@ -28,8 +30,6 @@ public class Enemy : MonoBehaviour
         enemyUI = GetComponentInChildren<EnemyUI>();
 
         health = maxHealth;
-
-        amountOfCurrencyToDrop = 1;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,7 +60,13 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
+        if (amountOfCurrencyToDrop == 1)
+            Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
+        else {
+            for (int i = 0; i < amountOfCurrencyToDrop; i++) {
+                Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
+            }
+        }
 
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
