@@ -40,7 +40,7 @@ public class Workbench : MonoBehaviour
 
     public void Interact(Player player)
     {
-        if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject))
+        if (!LeanTween.isTweening(workbench.GetComponent<Canvas>().transform.gameObject) && playerRef == null)
         {
             Debug.Log("ACTIVATING WB");
             playerRef = player;
@@ -52,7 +52,7 @@ public class Workbench : MonoBehaviour
     IEnumerator ActivateWorkbench()
     {
         yield return new WaitForSeconds(0.01f);
-        playerRef.EnterMenu();
+        //playerRef.EnterMenu();
         workbench.SetActive(true);
         workbench.GetComponent<Canvas>().enabled = true;
         StartCoroutine("StartSelectButton", 0.1f);
@@ -64,7 +64,7 @@ public class Workbench : MonoBehaviour
         workbench.GetComponent<Canvas>().transform.LeanScale(new Vector3(0.0f, 0.0f, 1), 0.3f).setEaseOutExpo();
         StartCoroutine("DeactivateWorkbench");
         if(playerRef)
-        playerRef.ExitMenu();
+        //playerRef.ExitMenu();
         playerRef = null;
     }
 
