@@ -78,6 +78,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    [SerializeField] Material secondPlayerMaterial;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
+    [SerializeField] InputActionAsset defaultPlayerInput;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -99,7 +103,18 @@ public class Player : MonoBehaviour
         var dvc = InputSystem.GetDevice<VirtualKeyboardDevice>();
         InputSystem.EnableDevice(dvc);
 
+        //GetComponent<PlayerInput>().actions = defaultPlayerInput;
+
         stepDelay = 0;
+    }
+
+    private void Start()
+    {
+        int count = GameObject.FindGameObjectsWithTag("Player").Length;
+        Debug.Log(count);
+        if (count > 1) {
+            Debug.Log(meshRenderer.materials);
+        }
     }
 
     void Update()

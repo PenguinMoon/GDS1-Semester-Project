@@ -578,6 +578,11 @@ MonoBehaviour:
   vcam: {fileID: 0}
   introController: {fileID: 0}
   animator: {fileID: 10798045008997724}
+  secondPlayerMaterial: {fileID: 2100000, guid: 69d51b50ca7ec5a40a700897d6d9a521,
+    type: 2}
+  meshRenderer: {fileID: 8233246621614767176}
+  defaultPlayerInput: {fileID: -944628639613478452, guid: 58ddb7cd7825ce240968785f62456086,
+    type: 3}
   swapToObject: {fileID: 0}
 --- !u!114 &6942440810104222228
 MonoBehaviour:
