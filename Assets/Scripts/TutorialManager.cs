@@ -17,7 +17,9 @@ public class TutorialManager : MonoBehaviour
 
     DialogueManager dialogueManager;
     MultiplayerManager multiplayerManager;
-    int stepIndex;
+
+    [SerializeField]
+    int stepIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,7 @@ public class TutorialManager : MonoBehaviour
         switch (stepIndex)
         {
             case 0:
-            arrow.transform.position = turret.transform.position;
+            arrow.transform.position = turretPlate.transform.position;
             break;
 
             case 1:
@@ -65,13 +67,25 @@ public class TutorialManager : MonoBehaviour
             break;
         }
 
+        if (player == null) {
+            player = FindObjectOfType<Player>();
+            turret = FindObjectOfType<SmartTurret>();
+
+
+            if (player) {
+                dialogueManager.DisplayNextSentence();
+                StartCoroutine(AutoDialogue(5f));
+            }
+            return;
+        }
+
         if (stepIndex == 0 && player.selectedObject.tag == "Turret") // Player picks up initial turret
         {
             stepIndex++;
             dialogueManager.DisplayNextSentence();
         }
 
-        if (stepIndex == 1 && turretPlate.placedObject.tag == "Turret") // Player places turret down on correct plate
+        if (stepIndex == 1 && turretPlate.placedObject && turretPlate.placedObject.tag == "Turret") // Player places turret down on correct plate
         {
             stepIndex++;
             dialogueManager.DisplayNextSentence();
