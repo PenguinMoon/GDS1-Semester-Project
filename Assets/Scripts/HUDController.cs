@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class HUDController : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class HUDController : MonoBehaviour
     [SerializeField] Slider hpBar;
     [SerializeField] Gradient hpGradient;
     [SerializeField] Image hpImg;
+
+    [SerializeField] TextMeshProUGUI pressToJoinTxt;
 
     // Pause Screen Elements
     bool isPaused = false;
@@ -38,12 +41,15 @@ public class HUDController : MonoBehaviour
     void Start()
     {
         waveManager = FindObjectOfType<WaveManager>();
+        pressToJoinTxt.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateWaveCounter();
+
+        pressToJoinTxt.enabled = (InputSystem.devices.Count > 3 && MultiplayerManager.playerCount < 2);
     }
 
     public void UpdateWaveCounter()

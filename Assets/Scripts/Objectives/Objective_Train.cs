@@ -17,19 +17,20 @@ public class Objective_Train : MonoBehaviour
     Cinemachine.CinemachinePathBase track;
 
     [SerializeField] ParticleSystem smokeParticle;
-    [SerializeField] SmartTurret trainTurret;
     [SerializeField] List<GameObject> trainTurretPlatforms;
+
+    private void Awake()
+    {
+        selfCart = GetComponent<Cinemachine.CinemachineDollyCart>();
+    }
 
     private void Start()
     {
-        trainTurret.repaired = false;
-
         foreach (GameObject g in trainTurretPlatforms)
             g.SetActive(false);
 
         Debug.Log("Set everything correctly");
 
-        selfCart = GetComponent<Cinemachine.CinemachineDollyCart>();
         if (selfCart)
         {
             selfCart.m_Position = 0;
@@ -47,12 +48,15 @@ public class Objective_Train : MonoBehaviour
 
     public void SetTrainSpeed(float speed)
     {
-        linkCart.m_Speed = carriageCart.m_Speed = selfCart.m_Speed = speed;
+        Debug.Log(speed);
+
+        linkCart.m_Speed = speed;
+        carriageCart.m_Speed = speed;
+        selfCart.m_Speed = speed;
 
         if (speed > 0)
         {
             smokeParticle.Play();
-            trainTurret.repaired = true;
 
             foreach (GameObject g in trainTurretPlatforms)
                 g.SetActive(true);
