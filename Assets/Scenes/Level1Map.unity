@@ -6955,6 +6955,7 @@ MonoBehaviour:
   followTarget: {fileID: 498326492}
   maxZoom: 25
   minZoom: 5
+  extraZoom: 0
 --- !u!1 &1056801527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,11 +8655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2207923809222700896, guid: 7afd5686dd5748e4ba14d1a355641428,
-        type: 3}
-      propertyPath: requiredBits
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2239919564620582756, guid: 7afd5686dd5748e4ba14d1a355641428,
         type: 3}

@@ -5464,6 +5464,7 @@ MonoBehaviour:
   followTarget: {fileID: 1015265023}
   maxZoom: 25
   minZoom: 5
+  extraZoom: 0
 --- !u!1 &1056801527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8369,7 +8370,7 @@ MonoBehaviour:
     - 'Place the new turret down
 
 '
-    - Hit the turret to reload some ammo
+    - 
     - Craft a battery from the other workbench
     - Place it on the turret to reload it
     - 'Congrats! Now that you know the basics, don''t let the robots reach the end!
