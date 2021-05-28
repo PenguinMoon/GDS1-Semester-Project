@@ -213,8 +213,8 @@ MonoBehaviour:
   isBeingHeld: 0
   objectName: Flamethrower
   objectImage: {fileID: 2800000, guid: 4f097ca5a2904d94594621a8ad846dcf, type: 3}
-  bitsPrice: 0
-  circuitsPrice: 4
+  bitsPrice: 4
+  circuitsPrice: 6
   gunTransform: {fileID: 1429831735033210657}
   baseTransform: {fileID: 6635167435602283209}
   enemyMask:
@@ -225,9 +225,9 @@ MonoBehaviour:
   firePoint: {fileID: 1720204341149385043}
   repaired: 1
   hasInfiniteAmmo: 0
-  range: 8
+  range: 12
   fireDelay: 0.2
-  maxAmmo: 40
+  maxAmmo: 80
   delayBetweenReloading: 0.5
   ammoImage: {fileID: 5435503981814399934}
   FOVIndicator: {fileID: 5989670045532005585}

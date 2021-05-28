@@ -10199,8 +10199,8 @@ MonoBehaviour:
   isBeingHeld: 0
   objectName: Machine Gun
   objectImage: {fileID: 2800000, guid: ad4697b5679f5674fae7f261abb737c0, type: 3}
-  bitsPrice: 5
-  circuitsPrice: 8
+  bitsPrice: 8
+  circuitsPrice: 10
   gunTransform: {fileID: 3639218338037155297}
   baseTransform: {fileID: 9025785467708549129}
   enemyMask:
