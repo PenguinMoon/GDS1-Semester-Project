@@ -3807,6 +3807,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8517230947736016491, guid: a8d82b549cf3a92439c303f020c9a1f9,
         type: 3}
+      propertyPath: requiredBits
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8517230947736016491, guid: a8d82b549cf3a92439c303f020c9a1f9,
+        type: 3}
       propertyPath: onObjectiveRepaired.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
