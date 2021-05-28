@@ -436,7 +436,8 @@ public class Player : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Turret":
-                interactObject = other.gameObject;
+                if (!other.gameObject.GetComponent<Object>().isBeingHeld)
+                    interactObject = other.gameObject;
                 break;
             case "Object":
                 interactObject = other.gameObject;
