@@ -401,17 +401,18 @@ public class Player : MonoBehaviour
 
     private void Zoom()
     {
-        if (isZoomOut)
-        {
-            ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 15f;
-            isZoomOut = false;
-        }
-        else
-        {
-            ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 32f;
-            isZoomOut = true;
-        }
-        manager.hudController.Zoom(isZoomOut);
+        //if (isZoomOut)
+        //{
+        //    ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 15f;
+        //    isZoomOut = false;
+        //}
+        //else
+        //{
+        //    ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 32f;
+        //    isZoomOut = true;
+        //}
+
+        manager.ZoomCamera();
     }
 
     private void PickupCurrency(GameObject coin)
