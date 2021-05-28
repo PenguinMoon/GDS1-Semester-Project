@@ -21,8 +21,8 @@ public class MultiplayerManager : MonoBehaviour
         // Basically when its played in the Unity Editor, bits & circuits = 100 for debug purposes
         // After the game is built, bits & circuits = 0 so players don't start with any currency
         #if UNITY_EDITOR
-            {"Bits", 0 },
-            {"Circuits", 0 }
+            {"Bits", 100 },
+            {"Circuits", 100 }
         #else
             {"Bits", 0 },
             {"Circuits", 0 }
