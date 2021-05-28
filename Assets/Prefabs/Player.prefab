@@ -756,7 +756,7 @@ MonoBehaviour:
     m_ActionId: 98e57098-47f7-4cd0-87a7-4d773780d2da
     m_ActionName: Player/Zoom[/Keyboard/alt]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

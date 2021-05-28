@@ -120,6 +120,13 @@ public class Player : MonoBehaviour
             mats[0] = secondPlayerMaterial;
             meshRenderer.materials = mats;
         }
+
+        Vector3 spawnPosition = Vector3.zero;
+
+        if (GameObject.FindGameObjectWithTag("Respawn") != null)
+            spawnPosition = GameObject.FindGameObjectWithTag("Respawn").transform.position;
+
+        transform.position = spawnPosition;
     }
 
     void Update()
@@ -569,7 +576,7 @@ public class Player : MonoBehaviour
             swapToObject.transform.SetParent(heldObjectPoint);
 
             selectedObject = swapToObject;
-            hudController.UpdateItemSlot(selectedObject);
+            //hudController.UpdateItemSlot(selectedObject);
 
             if (selectedObject.GetComponent<Object>())
             {

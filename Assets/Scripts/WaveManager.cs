@@ -50,6 +50,9 @@ public class WaveManager : MonoBehaviour
 
             int numOfEnemiesToSpawn = enemyWaves[i].totalEnemies / spawners.Count;
 
+            //Scale waves to the amount of players
+            numOfEnemiesToSpawn *= MultiplayerManager.playerCount;
+
             //Spawn enemies at each spawner
             foreach (EnemySpawner spawner in spawners)
                 StartCoroutine(spawner.SpawnWaveOfNum(numOfEnemiesToSpawn, enemyWaves[i].enemies));

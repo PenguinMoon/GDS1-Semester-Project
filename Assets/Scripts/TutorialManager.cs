@@ -16,11 +16,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject arrow;
 
     DialogueManager dialogueManager;
+    MultiplayerManager multiplayerManager;
     int stepIndex;
 
     // Start is called before the first frame update
     void Start()
     {
+        multiplayerManager = FindObjectOfType<MultiplayerManager>();
         player = FindObjectOfType<Player>();
         dialogueManager = FindObjectOfType<DialogueManager>();
     }
@@ -81,7 +83,7 @@ public class TutorialManager : MonoBehaviour
             StartCoroutine("AutoDialogue", 3f);
         }
 
-        if (stepIndex == 3 && player.inventory["Bits"] >= 3) // Wait for the player to pick up at least 3 currency
+        if (stepIndex == 3 && multiplayerManager.CanAffordItem(3, 0)) // Wait for the player to pick up at least 3 currency
         {
             stepIndex++;
             dialogueManager.DisplayNextSentence();

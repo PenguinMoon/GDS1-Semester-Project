@@ -11,7 +11,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
     Vector3 camOffsetDirection = Vector3.zero;
 
-    [SerializeField] float maxZoom = 20f;
+    [SerializeField] float maxZoom = 25f;
     [SerializeField] float minZoom = 5f;
 
     private void Start()
