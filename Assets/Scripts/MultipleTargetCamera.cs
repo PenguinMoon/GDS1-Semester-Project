@@ -14,6 +14,8 @@ public class MultipleTargetCamera : MonoBehaviour
     [SerializeField] float maxZoom = 25f;
     [SerializeField] float minZoom = 5f;
 
+    public float extraZoom = 0f;
+
     private void Start()
     {
         camOffsetDirection = transform.position - followTarget.position;
@@ -24,7 +26,7 @@ public class MultipleTargetCamera : MonoBehaviour
         if (playerPositions.Count > 0) {
 
             if (playerPositions.Count == 1)
-                followTarget.position = playerPositions[0].position;
+                followTarget.position = playerPositions[0].position + (camOffsetDirection * extraZoom);
             else {
                 var bounds = new Bounds(playerPositions[0].position, Vector3.zero);
                 foreach (Transform player in playerPositions) {
@@ -36,7 +38,7 @@ public class MultipleTargetCamera : MonoBehaviour
 
                 float zoom = Mathf.Clamp(distBetweenPlayers, minZoom, maxZoom);
 
-                Vector3 finalPos = lookPosition + (camOffsetDirection * zoom);
+                Vector3 finalPos = lookPosition + (camOffsetDirection * (zoom + extraZoom));
 
                 followTarget.position = finalPos;
             }

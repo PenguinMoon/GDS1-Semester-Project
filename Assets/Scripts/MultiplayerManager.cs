@@ -13,6 +13,8 @@ public class MultiplayerManager : MonoBehaviour
     public static int playerCount = 0;
     private bool gameStarted = false;
 
+    bool isZoomOut = false;
+
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
         // Platform dependent compilation stuff
@@ -79,5 +81,20 @@ public class MultiplayerManager : MonoBehaviour
 
     public bool CanAffordItem(int bits, int circuits) {
         return inventory["Bits"] >= bits && inventory["Circuits"] >= circuits;
+    }
+
+    public void ZoomCamera()
+    {
+        if (isZoomOut)
+        {
+            multiCam.extraZoom = 0f;
+            isZoomOut = false;
+        }
+        else
+        {
+            multiCam.extraZoom = 10f;
+            isZoomOut = true;
+        }
+        hudController.Zoom(isZoomOut);
     }
 }
