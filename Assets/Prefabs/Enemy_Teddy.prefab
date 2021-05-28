@@ -834,6 +834,7 @@ MonoBehaviour:
   partToDrop: {fileID: 1830934825354960601, guid: 00861d73d376cba4baf3178c2da08391,
     type: 3}
   chanceToDropPart: 100
+  damageToDeal: 5
   deathParticle: {fileID: 464801855710940144, guid: 8cded9a40f5639e46aef255a37687f9e,
     type: 3}
 --- !u!195 &30302601155006120

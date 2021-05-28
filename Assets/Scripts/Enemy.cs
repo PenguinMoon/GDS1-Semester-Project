@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField, Range(0, 100)] int chanceToDropPart;
     int amountOfCurrencyToDrop = 0;
 
+
+    public int damageToDeal = 1;
+
     [SerializeField] ParticleSystem deathParticle;
 
     MeshRenderer rend;

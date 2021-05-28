@@ -21,6 +21,6 @@ public class WorkshopWall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
-            parent.TakeDamage(1);
+            parent.TakeDamage(other.gameObject.GetComponent<Enemy>().damageToDeal);
     }
 }
