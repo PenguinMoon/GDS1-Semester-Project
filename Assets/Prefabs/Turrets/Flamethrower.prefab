@@ -213,7 +213,7 @@ MonoBehaviour:
   isBeingHeld: 0
   objectName: Flamethrower
   objectImage: {fileID: 2800000, guid: 4f097ca5a2904d94594621a8ad846dcf, type: 3}
-  bitsPrice: 4
+  bitsPrice: 2
   circuitsPrice: 6
   gunTransform: {fileID: 1429831735033210657}
   baseTransform: {fileID: 6635167435602283209}
@@ -225,7 +225,7 @@ MonoBehaviour:
   firePoint: {fileID: 1720204341149385043}
   repaired: 1
   hasInfiniteAmmo: 0
-  range: 12
+  range: 10
   fireDelay: 0.2
   maxAmmo: 80
   delayBetweenReloading: 0.5
@@ -15471,7 +15471,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8241922787849937817}
   serializedVersion: 6
-  lengthInSec: 1
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -15599,7 +15599,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 70
+      scalar: 100
       minScalar: 5
       maxCurve:
         serializedVersion: 2
