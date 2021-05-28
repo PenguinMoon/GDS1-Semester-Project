@@ -11,7 +11,7 @@ public class PickupAttractor : MonoBehaviour
     void Update()
     {
         if (isMoving)
-            transform.parent.position = Vector3.MoveTowards(transform.parent.position, target.transform.position, 10f * Time.deltaTime);
+            transform.parent.position = Vector3.MoveTowards(transform.parent.position, target.transform.position + Vector3.up, 10f * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
