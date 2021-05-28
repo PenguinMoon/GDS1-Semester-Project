@@ -27,6 +27,7 @@ public class IntroSequence : MonoBehaviour
         LeanTween.move(levelName.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), .3f).setEase(LeanTweenType.easeInExpo).setOnComplete(() =>
         {
             Destroy(this.gameObject);
+            FindObjectOfType<MultiplayerManager>().IntroSequenceFinished();
         });
 
     }
@@ -41,6 +42,7 @@ public class IntroSequence : MonoBehaviour
         LeanTween.move(levelName.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), .3f).setEase(LeanTweenType.easeInExpo).setOnComplete(() =>
         {
             Destroy(this.gameObject);
+            FindObjectOfType<MultiplayerManager>().IntroSequenceFinished();
         });
     }
 }

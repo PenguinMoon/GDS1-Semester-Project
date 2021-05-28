@@ -82,8 +82,13 @@ public class Player : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer meshRenderer;
     [SerializeField] InputActionAsset defaultPlayerInput;
 
+    //Manages inventory now that local multiplayer is a thing
+    MultiplayerManager manager;
+
     private void Awake()
     {
+        manager = FindObjectOfType<MultiplayerManager>();
+
         rb = GetComponent<Rigidbody>();
         //armsObject = gameObject.transform.Find("Arms");
         playerAnim = gameObject.GetComponentInChildren<Animator>();
@@ -110,17 +115,17 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        int count = GameObject.FindGameObjectsWithTag("Player").Length;
-        Debug.Log(count);
-        if (count > 1) {
-            Debug.Log(meshRenderer.materials);
+        if (MultiplayerManager.playerCount > 1) {
+            Material[] mats = meshRenderer.materials;
+            mats[0] = secondPlayerMaterial;
+            meshRenderer.materials = mats;
         }
     }
 
     void Update()
     {
-        if (hudController)
-            hudController.UpdateCash(inventory);
+        // if (hudController)
+        //     hudController.UpdateCash(inventory);
 
         //OLD INPUT//
         //Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -405,9 +410,9 @@ public class Player : MonoBehaviour
     private void PickupCurrency(GameObject coin)
     {
         if (coin.name.Contains("Circuit"))
-            inventory["Circuits"]++;
+            manager.ReceiveCurrency(0, 1);//inventory["Circuits"]++;
         else if (coin.name.Contains("Bit"))
-            inventory["Bits"]++;
+            manager.ReceiveCurrency(1, 0);//inventory["Bits"]++;
 
         Destroy(coin);
     }
@@ -492,9 +497,9 @@ public class Player : MonoBehaviour
 
     private void InteractWithObjective()
     {
-        if (inventory["Bits"] > 0 && repairDelay <= 0)
+        if (manager.CanAffordItem(1, 0) && repairDelay <= 0)
         {
-            inventory["Bits"]--;
+            manager.SpendCurrency(1, 0);//inventory["Bits"]--;
             interactObject.GetComponent<KioskObjective>().ReceiveBits(1);
             repairDelay = maxRepairDelay;
         }
@@ -516,7 +521,7 @@ public class Player : MonoBehaviour
             selectedObject.GetComponent<Object>().plate = interactObject;
             selectedObject.GetComponent<Object>().isBeingHeld = false;
 
-            hudController.UpdateItemSlot(null);
+            //hudController.UpdateItemSlot(null);
             selectedObject = null;
         }
     }
@@ -536,7 +541,7 @@ public class Player : MonoBehaviour
             interactObject.transform.SetParent(heldObjectPoint);
 
             selectedObject = interactObject;
-            hudController.UpdateItemSlot(selectedObject);
+            //hudController.UpdateItemSlot(selectedObject);
 
             if (selectedObject.GetComponent<Object>())
             {
@@ -619,8 +624,9 @@ public class Player : MonoBehaviour
     {
         if (selectedObject)
         {
-            inventory["Bits"] += selectedObject.GetComponent<Object>().bitsPrice;
-            inventory["Circuits"] += selectedObject.GetComponent<Object>().circuitsPrice;
+            manager.ReceiveCurrency(selectedObject.GetComponent<Object>().bitsPrice, selectedObject.GetComponent<Object>().circuitsPrice);
+            //inventory["Bits"] += selectedObject.GetComponent<Object>().bitsPrice;
+            //inventory["Circuits"] += selectedObject.GetComponent<Object>().circuitsPrice;
             selectedObject.GetComponent<Object>().DestroyObject();
             hudController.UpdateItemSlot(null);
             selectedObject = null;
@@ -646,7 +652,7 @@ public class Player : MonoBehaviour
             selectedObject = Instantiate(turret, heldObjectPoint.position, heldObjectPoint.rotation);
             selectedObject.transform.SetParent(heldObjectPoint);
             selectedObject.GetComponent<Object>().isBeingHeld = true;
-            hudController.UpdateItemSlot(turret);
+            //hudController.UpdateItemSlot(turret);
             craftParticle.Play();
         }
     }

@@ -16,8 +16,11 @@ public class Workbench : MonoBehaviour
 
     [SerializeField] private Player playerRef;
 
+    MultiplayerManager manager;
+
     private void Awake()
     {
+        manager = FindObjectOfType<MultiplayerManager>();
         eventSystem = FindObjectOfType<EventSystem>();
         StartCoroutine("ResetWorkbenchUI");
         workbench.GetComponent<Canvas>().transform.localScale = new Vector3(0,0,1);
@@ -126,10 +129,12 @@ public class Workbench : MonoBehaviour
     private bool canAffordItem(Object item)
     {
 
-        if (item.bitsPrice <= playerRef.inventory["Bits"] && item.circuitsPrice <= playerRef.inventory["Circuits"])
-            return true;
-        else
-            return false;
+        // if (item.bitsPrice <= playerRef.inventory["Bits"] && item.circuitsPrice <= playerRef.inventory["Circuits"])
+        //     return true;
+        // else
+        //     return false;
+
+        return manager.CanAffordItem(item.bitsPrice, item.circuitsPrice);
 
         // Old shop system
         /*        switch (itemName)
@@ -162,29 +167,10 @@ public class Workbench : MonoBehaviour
     private void takeCurrencyFromPlayer(Object item)
     {
 
-        playerRef.inventory["Bits"] -= item.bitsPrice;
-        playerRef.inventory["Circuits"] -= item.circuitsPrice;
-        
-        // Old shop system
-        /*        switch (itemName)
-                {
-                    case "Ammo":
-                    case "Turret_Revised":
-                        playerRef.inventory["Bits"]--;
-                        break;
-                    case "MachineTurret_Revised":
-                        playerRef.inventory["Bits"] -= 2;
-                        playerRef.inventory["Circuits"]--;
-                        break;
-                    case "CannonTurret":
-                        playerRef.inventory["Bits"] -= 3;
-                        playerRef.inventory["Circuits"] -= 2;
-                        break;
-                    case "Flamethrower":
-                        playerRef.inventory["Bits"] -= 1;
-                        playerRef.inventory["Circuits"] -=2;
-                        break;
-                }*/
+        // playerRef.inventory["Bits"] -= item.bitsPrice;
+        // playerRef.inventory["Circuits"] -= item.circuitsPrice;
+
+        manager.SpendCurrency(item.bitsPrice, item.circuitsPrice);
     }
 
     public void OnTurretMakeButtonPressed(Object item)
