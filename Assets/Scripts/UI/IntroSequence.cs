@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.InputSystem;
 
 public class IntroSequence : MonoBehaviour
 {
@@ -44,5 +45,15 @@ public class IntroSequence : MonoBehaviour
             Destroy(this.gameObject);
             FindObjectOfType<MultiplayerManager>().IntroSequenceFinished();
         });
+    }
+
+    public void OnSkip(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+        {
+            return;
+        }
+
+        SkipCutscene();
     }
 }
