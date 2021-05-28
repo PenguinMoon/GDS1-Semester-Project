@@ -35,6 +35,7 @@ public class MultiplayerManager : MonoBehaviour
 
     private void Start()
     {
+        inputManager.JoinPlayer();
         inputManager.DisableJoining();
 
         if (FindObjectOfType<IntroSequence>() == null) {
@@ -45,8 +46,6 @@ public class MultiplayerManager : MonoBehaviour
     public void IntroSequenceFinished() {
         //Spawn one player at the start of the game
         inputManager.EnableJoining();
-
-        inputManager.JoinPlayer();
         hudController.UpdateCash(inventory);
     }
 
