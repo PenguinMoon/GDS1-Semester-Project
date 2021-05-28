@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             SpawnRandomEnemy(options);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.7f);
         }
     }
 
