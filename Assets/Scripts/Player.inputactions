@@ -186,17 +186,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3dc76b9f-f140-4d5f-875f-441c784dc913",
-                    "path": "<Gamepad>/leftStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cff14856-3514-4fe5-8134-173b1bbf7434",
                     "path": "<Keyboard>/f",
                     "interactions": "",

@@ -654,6 +654,17 @@
                 },
                 {
                     "name": "",
+                    "id": "50c1e6eb-5188-4bf2-a7b7-e91f9769f37f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9c96be3c-c612-4766-8bc7-a811ab5bdf8a",
                     "path": "*/{Cancel}",
                     "interactions": "",
