@@ -217,13 +217,13 @@ public class Player : MonoBehaviour
             }
             if (context.ReadValue<Vector2>().x < 0)
             {
-                workBench.MoveMenuUp();
-                workBench.SelectButton();
+                //workBench.MoveMenuUp();
+                //workBench.SelectButton();
             }
             else if (context.ReadValue<Vector2>().x > 0)
             {
-                workBench.MoveMenuDown();
-                workBench.SelectButton();
+                //workBench.MoveMenuDown();
+                //workBench.SelectButton();
             }
         }
     }
@@ -450,6 +450,10 @@ public class Player : MonoBehaviour
             case "Workbench":
                 interactObject = other.gameObject;
                 workBench = interactObject.GetComponent<Workbench>();
+                if (interactObject.tag == "Workbench")
+                {
+                    workBench.Interact(this);
+                }
                 break;
             case "Currency":
                 PickupCurrency(other.gameObject);
@@ -495,7 +499,8 @@ public class Player : MonoBehaviour
                     PickupObject();
                     break;
                 case "Workbench":
-                    WhackWorkbench();
+                    //WhackWorkbench();
+                    //BuyWorkbench();
                     break;
                 case "Bin":
                     DisposeSelectedObject();
@@ -739,6 +744,10 @@ public class Player : MonoBehaviour
         if (interactObject)
         {
             playerUI.HideHintUIText();
+        }
+        if (interactObject && interactObject.tag == "Workbench")
+        {
+            workBench.StopInteract();
         }
     }
 
