@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject partToDrop;
     [SerializeField, Range(0, 100)] int chanceToDropPart;
-    int amountOfCurrencyToDrop = 0;
+    int amountOfCurrencyToDrop = 1;
 
 
     public int damageToDeal = 1;
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
         health = maxHealth;
 
-        amountOfCurrencyToDrop = Random.Range(0, 100) < chanceToDropPart ? 1 : 0;
+        amountOfCurrencyToDrop = 1;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,8 +60,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        for (int i = 0; i < amountOfCurrencyToDrop; i++)
-            Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
+        Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
 
         Instantiate(deathParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
