@@ -8,7 +8,7 @@ public class MultiplayerManager : MonoBehaviour
     PlayerInputManager inputManager;
     MultipleTargetCamera multiCam;
 
-    HUDController hudController;
+    public HUDController hudController;
 
     public static int playerCount = 0;
 

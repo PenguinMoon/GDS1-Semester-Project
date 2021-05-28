@@ -296,7 +296,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        hudController.PauseGame();
+        manager.hudController.PauseGame();
     }
 
     public void OnFastForward(InputAction.CallbackContext context)
@@ -305,7 +305,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        hudController.FastForward();
+        manager.hudController.FastForward();
     }
 
     public void OnZoom(InputAction.CallbackContext context)
@@ -411,7 +411,7 @@ public class Player : MonoBehaviour
             ((CinemachineVirtualCamera)vcam).GetCinemachineComponent<CinemachineFramingTransposer>().m_CameraDistance = 32f;
             isZoomOut = true;
         }
-        hudController.Zoom(isZoomOut);
+        manager.hudController.Zoom(isZoomOut);
     }
 
     private void PickupCurrency(GameObject coin)
