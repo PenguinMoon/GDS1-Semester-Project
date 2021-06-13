@@ -6586,7 +6586,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: d4d2cdec0d985bf45b11b85e9c077b6d, type: 3}
+      objectReference: {fileID: 2800000, guid: 464f4d225ec33064fac7e76b070b6382, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
@@ -12570,7 +12570,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 9694f07149d0cf84cbed60ff0cf8ba1d, type: 3}
+      objectReference: {fileID: 2800000, guid: a3fe68d1dd2253640b2f012c3ed43d50, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
@@ -33138,7 +33138,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Texture
       value: 
-      objectReference: {fileID: 2800000, guid: 059ebe2f098e452459f3a60ec94231ee, type: 3}
+      objectReference: {fileID: 2800000, guid: 00774b31dfacf7341b5935576ce92a64, type: 3}
     - target: {fileID: 697999785169584656, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
       propertyPath: m_text
