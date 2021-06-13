@@ -15,7 +15,9 @@ public class HUDController : MonoBehaviour
     [SerializeField] Gradient hpGradient;
     [SerializeField] Image hpImg;
 
+    // Multiplayer related elements
     [SerializeField] TextMeshProUGUI pressToJoinTxt;
+    [SerializeField] GameObject p2Icon;
 
     // Pause Screen Elements
     bool isPaused = false;
@@ -41,7 +43,7 @@ public class HUDController : MonoBehaviour
     void Start()
     {
         waveManager = FindObjectOfType<WaveManager>();
-        pressToJoinTxt.enabled = false;
+        //pressToJoinTxt.enabled = false;
     }
 
     // Update is called once per frame
@@ -49,7 +51,14 @@ public class HUDController : MonoBehaviour
     {
         UpdateWaveCounter();
 
-        pressToJoinTxt.enabled = (InputSystem.devices.Count > 3 && MultiplayerManager.playerCount < 2);
+        //pressToJoinTxt.enabled = (InputSystem.devices.Count > 3 && MultiplayerManager.playerCount < 2);
+       
+        // Disables press to join txt + enables P2 Icon
+        if(InputSystem.devices.Count > 3 && MultiplayerManager.playerCount == 2)
+        {
+            pressToJoinTxt.enabled = false;
+            p2Icon.SetActive(true);
+        }
     }
 
     public void UpdateWaveCounter()
