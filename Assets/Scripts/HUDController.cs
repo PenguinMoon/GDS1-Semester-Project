@@ -39,6 +39,10 @@ public class HUDController : MonoBehaviour
 
     WaveManager waveManager;
 
+    bool isAlertActive; // Checks if the alert is currently active
+    float alertTimer = 15f; // Cooldown for showing the alert
+    [SerializeField] GameObject damageAlert;    // Image of the workshop damage alert
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,11 +58,16 @@ public class HUDController : MonoBehaviour
         //pressToJoinTxt.enabled = (InputSystem.devices.Count > 3 && MultiplayerManager.playerCount < 2);
        
         // Disables press to join txt + enables P2 Icon
+        // TODO: Find a more efficient way to do this.
         if(InputSystem.devices.Count > 3 && MultiplayerManager.playerCount == 2)
         {
             pressToJoinTxt.enabled = false;
             p2Icon.SetActive(true);
         }
+
+        alertTimer -= Time.deltaTime;
+        if (alertTimer < 0f)
+            alertTimer = 0f;
     }
 
     public void UpdateWaveCounter()
@@ -88,6 +97,7 @@ public class HUDController : MonoBehaviour
     {
         hpBar.value = hp;
         hpImg.color = hpGradient.Evaluate(hpBar.normalizedValue);
+        ActivateDamageAlert();
     }
 
     // Pauses the game and enables pause screen
@@ -169,6 +179,23 @@ public class HUDController : MonoBehaviour
         {
             zoomInImg.enabled = false;
             zoomOutImg.enabled = true;
+        }
+    }
+
+    // Displays a damage alert when the workshop takes damage
+    void ActivateDamageAlert()
+    {
+        // Only activates if the alert is not already active + cooldown is off
+        if(!isAlertActive && alertTimer <= 0)
+        {
+            isAlertActive = true;
+            LeanTween.move(damageAlert.GetComponent<RectTransform>(), new Vector3(0, 0, 0), 1f).setEase(LeanTweenType.easeOutExpo);
+            // Moves the alert off screen and resets the alert's cooldown + state
+            LeanTween.move(damageAlert.GetComponent<RectTransform>(), new Vector3(0, -Screen.height, 0), .5f).setEase(LeanTweenType.easeInExpo).setDelay(4f).setOnComplete(() =>
+            {
+                isAlertActive = false;
+                alertTimer = 15f;
+            });
         }
     }
 

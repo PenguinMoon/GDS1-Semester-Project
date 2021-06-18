@@ -252,12 +252,12 @@ public class Player : MonoBehaviour
         if (context.started)
         {
             isSprinting = true;
-            Debug.Log("Start sprint!");
+            //Debug.Log("Start sprint!");
         }
         if (context.canceled)
         {
             isSprinting = false;
-            Debug.Log("Stop sprint!");
+            //Debug.Log("Stop sprint!");
         }
         Sprint();
     }
@@ -340,7 +340,7 @@ public class Player : MonoBehaviour
                 stepRate = 0.4f;
                 isSprinting = false;
                 sprintParticle.Stop();
-                Debug.Log("Stop Sprinting");
+                //Debug.Log("Stop Sprinting");
             }
         }
     }
@@ -352,7 +352,7 @@ public class Player : MonoBehaviour
         movementSpeed = 12f;
         isSprinting = true;
         sprintParticle.Play();
-        Debug.Log("Sprinting");
+        //Debug.Log("Sprinting");
         playerUI.isDraining = true;
         stepRate = 0.2f;
         while (sprintTime > 0f)
@@ -366,7 +366,7 @@ public class Player : MonoBehaviour
         isSprinting = false;
         sprintParticle.Stop();
         sprintRoutine = StartCoroutine(RecoverSprint());
-        Debug.Log("Stop Sprinting");
+        //Debug.Log("Stop Sprinting");
         stepRate = 0.4f;
     }
 
@@ -383,7 +383,7 @@ public class Player : MonoBehaviour
                 sprintTime = maxSprintTime;
             yield return new WaitForSeconds(Time.deltaTime * maxSprintTime);
         }
-        Debug.Log("Sprint Full");
+        //Debug.Log("Sprint Full");
     }
 
     private void Whack()
