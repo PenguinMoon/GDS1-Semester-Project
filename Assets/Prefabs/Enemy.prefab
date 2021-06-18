@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6915653338227514107}
   - component: {fileID: 3386699638765481592}
   - component: {fileID: 1147414502130100579}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -984,6 +984,8 @@ MonoBehaviour:
   partToDrop: {fileID: 8314246425055855202, guid: 395dd02d2a6c45147a45490d426345fc,
     type: 3}
   chanceToDropPart: 100
+  amountOfCurrencyToDrop: 1
+  damageToDeal: 1
   deathParticle: {fileID: 464801855710940144, guid: 8cded9a40f5639e46aef255a37687f9e,
     type: 3}
 --- !u!195 &-7780192404362861432
@@ -1007,7 +1009,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &-7391317937511142171
 MonoBehaviour:
   m_ObjectHideFlags: 0
