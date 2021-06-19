@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelLoader : MonoBehaviour
 {
     CanvasGroup fadeImage;
     float fadeSpeed = 0.5f;
     public bool isLoadingLevel = false;
+    [SerializeField] TextMeshProUGUI hintTxt;
+    [SerializeField] HintText hintData;
+    string[] hints;
 
     private void Awake()
     {
         fadeImage = GetComponentInChildren<CanvasGroup>();
+        hints = hintData.Hints;
     }
 
     private void Start()
@@ -22,6 +27,7 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadLevel(string levelName)
     {
+        hintTxt.text = hints[Random.Range(0, hints.Length)];
         StartCoroutine(FadeLoadLevel(levelName));
     }
 
@@ -38,6 +44,8 @@ public class LevelLoader : MonoBehaviour
 
             yield return null;
         }
+
+        yield return new WaitForSecondsRealtime(1.2f);
 
         SceneManager.LoadScene(levelName);
 

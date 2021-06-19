@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2933aaf7a6667340850d5dadd750963, type: 3}
+  m_Name: HintTextCollection
+  m_EditorClassIdentifier: 
+  hints:
+  - The Flamethrower turret is great for defending against big crowds of enemies.
+  - Not all turrets are held equal. Holding turrets with shorter attack ranges and
+    confronting enemies up close can be the best strategy.
+  - Some enemies deal more damage to the workshop than others. Beware of the boss
+    enemies as they deal the most damage!
+  - The Cannon turret is best placed far back due to its low fire rate and long attack
+    range.
+  - Don't forget to place your turrets down to give the Builder's arms a rest! You
+    can only recharge the turret with batteries if its placed down.
+  - Unlocking Objectives is the key to victory. Opting to defend with just the starting
+    turret is basically just hard mode!
+  - Never give up! Failure is just another step towards success.
+  - If you ever run out of space, recycle a turret at the bin and regain some bits
+    and circuits. Recycle and reuse!
+  - Remember to save some bits for crafting batteries, or else you'll be in trouble!
+  - just don't lose lmao
+  - Want to play with a friend? Just plug in a controller, press any controller button
+    and your friend will be there!
+  - Sometimes unlocking every objective on a level will put you at an disadvantage.
+    Saving up your bits and circuits for only a few objectives can be a better strategy.
+  - Sometimes taking a break from the game is just what you need to pass that one
+    level you just can't seem to beat.
