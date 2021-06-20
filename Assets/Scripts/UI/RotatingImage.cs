@@ -16,6 +16,6 @@ public class RotatingImage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(dir * Time.deltaTime * rotSpeed);
+        transform.Rotate(dir * Time.unscaledDeltaTime * rotSpeed);
     }
 }
