@@ -28758,6 +28758,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 977796418175337071, guid: 83e2bc0b15bc7154e9371e58b441d588,
+        type: 3}
+      propertyPath: rotSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1834325877450652404, guid: 83e2bc0b15bc7154e9371e58b441d588,
         type: 3}
       propertyPath: m_Enabled
