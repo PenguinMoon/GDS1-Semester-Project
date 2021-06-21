@@ -26,7 +26,10 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < num; i++)
         {
-            SpawnRandomEnemy(options);
+            // Used with Wave Manager V1
+            //SpawnRandomEnemy(options);
+
+            SpawnEnemyInOrder(i, options);
             yield return new WaitForSeconds(1.75f);
         }
     }
@@ -51,6 +54,14 @@ public class EnemySpawner : MonoBehaviour
         int rand = Random.Range(0, options.Count);
 
         SpawnEnemy(options[rand]);
+    }
+
+    // Called by WaveSpawner V2 Script
+    // Spawns an enemy by looping through the List, with element 0 spawned first and then element 1, etc.
+    private void SpawnEnemyInOrder(int index, List<GameObject> options)
+    {
+        Debug.Log(options[index]);
+        SpawnEnemy(options[index]);
     }
 
     private int EnemiesAlive()

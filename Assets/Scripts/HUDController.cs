@@ -38,6 +38,7 @@ public class HUDController : MonoBehaviour
     bool isTweenFinished = true;   // Checks if the pause tween is finished
 
     WaveManager waveManager;
+    WaveManagerV2 waveManagerV2;
 
     bool isAlertActive; // Checks if the alert is currently active
     float alertTimer = 15f; // Cooldown for showing the alert
@@ -46,8 +47,8 @@ public class HUDController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waveManager = FindObjectOfType<WaveManager>();
-        //pressToJoinTxt.enabled = false;
+        //waveManager = FindObjectOfType<WaveManager>();
+        waveManagerV2 = FindObjectOfType<WaveManagerV2>();
     }
 
     // Update is called once per frame
@@ -72,7 +73,8 @@ public class HUDController : MonoBehaviour
 
     public void UpdateWaveCounter()
     {
-        waveText.text = "Waves Remaining: " + waveManager.GetWavesRemaining().ToString();
+        //waveText.text = "Waves Remaining: " + waveManager.GetWavesRemaining().ToString();
+        waveText.text = "Waves Remaining: " + waveManagerV2.GetWavesRemaining().ToString();
     }
 
     public void UpdateCash(Dictionary<string, int> inventory)
