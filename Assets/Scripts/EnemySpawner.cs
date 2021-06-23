@@ -29,8 +29,12 @@ public class EnemySpawner : MonoBehaviour
             // Used with Wave Manager V1
             //SpawnRandomEnemy(options);
 
-            SpawnEnemyInOrder(i, options);
-            yield return new WaitForSeconds(1.75f);
+            // Multiplayer scaling for enemy spawns - basically doubles the amount of enemies spawned when in multiplayer
+            for (int j = 0; j < MultiplayerManager.playerCount; j++)
+            {
+                SpawnEnemyInOrder(i, options);
+                yield return new WaitForSeconds(1.75f);
+            }
         }
     }
 
