@@ -73,7 +73,7 @@ public class SmartTurret : Object
             {
                 //Sleep particle start
                 isActive = false;
-                ammoImage.color = Color.grey;
+                ammoImage.color = Color.red;
                 particles[(int)ParticleEffects.Inactive].Play();
             }
             else if (currentAmmo == maxAmmo)
