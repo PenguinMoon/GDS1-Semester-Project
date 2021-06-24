@@ -11,6 +11,7 @@ public class SmartTurret : Object
     [SerializeField] LayerMask enemyMask;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] Animator animator;
 
     // Turret Vairables
 
@@ -156,6 +157,8 @@ public class SmartTurret : Object
             currentAmmo--;
 
         UpdateAmmoUI();
+
+        animator.SetTrigger("Fire");
     }
 
     private void TurnToFace(Vector3 position)
