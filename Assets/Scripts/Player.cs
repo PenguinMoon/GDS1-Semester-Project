@@ -616,7 +616,9 @@ public class Player : MonoBehaviour
             interactObject.GetComponent<SmartTurret>().ReloadAmmo(selectedObject.GetComponent<Ammo>().reloadObject());
             selectedObject.GetComponent<Ammo>().deleteObject();
             selectedObject = null;
+            audioSource.PlayOneShot(sfxData.TowerPlace);
             hudController.UpdateItemSlot(selectedObject);
+
         }
     }
 
@@ -670,6 +672,7 @@ public class Player : MonoBehaviour
             selectedObject.transform.SetParent(heldObjectPoint);
             selectedObject.GetComponent<Object>().isBeingHeld = true;
             //hudController.UpdateItemSlot(turret);
+            audioSource.PlayOneShot(sfxData.TowerPickup);
             craftParticle.Play();
         }
     }
