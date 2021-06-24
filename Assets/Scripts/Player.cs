@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] ParticleSystem sprintParticle;
     [SerializeField] ParticleSystem craftParticle;
+    [SerializeField] ParticleSystem pickupParticle;
 
     Animator playerAnim;
     float currentWhackDelay = 0f;
@@ -422,6 +423,8 @@ public class Player : MonoBehaviour
         else if (coin.name.Contains("Bit"))
             manager.ReceiveCurrency(1, 0);//inventory["Bits"]++;
 
+        pickupParticle.Play();
+        audioSource.PlayOneShot(sfxData.CurrencyPickup);
         Destroy(coin);
     }
 
