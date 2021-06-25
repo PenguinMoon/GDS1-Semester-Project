@@ -74,7 +74,8 @@ public class HUDController : MonoBehaviour
     public void UpdateWaveCounter()
     {
         //waveText.text = "Waves Remaining: " + waveManager.GetWavesRemaining().ToString();
-        waveText.text = "Waves Remaining: " + waveManagerV2.GetWavesRemaining().ToString();
+        //waveText.text = "Waves Remaining: " + waveManagerV2.GetWavesRemaining().ToString();
+        waveText.text = "Wave: " + waveManagerV2.GetCurrentWave();
     }
 
     public void UpdateCash(Dictionary<string, int> inventory)

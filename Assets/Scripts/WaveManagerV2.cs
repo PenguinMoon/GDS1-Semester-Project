@@ -89,6 +89,11 @@ public class WaveManagerV2 : MonoBehaviour
     {
         return enemyWaves.Count - currentWave;
     }
+
+    public string GetCurrentWave()
+    {
+        return currentWave.ToString() + " / " + enemyWaves.Count;
+    }
 }
 
 [System.Serializable]
