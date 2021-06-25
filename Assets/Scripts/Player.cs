@@ -371,10 +371,10 @@ public class Player : MonoBehaviour
         stepRate = 0.4f;
     }
 
-    // Recovers sprint time/stamina over time after a 2 second delay
+    // Recovers sprint time/stamina over time after a 1 second delay
     IEnumerator RecoverSprint()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         playerUI.isDraining = false;
         playerUI.isRecovering = true;
         while (sprintTime < maxSprintTime)
