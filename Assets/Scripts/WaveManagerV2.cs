@@ -15,6 +15,8 @@ public class WaveManagerV2 : MonoBehaviour
     LevelLoader levelLoader;
     AudioSource audio;
 
+    public bool hasLevelStarted = false;    // Identifies if the level has started after intro cutscene delay
+
     private void Awake()
     {
         if (spawners.Count > 0)
@@ -38,6 +40,7 @@ public class WaveManagerV2 : MonoBehaviour
     IEnumerator RunWaves()
     {
         yield return new WaitForSeconds(10f);   // Delay for intro cutscene
+        hasLevelStarted = true;
 
         for (int i = 0; i < enemyWaves.Count; i++)
         {
@@ -61,7 +64,7 @@ public class WaveManagerV2 : MonoBehaviour
         OnAllWavesCompleted();
     }
 
-    private bool IsWaveInProgress()
+    public bool IsWaveInProgress()
     {
         foreach (EnemySpawner spawner in spawners)
             if (spawner.HasEnemies())
@@ -93,6 +96,11 @@ public class WaveManagerV2 : MonoBehaviour
     public string GetCurrentWave()
     {
         return currentWave.ToString() + " / " + enemyWaves.Count;
+    }
+
+    public float GetWaveDelay()
+    {
+        return timeBetweenWaves;
     }
 }
 
