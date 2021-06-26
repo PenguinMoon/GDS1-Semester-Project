@@ -40,7 +40,8 @@ public class SmartTurret : Object
     {
         Hit,
         Inactive,
-        Fire
+        Fire,
+        Upgrade
     }
 
     float currentFireDelay = 0f;
@@ -210,11 +211,13 @@ public class SmartTurret : Object
 
     public void UpgradeTurret()
     {
-        GameObject upgradedTurret = Instantiate(nextUpgradeTurret, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-        upgradedTurret.GetComponent<SmartTurret>().plate = this.plate;
+        GameObject upgradedTurretObj = Instantiate(nextUpgradeTurret, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        SmartTurret upgradedTurret = upgradedTurretObj.GetComponent<SmartTurret>();
+        upgradedTurret.plate = this.plate;
+        plate.GetComponent<ObjectPlate>().placedObject = upgradedTurretObj;
+        upgradedTurret.PlayParticle(ParticleEffects.Upgrade);
         Destroy(this.gameObject);
     }
-
 
     public void HitByPlayer()
     {

@@ -549,6 +549,8 @@ public class Player : MonoBehaviour
         {
             Debug.Log("SHOULD UPGRADE TURRET");
             interactObject.GetComponent<SmartTurret>().UpgradeTurret();
+            audioSource.PlayOneShot(sfxData.TowerUpgrade, 0.5f);
+            audioSource.PlayOneShot(sfxData.Whack, 1f);
             selectedObject.GetComponent<Object>().DestroyObject();
             selectedObject = null;
         }
