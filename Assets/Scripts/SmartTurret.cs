@@ -12,6 +12,7 @@ public class SmartTurret : Object
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator animator;
+    [SerializeField] public GameObject nextUpgradeTurret;
 
     // Turret Vairables
 
@@ -202,10 +203,18 @@ public class SmartTurret : Object
         currentAmmo += ammo;
 
         if (currentAmmo > maxAmmo)
-            currentAmmo = maxAmmo;
+            currentAmmo = maxAmmo; 
 
         UpdateAmmoUI();
     }
+
+    public void UpgradeTurret()
+    {
+        GameObject upgradedTurret = Instantiate(nextUpgradeTurret, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        upgradedTurret.GetComponent<SmartTurret>().plate = this.plate;
+        Destroy(this.gameObject);
+    }
+
 
     public void HitByPlayer()
     {

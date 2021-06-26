@@ -545,7 +545,14 @@ public class Player : MonoBehaviour
 
     private void PickupObject()
     {
-        if (selectedObject && selectedObject.tag == "Turret") 
+        if (selectedObject && selectedObject.tag == "Turret" && interactObject.GetComponent<Object>().objectName.Equals(selectedObject.GetComponent<Object>().objectName) && interactObject.GetComponent<SmartTurret>().nextUpgradeTurret != null)
+        {
+            Debug.Log("SHOULD UPGRADE TURRET");
+            interactObject.GetComponent<SmartTurret>().UpgradeTurret();
+            selectedObject.GetComponent<Object>().DestroyObject();
+            selectedObject = null;
+        }
+        else if (selectedObject && selectedObject.tag == "Turret")
         {
             SwapObjects();
         }
@@ -575,8 +582,6 @@ public class Player : MonoBehaviour
         GameObject currentHeldObject = selectedObject;
         swapToObject = interactObject;
         GameObject turretPlate = interactObject.GetComponent<Object>().plate;
-
-        Debug.Log("Should swap turrets");
 
         if (swapToObject)
         {
@@ -711,7 +716,13 @@ public class Player : MonoBehaviour
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Pick up");
                 playerUI.ShowHintUIText();
             }
-            if (interactObject.tag == "Turret" && selectedObject.tag == "Turret")
+            if (interactObject.tag == "Turret" && selectedObject.tag == "Turret" && interactObject.GetComponent<Object>().objectName.Equals(selectedObject.GetComponent<Object>().objectName) && interactObject.GetComponent<SmartTurret>().nextUpgradeTurret != null)
+            {
+                int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
+                playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Upgrade");
+                playerUI.ShowHintUIText();
+            }
+            else if (interactObject.tag == "Turret" && selectedObject.tag == "Turret")
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Swap");
