@@ -24810,7 +24810,8 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 5990883502833773836}
   animator: {fileID: 2801584950469155268}
-  nextUpgradeTurret: {fileID: 0}
+  nextUpgradeTurret: {fileID: 5255531530330481644, guid: 961be0923994f2249a4ccced8396297e,
+    type: 3}
   repaired: 1
   hasInfiniteAmmo: 0
   range: 20
