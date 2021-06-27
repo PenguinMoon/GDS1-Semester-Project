@@ -10,6 +10,7 @@ public class SFXData : ScriptableObject
     [SerializeField] AudioClip footstep;
     [SerializeField] AudioClip whack;
     [SerializeField] AudioClip currencyPickup;
+    [SerializeField] AudioClip towerUpgrade;
 
     public AudioClip TowerPlace
     {
@@ -48,6 +49,14 @@ public class SFXData : ScriptableObject
         get
         {
             return currencyPickup;
+        }
+    }
+
+    public AudioClip TowerUpgrade
+    {
+        get
+        {
+            return towerUpgrade;
         }
     }
 }

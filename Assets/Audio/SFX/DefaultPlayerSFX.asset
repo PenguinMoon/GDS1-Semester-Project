@@ -17,3 +17,4 @@ MonoBehaviour:
   footstep: {fileID: 8300000, guid: 625114eaca64ab047b72c51c89a2d52e, type: 3}
   whack: {fileID: 8300000, guid: 8efa9028be88b2e49a9255e95ab7c591, type: 3}
   currencyPickup: {fileID: 8300000, guid: bfbc421b259ed854a8e2fa2cb6b25b30, type: 3}
+  towerUpgrade: {fileID: 8300000, guid: ccd086f38d2d17c4f91d298194ddd9f1, type: 3}

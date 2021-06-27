@@ -8,27 +8,35 @@ using UnityEngine.InputSystem;
 
 public class HUDController : MonoBehaviour
 {
+    // ==== HUD Elements ====
+    [Header("HUD Elements")]
     [SerializeField] TextMeshProUGUI cashText;
     [SerializeField] TextMeshProUGUI circuitText;
     [SerializeField] TextMeshProUGUI waveText;
     [SerializeField] Slider hpBar;
     [SerializeField] Gradient hpGradient;
     [SerializeField] Image hpImg;
-
-    // Multiplayer related elements
-    [SerializeField] TextMeshProUGUI pressToJoinTxt;
-    [SerializeField] GameObject p2Icon;
-
-    // Pause Screen Elements
-    bool isPaused = false;
-    bool isFastForward = false;
-    float currentTimeScale = 1.0f;
     [SerializeField] Image speedImg;
     [SerializeField] Image fastSpeedImg;
     [SerializeField] Image zoomInImg;
     [SerializeField] Image zoomOutImg;
+    bool isAlertActive; // Checks if the alert is currently active
+    float alertTimer = 15f; // Cooldown for showing the alert
+    [SerializeField] GameObject damageAlert;    // Image + text of the workshop damage alert
+    [SerializeField] TextMeshProUGUI waveTimerTxt;    // Timer text showing how long until next wave
+    float waveDelayTime;
 
+    // ==== Multiplayer Related Elements ====
+    [Header("Multiplayer Related Elements")]
+    [SerializeField] TextMeshProUGUI pressToJoinTxt;
+    [SerializeField] GameObject p2Icon;
+
+    // ==== Pause Screen Elements ====
+    bool isPaused = false;
+    bool isFastForward = false;
+    float currentTimeScale = 1.0f;
     bool onAltScreen = false; // If a second screen is opened on the pause menu e.g. settings screen.
+    [Header("Pause Screen Elements")]
     [SerializeField] GameObject mainPauseCanvas;    // The main canvas of the pause screen
     [SerializeField] GameObject pauseCanvas;   // The initial screen of the pause screen
     [SerializeField] GameObject confirmCanvas;   // The confirmation screen for quitting the level
@@ -39,10 +47,6 @@ public class HUDController : MonoBehaviour
 
     WaveManager waveManager;
     WaveManagerV2 waveManagerV2;
-
-    bool isAlertActive; // Checks if the alert is currently active
-    float alertTimer = 15f; // Cooldown for showing the alert
-    [SerializeField] GameObject damageAlert;    // Image of the workshop damage alert
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +59,7 @@ public class HUDController : MonoBehaviour
     void Update()
     {
         UpdateWaveCounter();
+        UpdateWaveTimer();
 
         //pressToJoinTxt.enabled = (InputSystem.devices.Count > 3 && MultiplayerManager.playerCount < 2);
        
@@ -74,7 +79,23 @@ public class HUDController : MonoBehaviour
     public void UpdateWaveCounter()
     {
         //waveText.text = "Waves Remaining: " + waveManager.GetWavesRemaining().ToString();
-        waveText.text = "Waves Remaining: " + waveManagerV2.GetWavesRemaining().ToString();
+        //waveText.text = "Waves Remaining: " + waveManagerV2.GetWavesRemaining().ToString();
+        waveText.text = "Wave: " + waveManagerV2.GetCurrentWave();
+    }
+
+    void UpdateWaveTimer()
+    {
+        if (!waveManagerV2.IsWaveInProgress() && waveManagerV2.hasLevelStarted)
+        {
+            waveTimerTxt.enabled = true;
+            waveDelayTime -= Time.deltaTime;
+            waveTimerTxt.text = "Next wave in: " + waveDelayTime.ToString("F0");
+        }
+        else
+        {
+            waveDelayTime = waveManagerV2.GetWaveDelay();
+            waveTimerTxt.enabled = false;
+        }
     }
 
     public void UpdateCash(Dictionary<string, int> inventory)

@@ -12,6 +12,7 @@ public class SmartTurret : Object
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform firePoint;
     [SerializeField] Animator animator;
+    [SerializeField] public GameObject nextUpgradeTurret;
 
     // Turret Vairables
 
@@ -39,7 +40,8 @@ public class SmartTurret : Object
     {
         Hit,
         Inactive,
-        Fire
+        Fire,
+        Upgrade
     }
 
     float currentFireDelay = 0f;
@@ -76,6 +78,7 @@ public class SmartTurret : Object
                 isActive = false;
                 ammoImage.color = Color.red;
                 particles[(int)ParticleEffects.Inactive].Play();
+                animator.SetBool("Inactive", true);
             }
             else if (currentAmmo == maxAmmo)
             {
@@ -83,6 +86,7 @@ public class SmartTurret : Object
                 isActive = true;
                 ammoImage.color = Color.green;
                 particles[(int)ParticleEffects.Inactive].Stop();
+                animator.SetBool("Inactive", false);
             }
 
             if (isActive)
@@ -147,6 +151,7 @@ public class SmartTurret : Object
     private void Fire()
     {
         isFiring = true;
+        animator.SetTrigger("Fire");
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         currentFireDelay = fireDelay;
 
@@ -158,14 +163,14 @@ public class SmartTurret : Object
 
         UpdateAmmoUI();
 
-        animator.SetTrigger("Fire");
+
     }
 
     private void TurnToFace(Vector3 position)
     {
         Quaternion targetRotation = Quaternion.LookRotation(position - gunTransform.position);
         //Quaternion.euler performs an error correcting with aiming. The aiming bone is off by 90 degrees in the model and this is not fixable as of yet.
-        gunTransform.rotation = targetRotation *  Quaternion.Euler(90, 0, 0);//Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
+        gunTransform.rotation = targetRotation *  Quaternion.Euler(0, 0, 0);//Quaternion.Lerp(gunTransform.rotation, targetRotation, Time.deltaTime * (isFiring ? rotSpeed * 3f: rotSpeed));
     }
 
     private float GetAngleToPos(Vector3 position)
@@ -199,9 +204,19 @@ public class SmartTurret : Object
         currentAmmo += ammo;
 
         if (currentAmmo > maxAmmo)
-            currentAmmo = maxAmmo;
+            currentAmmo = maxAmmo; 
 
         UpdateAmmoUI();
+    }
+
+    public void UpgradeTurret()
+    {
+        GameObject upgradedTurretObj = Instantiate(nextUpgradeTurret, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+        SmartTurret upgradedTurret = upgradedTurretObj.GetComponent<SmartTurret>();
+        upgradedTurret.plate = this.plate;
+        plate.GetComponent<ObjectPlate>().placedObject = upgradedTurretObj;
+        upgradedTurret.PlayParticle(ParticleEffects.Upgrade);
+        Destroy(this.gameObject);
     }
 
     public void HitByPlayer()
