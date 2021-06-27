@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 853452727889344049}
   - component: {fileID: 5916899778538208778}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bullet_Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,9 +152,9 @@ GameObject:
   - component: {fileID: 4655646590349418041}
   - component: {fileID: 148112973148609464}
   - component: {fileID: -5237600124990016106}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cannonball
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,8 +251,6 @@ MonoBehaviour:
   speed: 10
   explosionPrefab: {fileID: 2944334649673310768, guid: 16ed60184e7a09147927e86b56d82d59,
     type: 3}
-  audioSource: {fileID: -5237600124990016106}
-  clip: {fileID: 8300000, guid: 62ebd99b7a2564640b84b0a7c579a8d9, type: 3}
 --- !u!54 &148112973148609464
 Rigidbody:
   m_ObjectHideFlags: 0
