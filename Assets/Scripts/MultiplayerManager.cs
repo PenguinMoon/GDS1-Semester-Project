@@ -8,7 +8,7 @@ public class MultiplayerManager : MonoBehaviour
     PlayerInputManager inputManager;
     MultipleTargetCamera multiCam;
 
-    public HUDController hudController;
+    public static HUDController hudController;
 
     public static int playerCount = 0;
     private bool gameStarted = false;
@@ -17,7 +17,21 @@ public class MultiplayerManager : MonoBehaviour
 
     static float score = 0; // Total score for this level
 
-    static MultiplayerManager instance;
+    public static float Score
+    {
+        get
+        {
+            return score;
+        }
+
+        set
+        {
+            score = value;
+            hudController.UpdateScoreTxt(score);
+        }
+    }
+
+    //static MultiplayerManager instance;
 
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
@@ -38,11 +52,6 @@ public class MultiplayerManager : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         multiCam = FindObjectOfType<MultipleTargetCamera>();
         hudController = FindObjectOfType<HUDController>();
-
-        // Singleton stuff
-        if (instance != null && instance != this)
-            Destroy(gameObject);    // Ensures that there aren't multiple Singletons
-        instance = this;
     }
 
     private void Start()
@@ -110,8 +119,7 @@ public class MultiplayerManager : MonoBehaviour
     // Updates the score - a static function so it can be called where-ever
     public static void UpdateScore(float addedScore)
     {
-        score += addedScore;
+        Score += addedScore;
         Debug.Log("Current score: " + score);
-        MultiplayerManager.instance.hudController.UpdateScoreTxt(score);
     }
 }

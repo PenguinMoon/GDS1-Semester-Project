@@ -297,7 +297,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        manager.hudController.PauseGame();
+        MultiplayerManager.hudController.PauseGame();
     }
 
     public void OnFastForward(InputAction.CallbackContext context)
@@ -306,7 +306,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        manager.hudController.FastForward();
+        MultiplayerManager.hudController.FastForward();
     }
 
     public void OnZoom(InputAction.CallbackContext context)
