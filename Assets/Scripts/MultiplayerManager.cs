@@ -15,6 +15,8 @@ public class MultiplayerManager : MonoBehaviour
 
     bool isZoomOut = false;
 
+    static float score = 0; // Total score for this level
+
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
         // Platform dependent compilation stuff
@@ -96,5 +98,12 @@ public class MultiplayerManager : MonoBehaviour
             isZoomOut = true;
         }
         hudController.Zoom(isZoomOut);
+    }
+
+    // Updates the score - a static function so it can be called where-ever
+    public static void UpdateScore(float addedScore)
+    {
+        score += addedScore;
+        Debug.Log("Current score: " + score);
     }
 }

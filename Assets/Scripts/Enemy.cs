@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int amountOfCurrencyToDrop = 1;
 
+    [SerializeField] float score;   // Score that is added to total when defeated
 
     public int damageToDeal = 1;
 
@@ -60,6 +61,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        MultiplayerManager.UpdateScore(score / MultiplayerManager.playerCount);  // Adds score to the total
+
         if (amountOfCurrencyToDrop == 1)
             Instantiate(partToDrop, GetDropPosition(), Quaternion.identity);
         else {

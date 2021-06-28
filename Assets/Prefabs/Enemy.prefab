@@ -985,6 +985,7 @@ MonoBehaviour:
     type: 3}
   chanceToDropPart: 100
   amountOfCurrencyToDrop: 1
+  score: 10
   damageToDeal: 1
   deathParticle: {fileID: 464801855710940144, guid: 8cded9a40f5639e46aef255a37687f9e,
     type: 3}
