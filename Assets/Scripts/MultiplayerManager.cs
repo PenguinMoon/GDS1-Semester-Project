@@ -17,6 +17,8 @@ public class MultiplayerManager : MonoBehaviour
 
     static float score = 0; // Total score for this level
 
+    static MultiplayerManager instance;
+
     public Dictionary<string, int> inventory = new Dictionary<string, int>()
     {
         // Platform dependent compilation stuff
@@ -36,6 +38,11 @@ public class MultiplayerManager : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         multiCam = FindObjectOfType<MultipleTargetCamera>();
         hudController = FindObjectOfType<HUDController>();
+
+        // Singleton stuff
+        if (instance != null && instance != this)
+            Destroy(gameObject);    // Ensures that there aren't multiple Singletons
+        instance = this;
     }
 
     private void Start()
@@ -105,5 +112,6 @@ public class MultiplayerManager : MonoBehaviour
     {
         score += addedScore;
         Debug.Log("Current score: " + score);
+        MultiplayerManager.instance.hudController.UpdateScoreTxt(score);
     }
 }

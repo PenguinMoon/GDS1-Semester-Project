@@ -25,6 +25,8 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject damageAlert;    // Image + text of the workshop damage alert
     [SerializeField] TextMeshProUGUI waveTimerTxt;    // Timer text showing how long until next wave
     float waveDelayTime;
+    [SerializeField] TextMeshProUGUI scoreTxt;    // Timer text showing how long until next wave
+
 
     // ==== Multiplayer Related Elements ====
     [Header("Multiplayer Related Elements")]
@@ -88,12 +90,13 @@ public class HUDController : MonoBehaviour
         if (!waveManagerV2.IsWaveInProgress() && waveManagerV2.hasLevelStarted)
         {
             waveTimerTxt.enabled = true;
+            // Counts down the wave timer
             waveDelayTime -= Time.deltaTime;
             waveTimerTxt.text = "Next wave in: " + waveDelayTime.ToString("F0");
         }
         else
         {
-            waveDelayTime = waveManagerV2.GetWaveDelay();
+            waveDelayTime = waveManagerV2.GetWaveDelay();   // Resets wave delay time back
             waveTimerTxt.enabled = false;
         }
     }
@@ -121,6 +124,11 @@ public class HUDController : MonoBehaviour
         hpBar.value = hp;
         hpImg.color = hpGradient.Evaluate(hpBar.normalizedValue);
         ActivateDamageAlert();
+    }
+
+    public void UpdateScoreTxt(float score)
+    {
+        scoreTxt.text = "Score: " + score.ToString("F0");
     }
 
     // Pauses the game and enables pause screen
