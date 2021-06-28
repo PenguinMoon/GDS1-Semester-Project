@@ -36,8 +36,8 @@ public class Workshop : MonoBehaviour
 
         if (health <= 0 && !levelLoader.isLoadingLevel)
         {
-            multiManager.EndLevel();
-            levelLoader.LoadLevel("Game Over");
+            multiManager.EndLevel(false);
+            //levelLoader.LoadLevel("Game Over");
         }
     }
 }

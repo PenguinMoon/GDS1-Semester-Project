@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class HUDController : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject damageAlert;    // Image + text of the workshop damage alert
     [SerializeField] TextMeshProUGUI waveTimerTxt;    // Timer text showing how long until next wave
     float waveDelayTime;
-    [SerializeField] TextMeshProUGUI scoreTxt;    // Timer text showing how long until next wave
+    [SerializeField] TextMeshProUGUI scoreTxt;    // Text showing score
 
 
     // ==== Multiplayer Related Elements ====
@@ -46,6 +47,16 @@ public class HUDController : MonoBehaviour
     [SerializeField] GameObject pauseBG;   // BG for the pause screen
     [SerializeField] GameObject postProcess;   // Post-processing for the pause screen
     bool isTweenFinished = true;   // Checks if the pause tween is finished
+
+    // ==== End Screen Elements ====
+    [Header("End Screen Elements")]
+    [SerializeField] GameObject endCanvas;   // The canvas after the level is over
+    [SerializeField] TextMeshProUGUI endTitleTxt;    // Title text on end screen
+    [SerializeField] TextMeshProUGUI endScoreTxt;    // Text showing score on end screen
+    [SerializeField] GameObject highScoreTxt;    // Text showing score on end screen
+    [SerializeField] GameObject scoreboard;   // The scoreboard after the level is over
+    [SerializeField] Image starImg;   // The scoreboard after the level is over
+    [SerializeField] GameObject retryBtn;
 
     WaveManager waveManager;
     WaveManagerV2 waveManagerV2;
@@ -253,5 +264,51 @@ public class HUDController : MonoBehaviour
         pauseCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
         onAltScreen = true;
+    }
+
+    // Display the game over screen + scoreboard when the level is over
+    public void EndGame(bool isLevelWon)
+    {
+        LeanTween.value(currentTimeScale, 0f, 0.5f).setIgnoreTimeScale(true).setOnUpdate((float value) =>
+        {
+            Time.timeScale = value;
+        });
+
+        mainPauseCanvas.SetActive(true);
+        postProcess.SetActive(true);
+        pauseBG.SetActive(true);
+        endCanvas.SetActive(true);
+        waveTimerTxt.enabled = false;
+
+        // Change title text depending on if the level was won or lost
+        if (isLevelWon)
+            endTitleTxt.text = "Level Complete!";
+        else
+            endTitleTxt.text = "Game Over!";
+
+        endScoreTxt.text = MultiplayerManager.Score.ToString("F0");
+
+        // Shows the star if the level has been cleared with no damage taken
+        // Else, have the colour of the star be in black
+        if (PlayerPrefs.GetInt(SceneManager.GetActiveScene().name + "Star", 0) == 1)
+            starImg.color = new Color(1f, 1f, 1f);
+        else
+            starImg.color = new Color(0f, 0f, 0f);
+
+        Debug.LogWarning("Final score saved");
+
+        if (PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name, 0) < MultiplayerManager.Score)
+        {
+            PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, MultiplayerManager.Score);
+            highScoreTxt.SetActive(true);
+        }
+
+        LeanTween.scale(endTitleTxt.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutElastic).setIgnoreTimeScale(true).setOnComplete(() =>
+        {
+            LeanTween.scale(scoreboard.GetComponent<RectTransform>(), new Vector3(1, 1, 1), .5f).setEase(LeanTweenType.easeOutQuad).setIgnoreTimeScale(true).setDelay(0.5f).setOnComplete(() =>
+            {
+                EventSystem.current.SetSelectedGameObject(retryBtn);
+            });
+        });
     }
 }

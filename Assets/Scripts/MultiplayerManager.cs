@@ -127,14 +127,11 @@ public class MultiplayerManager : MonoBehaviour
     }
 
     // Used when the player wins or loses
-    public void EndLevel()
+    public void EndLevel(bool isLevelWon)
     {
-        Debug.LogWarning("Final score saved");
-        
-        if (PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name, 0) < Score)
-            PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, Score);
-
         if (workshop.health == workshop.startingHP)
             PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "Star", 1);
+
+        hudController.EndGame(isLevelWon);
     }
 }

@@ -10,6 +10,11 @@ public class UISceneLoader : MonoBehaviour
         FindObjectOfType<LevelLoader>().LoadLevel(lvlName);
     }
 
+    public void ReloadLevel()
+    {
+        FindObjectOfType<LevelLoader>().LoadLevel(SceneManager.GetActiveScene().name);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

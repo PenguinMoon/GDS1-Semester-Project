@@ -58,7 +58,7 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator FadeIntoLevel()
     {
-
+        Time.timeScale = 1f;
         float percent = 1;
 
         while (percent >= 0)
@@ -68,5 +68,6 @@ public class LevelLoader : MonoBehaviour
 
             yield return null;
         }
+
     }
 }
