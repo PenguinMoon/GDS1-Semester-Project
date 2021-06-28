@@ -75,6 +75,7 @@ public class WaveManagerV2 : MonoBehaviour
 
     private void OnAllWavesCompleted()
     {
+        Debug.LogWarning("Final score: " + MultiplayerManager.Score);
         StartCoroutine(LoadLevelAfterAudio());
     }
 
@@ -82,9 +83,10 @@ public class WaveManagerV2 : MonoBehaviour
     {
         audio.clip = gameWinClip;
         audio.Play();
-
+        
         yield return new WaitForSeconds(gameWinClip.length / 2.5f);
 
+        MultiplayerManager.EndLevel();
         levelLoader.LoadLevel("Game Win");
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MultiplayerManager : MonoBehaviour
 {
@@ -52,6 +53,8 @@ public class MultiplayerManager : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         multiCam = FindObjectOfType<MultipleTargetCamera>();
         hudController = FindObjectOfType<HUDController>();
+
+        Debug.Log("Awake:" + SceneManager.GetActiveScene().name);
     }
 
     private void Start()
@@ -121,5 +124,12 @@ public class MultiplayerManager : MonoBehaviour
     {
         Score += addedScore;
         Debug.Log("Current score: " + score);
+    }
+
+    // Used when the player wins or loses
+    public static void EndLevel()
+    {
+        Debug.LogWarning("Final score saved");
+        PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, Score);
     }
 }

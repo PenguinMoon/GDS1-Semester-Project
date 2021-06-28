@@ -30,6 +30,9 @@ public class Workshop : MonoBehaviour
         hud.UpdateHP(health);
 
         if (health <= 0 && !levelLoader.isLoadingLevel)
+        {
+            MultiplayerManager.EndLevel();
             levelLoader.LoadLevel("Game Over");
+        }
     }
 }

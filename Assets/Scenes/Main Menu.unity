@@ -6605,7 +6605,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level1Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026957, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: lvlName
       value: Level1Map
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
@@ -12608,7 +12618,17 @@ PrefabInstance:
       objectReference: {fileID: 115344320}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Train_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026957, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: lvlName
       value: Train_Level
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
@@ -13060,7 +13080,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17580
+  m_Name: pb_Mesh17588
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15428,7 +15448,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17856
+  m_Name: pb_Mesh17876
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19010,7 +19030,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Level2Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026957, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: lvlName
       value: Level2Map
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
@@ -21195,7 +21225,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16958
+  m_Name: pb_Mesh16966
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33371,7 +33401,17 @@ PrefabInstance:
       objectReference: {fileID: 1774885177}
     - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026956, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: TutorialMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 697999786212026957, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
+        type: 3}
+      propertyPath: lvlName
       value: TutorialMap
       objectReference: {fileID: 0}
     - target: {fileID: 697999786212026958, guid: e5fe6f7d2d64cb04ab726ea539e6570b,
