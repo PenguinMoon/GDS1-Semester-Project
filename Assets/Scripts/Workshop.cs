@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Workshop : MonoBehaviour
 {
-    [SerializeField] int health = 100;
+    public int health = 100;
+    [HideInInspector] public int startingHP;
     [SerializeField] HUDController hud;
+    MultiplayerManager multiManager;
 
     LevelLoader levelLoader;
 
@@ -15,6 +17,9 @@ public class Workshop : MonoBehaviour
         levelLoader = FindObjectOfType<LevelLoader>();
         if (!levelLoader)
             Debug.LogWarning("NO LEVEL LOADER IN THIS LEVEL - PLEASE LOAD FROM MAIN MENU");
+
+        multiManager = FindObjectOfType<MultiplayerManager>();
+        startingHP = health;
     }
 
     // Start is called before the first frame update
@@ -31,7 +36,7 @@ public class Workshop : MonoBehaviour
 
         if (health <= 0 && !levelLoader.isLoadingLevel)
         {
-            MultiplayerManager.EndLevel();
+            multiManager.EndLevel();
             levelLoader.LoadLevel("Game Over");
         }
     }

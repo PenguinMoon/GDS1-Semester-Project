@@ -15,6 +15,8 @@ public class WaveManagerV2 : MonoBehaviour
     LevelLoader levelLoader;
     AudioSource audio;
 
+    MultiplayerManager multiManager;
+
     public bool hasLevelStarted = false;    // Identifies if the level has started after intro cutscene delay
 
     private void Awake()
@@ -30,6 +32,7 @@ public class WaveManagerV2 : MonoBehaviour
             Debug.LogWarning("NO LEVEL LOADER IN THIS LEVEL - PLEASE LOAD FROM MAIN MENU");
 
         audio = GetComponent<AudioSource>();
+        multiManager = FindObjectOfType<MultiplayerManager>();
     }
 
     private void Start()
@@ -86,7 +89,7 @@ public class WaveManagerV2 : MonoBehaviour
         
         yield return new WaitForSeconds(gameWinClip.length / 2.5f);
 
-        MultiplayerManager.EndLevel();
+        multiManager.EndLevel();
         levelLoader.LoadLevel("Game Win");
     }
 

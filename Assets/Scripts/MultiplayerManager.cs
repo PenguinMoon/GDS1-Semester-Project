@@ -10,6 +10,7 @@ public class MultiplayerManager : MonoBehaviour
     MultipleTargetCamera multiCam;
 
     public static HUDController hudController;
+    Workshop workshop;
 
     public static int playerCount = 0;
     private bool gameStarted = false;
@@ -53,8 +54,7 @@ public class MultiplayerManager : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         multiCam = FindObjectOfType<MultipleTargetCamera>();
         hudController = FindObjectOfType<HUDController>();
-
-        Debug.Log("Awake:" + SceneManager.GetActiveScene().name);
+        workshop = FindObjectOfType<Workshop>();
     }
 
     private void Start()
@@ -127,9 +127,14 @@ public class MultiplayerManager : MonoBehaviour
     }
 
     // Used when the player wins or loses
-    public static void EndLevel()
+    public void EndLevel()
     {
         Debug.LogWarning("Final score saved");
-        PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, Score);
+        
+        if (PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name, 0) < Score)
+            PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, Score);
+
+        if (workshop.health == workshop.startingHP)
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name + "Star", 1);
     }
 }
