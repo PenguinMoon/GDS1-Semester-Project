@@ -1081,7 +1081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5465668024071062075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0.75}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2090283941007558573}
@@ -1570,7 +1570,6 @@ GameObject:
   - component: {fileID: 6515243350678041670}
   - component: {fileID: 652898297224172387}
   - component: {fileID: 4917228783855307907}
-  - component: {fileID: 5225080974913122062}
   m_Layer: 0
   m_Name: DoorWindow
   m_TagString: Untagged
@@ -1639,19 +1638,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5225080974913122062
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7863360148249186954}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8324592370664122506
 GameObject:
   m_ObjectHideFlags: 0

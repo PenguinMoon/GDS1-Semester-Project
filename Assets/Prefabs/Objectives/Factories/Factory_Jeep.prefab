@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorPivotPoint: {fileID: 6425162807009400148}
-  openXRotation: -179.9
+  openXRotation: 180
 --- !u!1 &3563097247739270976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,12 +2154,12 @@ PrefabInstance:
     - target: {fileID: 5036071401278221437, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5036071401278221437, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.16
+      value: 1.47
       objectReference: {fileID: 0}
     - target: {fileID: 5036071401278221437, guid: c3b913c6f5356f04aa399d833fc460d6,
         type: 3}
