@@ -720,13 +720,13 @@ public class Player : MonoBehaviour
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Use Workbench");
                 playerUI.ShowHintUIText();
             }
-            if (interactObject.tag == "Turret")
+            else if (interactObject.tag == "Turret")
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Pick up");
                 playerUI.ShowHintUIText();
             }
-            if (interactObject.tag == "Turret" && selectedObject.tag == "Turret" && interactObject.GetComponent<Object>().objectName.Equals(selectedObject.GetComponent<Object>().objectName) && interactObject.GetComponent<SmartTurret>().nextUpgradeTurret != null)
+            else if (interactObject.tag == "Turret" && selectedObject.tag == "Turret" && interactObject.GetComponent<Object>().objectName.Equals(selectedObject.GetComponent<Object>().objectName) && interactObject.GetComponent<SmartTurret>().nextUpgradeTurret != null)
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Upgrade");
@@ -738,25 +738,25 @@ public class Player : MonoBehaviour
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Swap");
                 playerUI.ShowHintUIText();
             }
-            if (interactObject.tag == "Turret" && selectedObject.tag == "Object")
+            else if (interactObject.tag == "Turret" && selectedObject.tag == "Object")
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Use");
                 playerUI.ShowHintUIText();
             }
-            if ((interactObject.tag == "TurretPlate" || interactObject.tag == "ObjectPlate") && selectedObject)
+            else if ((interactObject.tag == "TurretPlate" || interactObject.tag == "ObjectPlate") && selectedObject)
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Place");
                 playerUI.ShowHintUIText();
             }
-            if (interactObject.tag == "KioskObjective")
+            else if (interactObject.tag == "KioskObjective")
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("Hold [" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Repair");
                 playerUI.ShowHintUIText();
             }
-            if (interactObject.tag == "Bin")
+            else if (interactObject.tag == "Bin")
             {
                 int bindingIndex = interactAction.action.GetBindingIndexForControl(interactAction.action.controls[0]);
                 playerUI.UpdateHintText("[" + InputControlPath.ToHumanReadableString(interactAction.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + "] " + "Dispose");
