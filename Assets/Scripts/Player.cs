@@ -172,6 +172,11 @@ public class Player : MonoBehaviour
             repairDelay -= Time.deltaTime;
 
         stepDelay -= Time.deltaTime;
+
+        if (!interactObject && hintTextVisible)
+        {
+            playerUI.HideHintUIText();
+        }
     }
 
     private void FixedUpdate()
