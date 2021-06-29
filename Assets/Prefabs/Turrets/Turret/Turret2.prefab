@@ -30010,7 +30010,7 @@ MonoBehaviour:
     type: 3}
   repaired: 1
   hasInfiniteAmmo: 0
-  range: 12
+  range: 11
   fireDelay: 0.5
   maxAmmo: 30
   delayBetweenReloading: 1.5

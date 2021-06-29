@@ -30084,8 +30084,8 @@ MonoBehaviour:
   nextUpgradeTurret: {fileID: 0}
   repaired: 1
   hasInfiniteAmmo: 0
-  range: 13
-  fireDelay: 0.3
+  range: 12
+  fireDelay: 0.35
   maxAmmo: 35
   delayBetweenReloading: 1.5
   ammoImage: {fileID: 4230676112847785979}
