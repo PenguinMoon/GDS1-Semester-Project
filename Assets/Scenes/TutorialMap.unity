@@ -6287,12 +6287,12 @@ PrefabInstance:
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
         type: 3}
       propertyPath: enemyWaves.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
         type: 3}
       propertyPath: enemyWaves.Array.data[0].enemies.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
         type: 3}
@@ -6302,6 +6302,16 @@ PrefabInstance:
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
         type: 3}
       propertyPath: enemyWaves.Array.data[2].enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemies.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[4].enemies.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
@@ -6319,6 +6329,12 @@ PrefabInstance:
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
         type: 3}
       propertyPath: enemyWaves.Array.data[0].enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[0].enemies.Array.data[3]
       value: 
       objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
         type: 3}
@@ -6379,6 +6395,66 @@ PrefabInstance:
     - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
         type: 3}
       propertyPath: enemyWaves.Array.data[2].enemies.Array.data[4]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemies.Array.data[4]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[4].enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[4].enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[4].enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[4].enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
+        type: 3}
+    - target: {fileID: 16150413375384710, guid: bba06c6377e57c04e9d8ff8fa46261a0,
+        type: 3}
+      propertyPath: enemyWaves.Array.data[4].enemies.Array.data[4]
       value: 
       objectReference: {fileID: 6541951608883238876, guid: 233555526beb94145af352351420e026,
         type: 3}
@@ -8375,10 +8451,12 @@ MonoBehaviour:
     - 'Place the turret on the plate so it can see the robots
 
 '
-    - '
+    - 'Pick up the bits dropped by the enemies
 
 '
-    - "Pick up the bits dropped by enemies\t\n"
+    - 'Pick up the bits dropped by enemies - next
+
+'
     - 'Craft a turret from the workbench
 
 '
@@ -8404,7 +8482,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ce7b53ccdae004ba5ab6087a564a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sentences:
+  - Lets walk you through the basics...
+  - Place the turret on the plate so it can see the robots
+  - 'Pick up the bits dropped by the enemies '
+  - Craft a turret from the orange workbench in your workshop
+  - Place down the new turret over here
+  - Craft a battery to restore some power to your turrets
+  - Put the battery into one of your turrets
+  - Another way to recharge your turrets is by hitting them with your wrench
+  - Remember what you did with the battery? Try that with a turret of the same type!
+  - Now place this turret onto one of your existing turrets...
+  - Turrets can be upgraded like this three times!
+  - 'Congrats! Now that you know the basics, don''t let the robots reach the end! '
   dialogueText: {fileID: 1930600622}
+  isTyping: 0
 --- !u!4 &1679294411
 Transform:
   m_ObjectHideFlags: 0
@@ -10978,6 +11070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  startingHP: 0
   hud: {fileID: 1750915857}
 --- !u!114 &1228828685314983654
 MonoBehaviour:

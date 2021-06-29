@@ -5345,6 +5345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_Jeep
       objectReference: {fileID: 0}
+    - target: {fileID: 4191857510799138983, guid: 2067e31a51742fd46aae0606ec203085,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5608898850308640163, guid: 2067e31a51742fd46aae0606ec203085,
         type: 3}
       propertyPath: requiredBits
@@ -5404,11 +5409,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7832424084804031148, guid: 2067e31a51742fd46aae0606ec203085,
-        type: 3}
-      propertyPath: openXRotation
-      value: -178
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2067e31a51742fd46aae0606ec203085, type: 3}
