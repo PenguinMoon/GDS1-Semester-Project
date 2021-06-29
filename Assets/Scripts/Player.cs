@@ -116,7 +116,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        if (MultiplayerManager.playerCount > 1) {
+        if (MultiplayerManager.playerCount > 1)
+        {
             Material[] mats = meshRenderer.materials;
             mats[0] = secondPlayerMaterial;
             meshRenderer.materials = mats;
@@ -433,8 +434,8 @@ public class Player : MonoBehaviour
     {
         DisableOutlineObject();
 
-        if(!hintTextVisible)
-        ShowHintText();
+        if (!hintTextVisible)
+            ShowHintText();
 
         switch (other.gameObject.tag)
         {
@@ -579,7 +580,7 @@ public class Player : MonoBehaviour
     }
 
     public GameObject swapToObject;
-    private void SwapObjects() 
+    private void SwapObjects()
     {
         GameObject currentHeldObject = selectedObject;
         swapToObject = interactObject;
@@ -650,9 +651,11 @@ public class Player : MonoBehaviour
     {
         if (selectedObject)
         {
-            manager.ReceiveCurrency(selectedObject.GetComponent<Object>().bitsPrice, selectedObject.GetComponent<Object>().circuitsPrice);
-            //inventory["Bits"] += selectedObject.GetComponent<Object>().bitsPrice;
-            //inventory["Circuits"] += selectedObject.GetComponent<Object>().circuitsPrice;
+            Object objRef = selectedObject.GetComponent<Object>();
+            int bitsToReceive = Mathf.FloorToInt(objRef.bitsPrice / 2);
+            int circuitsToReceive = Mathf.FloorToInt(objRef.circuitsPrice / 2);
+
+            manager.ReceiveCurrency(bitsToReceive, circuitsToReceive);
             selectedObject.GetComponent<Object>().DestroyObject();
             hudController.UpdateItemSlot(null);
             selectedObject = null;

@@ -30010,8 +30010,8 @@ MonoBehaviour:
     type: 3}
   repaired: 1
   hasInfiniteAmmo: 0
-  range: 11
-  fireDelay: 0.5
+  range: 10
+  fireDelay: 0.6
   maxAmmo: 30
   delayBetweenReloading: 1.5
   ammoImage: {fileID: 4230676112847785979}
