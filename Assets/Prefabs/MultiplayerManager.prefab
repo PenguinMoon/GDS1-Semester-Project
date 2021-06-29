@@ -99,4 +99,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d159461497cc04086bde6c55b9410b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hudController: {fileID: 0}

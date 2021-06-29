@@ -269,7 +269,7 @@ public class HUDController : MonoBehaviour
     // Display the game over screen + scoreboard when the level is over
     public void EndGame(bool isLevelWon)
     {
-        LeanTween.value(currentTimeScale, 0f, 0.5f).setIgnoreTimeScale(true).setOnUpdate((float value) =>
+        LeanTween.value(currentTimeScale, 0f, 1f).setIgnoreTimeScale(true).setOnUpdate((float value) =>
         {
             Time.timeScale = value;
         });
@@ -278,7 +278,7 @@ public class HUDController : MonoBehaviour
         postProcess.SetActive(true);
         pauseBG.SetActive(true);
         endCanvas.SetActive(true);
-        waveTimerTxt.enabled = false;
+        waveManagerV2.hasLevelStarted = false;
 
         // Change title text depending on if the level was won or lost
         if (isLevelWon)

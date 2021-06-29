@@ -14,6 +14,7 @@ public class WaveManagerV2 : MonoBehaviour
 
     LevelLoader levelLoader;
     AudioSource audio;
+    Workshop workshop;
 
     MultiplayerManager multiManager;
 
@@ -33,6 +34,7 @@ public class WaveManagerV2 : MonoBehaviour
 
         audio = GetComponent<AudioSource>();
         multiManager = FindObjectOfType<MultiplayerManager>();
+        workshop = FindObjectOfType<Workshop>();
     }
 
     private void Start()
@@ -63,7 +65,7 @@ public class WaveManagerV2 : MonoBehaviour
             //Wait while any enemy spawners have enemies alive
             yield return new WaitWhile(IsWaveInProgress);
         }
-
+        
         OnAllWavesCompleted();
     }
 
@@ -78,14 +80,21 @@ public class WaveManagerV2 : MonoBehaviour
 
     private void OnAllWavesCompleted()
     {
-        Debug.LogWarning("Final score: " + MultiplayerManager.Score);
         //StartCoroutine(LoadLevelAfterAudio());
 
-        audio.clip = gameWinClip;
-        audio.Play();
-        multiManager.EndLevel(true);
+        if (workshop.health > 0)
+        {
+            audio.clip = gameWinClip;
+            audio.Play();
+            multiManager.EndLevel(true);
+        }
+        else
+        {
+            multiManager.EndLevel(false);
+        }
     }
 
+    // Unused
     IEnumerator LoadLevelAfterAudio()
     {
         audio.clip = gameWinClip;
