@@ -221,7 +221,7 @@ public class SmartTurret : Object
 
     public void HitByPlayer()
     {
-        ReloadAmmo(Mathf.FloorToInt(maxAmmo / 10));
+        ReloadAmmo(2);
         PlayParticle(ParticleEffects.Hit);
     }
 
