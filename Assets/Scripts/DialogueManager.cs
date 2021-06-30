@@ -6,53 +6,41 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
 
-    private Queue<string> sentences;
+    public List<string> sentences;
     public TextMeshProUGUI dialogueText;
 
+    public bool isTyping = false;
 
-    void Start()
+    public void DisplaySentenceAtIndex(int index)
     {
-        sentences = new Queue<string>();
-    }
-
-    public void StartDialogue(Dialogue dialogue)
-    {
-        sentences.Clear();
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentence();
+        if (index < 0 || index >= sentences.Count)
+            dialogueText.text = "";
+        else
+            StartCoroutine(TypeSentence(sentences[index]));
     }
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        Debug.Log("Function depreceated");
     }
 
     IEnumerator TypeSentence(string Sentence)
     {
+        isTyping = true;
         dialogueText.text = "";
+
+        yield return new WaitForSeconds(1f);
+
         foreach (char letter in Sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            yield return new WaitForSeconds(0.03f);
         }
+        isTyping = false;
     }
 
     void EndDialogue()
     {
 
     }
-
-
 }

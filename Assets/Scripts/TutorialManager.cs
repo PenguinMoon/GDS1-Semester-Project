@@ -8,6 +8,7 @@ public class TutorialManager : MonoBehaviour
     //Tutorial Objects
     [SerializeField] Player player;
     [SerializeField] SmartTurret turret;
+    int defaultTurretCost = 0;
     [SerializeField] TurretPlate turretPlate;
     [SerializeField] TurretPlate turretPlate2;
     [SerializeField] GameObject workbench;
@@ -21,6 +22,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     int stepIndex = 0;
 
+    bool isWaiting = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,38 +36,49 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isWaiting || dialogueManager.isTyping)
+        {
+            return;
+        }
+
         switch (stepIndex)
         {
-            case 0:
-                arrow.transform.position = turretPlate.transform.position;
+            case 1:
+                PointArrowTo(turretPlate.gameObject);
                 break;
 
-            case 1:
-                arrow.transform.position = turretPlate.transform.position;
+            case 3:
+                PointArrowTo(workbench.gameObject);
                 break;
 
             case 4:
-                arrow.transform.position = workbench.transform.position;
+                PointArrowTo(turretPlate2.gameObject);
                 break;
 
             case 5:
-                arrow.transform.position = turretPlate2.transform.position;
+                PointArrowTo(workbench2.gameObject);
                 break;
 
             case 6:
-                arrow.transform.position = turret.transform.position;
+                PointArrowTo(turret.gameObject);
                 break;
 
             case 7:
-                arrow.transform.position = workbench2.transform.position;
+                PointArrowTo(turretPlate2.gameObject);
                 break;
 
             case 8:
-                arrow.transform.position = turret.transform.position;
+                PointArrowTo(workbench.gameObject);
+                break;
+
+            case 9:
+                PointArrowTo(turret.gameObject);
                 break;
 
             default:
-                arrow.transform.position = new Vector3(1000, 1000, 1000);
+                if (player)
+                    arrow.transform.position = player.transform.position;
+                arrow.gameObject.SetActive(false);
                 break;
         }
 
@@ -74,82 +88,121 @@ public class TutorialManager : MonoBehaviour
             turret = FindObjectOfType<SmartTurret>();
         }
 
-        /*        if (player == null) {
-                    player = FindObjectOfType<Player>();
-                    turret = FindObjectOfType<SmartTurret>();
 
-
-                    if (player) {
-                        dialogueManager.DisplayNextSentence();
-                        StartCoroutine(AutoDialogue(5f));
-                    }
-                    return;
-                }*/
+        //                    ///
+        //   TUTORIAL STEPS   ///
+        //                    ///
 
         if (stepIndex == 0) // Player picks up initial turret
         {
-            stepIndex++;
-            StartCoroutine("AutoDialogue", 2f);
+            dialogueManager.DisplaySentenceAtIndex(stepIndex);
+
+            //Showing: Intro Line
+
+            StartCoroutine(IncrementStepAfter(4f));
         }
 
-        if (stepIndex == 1 && turretPlate.placedObject && turretPlate.placedObject.tag == "Turret") // Player places turret down on correct plate
+        //Showing: Place turret down
+
+        else if (stepIndex == 1 && turretPlate.placedObject && turretPlate.placedObject.tag == "Turret") // Player places turret down on correct plate
         {
-            stepIndex++;
-            dialogueManager.DisplayNextSentence();
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 2) // Wait for enemies to spawn currency
+        //Showing: Pickup required amount of bits
+
+        else if (stepIndex == 2 && multiplayerManager.inventory["Bits"] >= 4) // Wait until player has enough to afford turret
         {
-            stepIndex++;
-            StartCoroutine("AutoDialogue", 3f);
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 3 && multiplayerManager.inventory["Bits"] >= 3) // Wait for the player to pick up at least 3 currency
+        //Showing: Craft turret from workbench
+
+        else if (stepIndex == 3 && player.selectedObject && player.selectedObject.tag == "Turret") // Wait until the player is now holding a turret (i.e. bought one)
         {
-            stepIndex++;
-            dialogueManager.DisplayNextSentence();
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 4 && player.selectedObject && player.selectedObject.tag == "Turret") // Wait for the player to craft new turret
+        //Showing: Place new turret down
+
+        else if (stepIndex == 4 && turretPlate2.placedObject && turretPlate2.placedObject.tag == "Turret") // Wait until the player has placed the turret down on the second plate
         {
-            stepIndex++;
-            dialogueManager.DisplayNextSentence();
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 5 && turretPlate2.placedObject && turretPlate2.placedObject.tag == "Turret") // Wait for the player to place new turret down
+        //Showing: Craft battery from workbench
+
+        else if (stepIndex == 5 && player.selectedObject && player.selectedObject.tag == "Object")
         {
-            stepIndex++;
-            dialogueManager.DisplayNextSentence();
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 6) // Wait for a few seconds while the player whacks the turret
+        //Showing: Place battery into one of the turrets
+
+        else if (stepIndex == 6 && !player.selectedObject)
         {
-            stepIndex++;
-            StartCoroutine("AutoDialogue", 1f);
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 7 && player.selectedObject && player.selectedObject.tag == "Object") // Wait player to buy ammo
+        //Showing: Get player to whack turret
+
+        else if (stepIndex == 7)
         {
-            stepIndex++;
-            dialogueManager.DisplayNextSentence();
+            StartCoroutine(IncrementStepAfter(5f));
         }
 
-        if (stepIndex == 8 && player.selectedObject == null) // Wait player to place ammo
+        //Showing: Upgrade turret
+
+        else if (stepIndex == 8 && player.selectedObject && player.selectedObject.tag == "Turret")
         {
-            stepIndex++;
-            dialogueManager.DisplayNextSentence();
+            ProgressToNextStep();
         }
 
-        if (stepIndex == 9) // Display congrats text for short time
+        //Showing: Place turret onto another turret
+
+        else if (stepIndex == 9 && !player.selectedObject)
         {
-            stepIndex++;
-            StartCoroutine("AutoDialogue", 8f);
+            ProgressToNextStep();
+        }
+
+        //Showing: Info about upgrades
+
+        else if (stepIndex == 10)
+        {
+            StartCoroutine(IncrementStepAfter(5f));
+        }
+
+        //Showing: Congrats
+
+        else if (stepIndex == 11)
+        {
+            StartCoroutine(IncrementStepAfter(4f));
         }
     }
 
-    IEnumerator AutoDialogue(float seconds)
+    void ProgressToNextStep()
     {
+        stepIndex++;
+        dialogueManager.DisplaySentenceAtIndex(stepIndex);
+    }
+
+    IEnumerator IncrementStepAfter(float seconds)
+    {
+        isWaiting = true;
+
+        yield return new WaitWhile(() => dialogueManager.isTyping);
         yield return new WaitForSeconds(seconds);
-        dialogueManager.DisplayNextSentence();
+        stepIndex++;
+
+        dialogueManager.DisplaySentenceAtIndex(stepIndex);
+
+        isWaiting = false;
+    }
+
+    void PointArrowTo(GameObject target)
+    {
+        arrow.gameObject.SetActive(true);
+        //arrow.transform.position = target.transform.position + Vector3.up;
+        LeanTween.move(arrow, target.transform.position, 1f);
     }
 }

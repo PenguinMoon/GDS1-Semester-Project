@@ -8449,11 +8449,6 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4617075468937626192, guid: 7afd5686dd5748e4ba14d1a355641428,
-        type: 3}
-      propertyPath: openXRotation
-      value: -96
-      objectReference: {fileID: 0}
     - target: {fileID: 5465668024071062075, guid: 7afd5686dd5748e4ba14d1a355641428,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13135,6 +13130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  startingHP: 0
   hud: {fileID: 1750915857}
 --- !u!114 &1228828685314983654
 MonoBehaviour:
